@@ -1,0 +1,117 @@
+digraph "Tetris" {
+    "<Tetris.src.PlayTetris: void main(java.lang.String[])>"
+    "<Tetris.src.PlayTetris: void <init>()>"
+    "<Tetris.src.PlayTetris: void main(java.lang.String[])>"->"<Tetris.src.PlayTetris: void <init>()>";
+    "<Tetris.src.TetrisComponent: void <init>(int,int)>"
+    "<Tetris.src.PlayTetris: void <init>()>"->"<Tetris.src.TetrisComponent: void <init>(int,int)>";
+    "<Tetris.src.TetrisGrid: void <init>(int,int)>"
+    "<Tetris.src.TetrisComponent: void <init>(int,int)>"->"<Tetris.src.TetrisGrid: void <init>(int,int)>";
+    "<Tetris.src.BlockGrid: int getGraphicsWidth()>"
+    "<Tetris.src.TetrisComponent: void <init>(int,int)>"->"<Tetris.src.BlockGrid: int getGraphicsWidth()>";
+    "<Tetris.src.BlockGrid: int getGraphicsHeight()>"
+    "<Tetris.src.TetrisComponent: void <init>(int,int)>"->"<Tetris.src.BlockGrid: int getGraphicsHeight()>";
+    "<Tetris.src.TetrisComponent: void run()>"
+    "<Tetris.src.TetrisComponent: void update()>"
+    "<Tetris.src.TetrisComponent: void run()>"->"<Tetris.src.TetrisComponent: void update()>";
+    "<Tetris.src.BlockGrid: void <init>(int,int)>"
+    "<Tetris.src.TetrisGrid: void <init>(int,int)>"->"<Tetris.src.BlockGrid: void <init>(int,int)>";
+    "<Tetris.src.BlockGrid: int getWidth()>"
+    "<Tetris.src.BlockGrid: int getGraphicsWidth()>"->"<Tetris.src.BlockGrid: int getWidth()>";
+    "<Tetris.src.BlockGrid: int getHeight()>"
+    "<Tetris.src.BlockGrid: int getGraphicsHeight()>"->"<Tetris.src.BlockGrid: int getHeight()>";
+    "<Tetris.src.TetrisGrid: void moveDown()>"
+    "<Tetris.src.TetrisComponent: void update()>"->"<Tetris.src.TetrisGrid: void moveDown()>";
+    "<Tetris.src.TetrisGrid: void update()>"
+    "<Tetris.src.TetrisComponent: void update()>"->"<Tetris.src.TetrisGrid: void update()>";
+    "<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock getRandomBlock()>"
+    "<Tetris.src.TetrisGrid: void update()>"->"<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock getRandomBlock()>";
+    "<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock moveDown()>"
+    "<Tetris.src.TetrisGrid: void moveDown()>"->"<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock moveDown()>";
+    "<Tetris.src.TetrisGrid: boolean canFit(Tetris.src.TetrisBlock)>"
+    "<Tetris.src.TetrisGrid: void moveDown()>"->"<Tetris.src.TetrisGrid: boolean canFit(Tetris.src.TetrisBlock)>";
+    "<Tetris.src.TetrisGrid: void lockWorkingBlock()>"
+    "<Tetris.src.TetrisGrid: void moveDown()>"->"<Tetris.src.TetrisGrid: void lockWorkingBlock()>";
+    "<Tetris.src.TetrisGrid: void update()>"->"<Tetris.src.BlockGrid: int getWidth()>";
+    "<Tetris.src.TetrisGrid: boolean setWorkingBlock(Tetris.src.TetrisBlock)>"
+    "<Tetris.src.TetrisGrid: void update()>"->"<Tetris.src.TetrisGrid: boolean setWorkingBlock(Tetris.src.TetrisBlock)>";
+    "<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock setLocation(int,int)>"
+    "<Tetris.src.TetrisGrid: void update()>"->"<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock setLocation(int,int)>";
+    "<Tetris.src.TetrisBlock: void <init>(boolean[][],java.awt.Color,int,int)>"
+    "<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock moveDown()>"->"<Tetris.src.TetrisBlock: void <init>(boolean[][],java.awt.Color,int,int)>";
+    "<Tetris.src.TetrisBlock: int getX()>"
+    "<Tetris.src.TetrisGrid: boolean canFit(Tetris.src.TetrisBlock)>"->"<Tetris.src.TetrisBlock: int getX()>";
+    "<Tetris.src.TetrisBlock: int getWidth()>"
+    "<Tetris.src.TetrisGrid: boolean canFit(Tetris.src.TetrisBlock)>"->"<Tetris.src.TetrisBlock: int getWidth()>";
+    "<Tetris.src.TetrisBlock: int getY()>"
+    "<Tetris.src.TetrisGrid: boolean canFit(Tetris.src.TetrisBlock)>"->"<Tetris.src.TetrisBlock: int getY()>";
+    "<Tetris.src.TetrisGrid: boolean canFit(Tetris.src.TetrisBlock)>"->"<Tetris.src.BlockGrid: int getWidth()>";
+    "<Tetris.src.TetrisGrid: boolean canFit(Tetris.src.TetrisBlock)>"->"<Tetris.src.BlockGrid: int getHeight()>";
+    "<Tetris.src.TetrisBlock: boolean overlaps(Tetris.src.TetrisBlock)>"
+    "<Tetris.src.TetrisGrid: boolean canFit(Tetris.src.TetrisBlock)>"->"<Tetris.src.TetrisBlock: boolean overlaps(Tetris.src.TetrisBlock)>";
+    "<Tetris.src.TetrisBlock: java.util.Vector getSingleBlocks()>"
+    "<Tetris.src.TetrisGrid: void lockWorkingBlock()>"->"<Tetris.src.TetrisBlock: java.util.Vector getSingleBlocks()>";
+    "<Tetris.src.TetrisGrid: void rowCheck()>"
+    "<Tetris.src.TetrisGrid: void lockWorkingBlock()>"->"<Tetris.src.TetrisGrid: void rowCheck()>";
+    "<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock getSingleBlock(int,int,java.awt.Color)>"
+    "<Tetris.src.TetrisBlock: java.util.Vector getSingleBlocks()>"->"<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock getSingleBlock(int,int,java.awt.Color)>";
+    "<Tetris.src.TetrisGrid: boolean setWorkingBlock(Tetris.src.TetrisBlock)>"->"<Tetris.src.TetrisGrid: boolean canFit(Tetris.src.TetrisBlock)>";
+    "<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock setLocation(int,int)>"->"<Tetris.src.TetrisBlock: void <init>(boolean[][],java.awt.Color,int,int)>";
+    "<Tetris.src.TetrisComponent: void paint(java.awt.Graphics)>"
+    "<Tetris.src.TetrisGrid: void draw(java.awt.Graphics)>"
+    "<Tetris.src.TetrisComponent: void paint(java.awt.Graphics)>"->"<Tetris.src.TetrisGrid: void draw(java.awt.Graphics)>";
+    "<Tetris.src.TetrisBlock: void <init>(boolean[][],java.awt.Color)>"
+    "<Tetris.src.TetrisBlock: void <init>(boolean[][],java.awt.Color,int,int)>"->"<Tetris.src.TetrisBlock: void <init>(boolean[][],java.awt.Color)>";
+    "<Tetris.src.TetrisBlock: boolean overlaps(int,int)>"
+    "<Tetris.src.TetrisBlock: boolean overlaps(Tetris.src.TetrisBlock)>"->"<Tetris.src.TetrisBlock: boolean overlaps(int,int)>";
+    "<Tetris.src.TetrisGrid: boolean isRowFilled(int)>"
+    "<Tetris.src.TetrisGrid: void rowCheck()>"->"<Tetris.src.TetrisGrid: boolean isRowFilled(int)>";
+    "<Tetris.src.TetrisGrid: void clearRow(int)>"
+    "<Tetris.src.TetrisGrid: void rowCheck()>"->"<Tetris.src.TetrisGrid: void clearRow(int)>";
+    "<Tetris.src.TetrisGrid: void rowCheck()>"->"<Tetris.src.BlockGrid: int getHeight()>";
+    "<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock getSingleBlock(int,int,java.awt.Color)>"->"<Tetris.src.TetrisBlock: void <init>(boolean[][],java.awt.Color,int,int)>";
+    "<Tetris.src.BlockGrid: void clear()>"
+    "<Tetris.src.TetrisGrid: void draw(java.awt.Graphics)>"->"<Tetris.src.BlockGrid: void clear()>";
+    "<Tetris.src.BlockGrid: void draw(java.awt.Graphics)>"
+    "<Tetris.src.TetrisGrid: void draw(java.awt.Graphics)>"->"<Tetris.src.BlockGrid: void draw(java.awt.Graphics)>";
+    "<Tetris.src.TetrisGrid: boolean isFilled()>"
+    "<Tetris.src.TetrisGrid: void draw(java.awt.Graphics)>"->"<Tetris.src.TetrisGrid: boolean isFilled()>";
+    "<Tetris.src.TetrisGrid: void draw(java.awt.Graphics)>"->"<Tetris.src.BlockGrid: int getGraphicsWidth()>";
+    "<Tetris.src.TetrisGrid: void draw(java.awt.Graphics)>"->"<Tetris.src.BlockGrid: int getGraphicsHeight()>";
+    "<Tetris.src.TetrisBlock: void draw(Tetris.src.BlockGrid)>"
+    "<Tetris.src.TetrisGrid: void draw(java.awt.Graphics)>"->"<Tetris.src.TetrisBlock: void draw(Tetris.src.BlockGrid)>";
+    "<Tetris.src.TetrisGrid: boolean isRowFilled(int)>"->"<Tetris.src.TetrisBlock: int getY()>";
+    "<Tetris.src.TetrisGrid: boolean isRowFilled(int)>"->"<Tetris.src.BlockGrid: int getWidth()>";
+    "<Tetris.src.TetrisGrid: void clearRow(int)>"->"<Tetris.src.TetrisBlock: int getY()>";
+    "<Tetris.src.TetrisGrid: void clearRow(int)>"->"<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock moveDown()>";
+    "<Tetris.src.TetrisGrid: boolean isFilled()>"->"<Tetris.src.TetrisBlock: int getY()>";
+    "<Tetris.src.BlockGrid: void setColor(java.awt.Color)>"
+    "<Tetris.src.TetrisBlock: void draw(Tetris.src.BlockGrid)>"->"<Tetris.src.BlockGrid: void setColor(java.awt.Color)>";
+    "<Tetris.src.BlockGrid: void drawSquare(int,int)>"
+    "<Tetris.src.TetrisBlock: void draw(Tetris.src.BlockGrid)>"->"<Tetris.src.BlockGrid: void drawSquare(int,int)>";
+    "<Tetris.src.TetrisComponent: void keyPressed(java.awt.event.KeyEvent)>"
+    "<Tetris.src.TetrisGrid: void moveLeft()>"
+    "<Tetris.src.TetrisComponent: void keyPressed(java.awt.event.KeyEvent)>"->"<Tetris.src.TetrisGrid: void moveLeft()>";
+    "<Tetris.src.TetrisGrid: void moveRight()>"
+    "<Tetris.src.TetrisComponent: void keyPressed(java.awt.event.KeyEvent)>"->"<Tetris.src.TetrisGrid: void moveRight()>";
+    "<Tetris.src.TetrisComponent: void keyPressed(java.awt.event.KeyEvent)>"->"<Tetris.src.TetrisGrid: void moveDown()>";
+    "<Tetris.src.TetrisGrid: void turnRight()>"
+    "<Tetris.src.TetrisComponent: void keyPressed(java.awt.event.KeyEvent)>"->"<Tetris.src.TetrisGrid: void turnRight()>";
+    "<Tetris.src.TetrisGrid: void turnLeft()>"
+    "<Tetris.src.TetrisComponent: void keyPressed(java.awt.event.KeyEvent)>"->"<Tetris.src.TetrisGrid: void turnLeft()>";
+    "<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock moveLeft()>"
+    "<Tetris.src.TetrisGrid: void moveLeft()>"->"<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock moveLeft()>";
+    "<Tetris.src.TetrisGrid: void moveLeft()>"->"<Tetris.src.TetrisGrid: boolean canFit(Tetris.src.TetrisBlock)>";
+    "<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock moveRight()>"
+    "<Tetris.src.TetrisGrid: void moveRight()>"->"<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock moveRight()>";
+    "<Tetris.src.TetrisGrid: void moveRight()>"->"<Tetris.src.TetrisGrid: boolean canFit(Tetris.src.TetrisBlock)>";
+    "<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock turnRight()>"
+    "<Tetris.src.TetrisGrid: void turnRight()>"->"<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock turnRight()>";
+    "<Tetris.src.TetrisGrid: void turnRight()>"->"<Tetris.src.TetrisGrid: boolean canFit(Tetris.src.TetrisBlock)>";
+    "<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock turnLeft()>"
+    "<Tetris.src.TetrisGrid: void turnLeft()>"->"<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock turnLeft()>";
+    "<Tetris.src.TetrisGrid: void turnLeft()>"->"<Tetris.src.TetrisGrid: boolean canFit(Tetris.src.TetrisBlock)>";
+    "<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock moveLeft()>"->"<Tetris.src.TetrisBlock: void <init>(boolean[][],java.awt.Color,int,int)>";
+    "<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock moveRight()>"->"<Tetris.src.TetrisBlock: void <init>(boolean[][],java.awt.Color,int,int)>";
+    "<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock turnRight()>"->"<Tetris.src.TetrisBlock: void <init>(boolean[][],java.awt.Color,int,int)>";
+    "<Tetris.src.TetrisBlock: Tetris.src.TetrisBlock turnLeft()>"->"<Tetris.src.TetrisBlock: void <init>(boolean[][],java.awt.Color,int,int)>";
+}

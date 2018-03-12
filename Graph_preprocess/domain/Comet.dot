@@ -1,0 +1,72 @@
+digraph "Comet" {
+    "<Comet.src.Play: void main(java.lang.String[])>"
+    "<Comet.src.Play: void <init>()>"
+    "<Comet.src.Play: void main(java.lang.String[])>"->"<Comet.src.Play: void <init>()>";
+    "<Comet.src.gameutil.GameComponent: javax.swing.JFrame makeTestWindow()>"
+    "<Comet.src.Play: void main(java.lang.String[])>"->"<Comet.src.gameutil.GameComponent: javax.swing.JFrame makeTestWindow()>";
+    "<Comet.src.gameutil.ListeningGameComponent: void <init>(int,int)>"
+    "<Comet.src.Play: void <init>()>"->"<Comet.src.gameutil.ListeningGameComponent: void <init>(int,int)>";
+    "<Comet.src.gameutil.GameComponent$1: void run()>"
+    "<Comet.src.gameutil.GameComponent: void access$1(Comet.src.gameutil.GameComponent)>"
+    "<Comet.src.gameutil.GameComponent$1: void run()>"->"<Comet.src.gameutil.GameComponent: void access$1(Comet.src.gameutil.GameComponent)>";
+    "<Comet.src.gameutil.GameComponent: java.awt.Graphics access$0(Comet.src.gameutil.GameComponent)>"
+    "<Comet.src.gameutil.GameComponent$1: void run()>"->"<Comet.src.gameutil.GameComponent: java.awt.Graphics access$0(Comet.src.gameutil.GameComponent)>";
+    "<Comet.src.gameutil.GameComponent: void <init>(int,int)>"
+    "<Comet.src.gameutil.ListeningGameComponent: void <init>(int,int)>"->"<Comet.src.gameutil.GameComponent: void <init>(int,int)>";
+    "<Comet.src.gameutil.GameComponent: void standardUpdates()>"
+    "<Comet.src.gameutil.GameComponent$1: void run()>"->"<Comet.src.gameutil.GameComponent: void standardUpdates()>";
+    "<Comet.src.Play: void update()>"
+    "<Comet.src.gameutil.GameComponent$1: void run()>"->"<Comet.src.Play: void update()>";
+    "<Comet.src.gameutil.GameComponent: void standardDraw(java.awt.Graphics)>"
+    "<Comet.src.gameutil.GameComponent$1: void run()>"->"<Comet.src.gameutil.GameComponent: void standardDraw(java.awt.Graphics)>";
+    "<Comet.src.Play: void draw(java.awt.Graphics)>"
+    "<Comet.src.gameutil.GameComponent$1: void run()>"->"<Comet.src.Play: void draw(java.awt.Graphics)>";
+    "<Comet.src.gameutil.GameComponent: void refreshImage()>"
+    "<Comet.src.gameutil.GameComponent: void access$1(Comet.src.gameutil.GameComponent)>"->"<Comet.src.gameutil.GameComponent: void refreshImage()>";
+    "<Comet.src.gameutil.GameComponent: java.awt.Graphics getCanvas()>"
+    "<Comet.src.gameutil.GameComponent: java.awt.Graphics access$0(Comet.src.gameutil.GameComponent)>"->"<Comet.src.gameutil.GameComponent: java.awt.Graphics getCanvas()>";
+    "<Comet.src.gameutil.GameComponent$1: void <init>(Comet.src.gameutil.GameComponent)>"
+    "<Comet.src.gameutil.GameComponent: void <init>(int,int)>"->"<Comet.src.gameutil.GameComponent$1: void <init>(Comet.src.gameutil.GameComponent)>";
+    "<Comet.src.gameutil.GameComponent: void <init>(int,int)>"->"<Comet.src.gameutil.GameComponent$1: void run()>";
+    "<Comet.src.gameutil.ListeningGameComponent: boolean isMousePressed(int)>"
+    "<Comet.src.Play: void update()>"->"<Comet.src.gameutil.ListeningGameComponent: boolean isMousePressed(int)>";
+    "<Comet.src.gameutil.ListeningGameComponent: boolean isKeyPressed(java.lang.String)>"
+    "<Comet.src.Play: void update()>"->"<Comet.src.gameutil.ListeningGameComponent: boolean isKeyPressed(java.lang.String)>";
+    "<Comet.src.Play: boolean win()>"
+    "<Comet.src.Play: void update()>"->"<Comet.src.Play: boolean win()>";
+    "<Comet.src.gameutil.ListeningGameComponent: void resetKeys()>"
+    "<Comet.src.Play: void update()>"->"<Comet.src.gameutil.ListeningGameComponent: void resetKeys()>";
+    "<Comet.src.Comet: void move(Comet.src.Direction)>"
+    "<Comet.src.Play: void update()>"->"<Comet.src.Comet: void move(Comet.src.Direction)>";
+    "<Comet.src.Comet: void move(Comet.src.Planet)>"
+    "<Comet.src.Play: void update()>"->"<Comet.src.Comet: void move(Comet.src.Planet)>";
+    "<Comet.src.Comet: void update()>"
+    "<Comet.src.Play: void update()>"->"<Comet.src.Comet: void update()>";
+    "<Comet.src.Goal: void testReached(Comet.src.Comet)>"
+    "<Comet.src.Play: void update()>"->"<Comet.src.Goal: void testReached(Comet.src.Comet)>";
+    "<Comet.src.Comet: double getDistance(Comet.src.Planet)>"
+    "<Comet.src.Play: void update()>"->"<Comet.src.Comet: double getDistance(Comet.src.Planet)>";
+    "<Comet.src.Goal: void reset()>"
+    "<Comet.src.Play: void update()>"->"<Comet.src.Goal: void reset()>";
+    "<Comet.src.Comet: void <init>(double,double,double)>"
+    "<Comet.src.Play: void update()>"->"<Comet.src.Comet: void <init>(double,double,double)>";
+    "<Comet.src.Planet: void <init>(double,double,double)>"
+    "<Comet.src.Play: void update()>"->"<Comet.src.Planet: void <init>(double,double,double)>";
+    "<Comet.src.Goal: void <init>(double,double,double)>"
+    "<Comet.src.Play: void update()>"->"<Comet.src.Goal: void <init>(double,double,double)>";
+    "<Comet.src.Comet: void draw(java.awt.Graphics)>"
+    "<Comet.src.Play: void draw(java.awt.Graphics)>"->"<Comet.src.Comet: void draw(java.awt.Graphics)>";
+    "<Comet.src.Planet: void draw(java.awt.Graphics)>"
+    "<Comet.src.Play: void draw(java.awt.Graphics)>"->"<Comet.src.Planet: void draw(java.awt.Graphics)>";
+    "<Comet.src.Goal: void draw(java.awt.Graphics)>"
+    "<Comet.src.Play: void draw(java.awt.Graphics)>"->"<Comet.src.Goal: void draw(java.awt.Graphics)>";
+    "<Comet.src.Play: void draw(java.awt.Graphics)>"->"<Comet.src.Play: boolean win()>";
+    "<Comet.src.Planet: boolean contains(Comet.src.Planet)>"
+    "<Comet.src.Comet: void move(Comet.src.Planet)>"->"<Comet.src.Planet: boolean contains(Comet.src.Planet)>";
+    "<Comet.src.Comet: void move(Comet.src.Planet)>"->"<Comet.src.Comet: double getDistance(Comet.src.Planet)>";
+    "<Comet.src.Planet: double getMass()>"
+    "<Comet.src.Comet: void move(Comet.src.Planet)>"->"<Comet.src.Planet: double getMass()>";
+    "<Comet.src.Comet: double getMass()>"
+    "<Comet.src.Comet: void move(Comet.src.Planet)>"->"<Comet.src.Comet: double getMass()>";
+    "<Comet.src.Comet: void <init>(double,double,double)>"->"<Comet.src.Planet: void <init>(double,double,double)>";
+}

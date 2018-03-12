@@ -1,0 +1,79 @@
+digraph "FallDown" {
+    "<FallDown.src.PlayFallDown: void main(java.lang.String[])>"
+    "<FallDown.src.PlayFallDown: void <init>()>"
+    "<FallDown.src.PlayFallDown: void main(java.lang.String[])>"->"<FallDown.src.PlayFallDown: void <init>()>";
+    "<FallDown.src.FallDownComponent: void <init>()>"
+    "<FallDown.src.PlayFallDown: void <init>()>"->"<FallDown.src.FallDownComponent: void <init>()>";
+    "<FallDown.src.FallDownEngine: void <init>()>"
+    "<FallDown.src.FallDownComponent: void <init>()>"->"<FallDown.src.FallDownEngine: void <init>()>";
+    "<FallDown.src.FallDownComponent: void run()>"
+    "<FallDown.src.FallDownComponent: void update()>"
+    "<FallDown.src.FallDownComponent: void run()>"->"<FallDown.src.FallDownComponent: void update()>";
+    "<FallDown.src.FallDownEngine: void createBrickLayer()>"
+    "<FallDown.src.FallDownEngine: void <init>()>"->"<FallDown.src.FallDownEngine: void createBrickLayer()>";
+    "<FallDown.src.Ball: void <init>(int,int)>"
+    "<FallDown.src.FallDownEngine: void <init>()>"->"<FallDown.src.Ball: void <init>(int,int)>";
+    "<FallDown.src.FallDownEngine: void moveLeft()>"
+    "<FallDown.src.FallDownComponent: void update()>"->"<FallDown.src.FallDownEngine: void moveLeft()>";
+    "<FallDown.src.FallDownEngine: void moveRight()>"
+    "<FallDown.src.FallDownComponent: void update()>"->"<FallDown.src.FallDownEngine: void moveRight()>";
+    "<FallDown.src.FallDownEngine: void update()>"
+    "<FallDown.src.FallDownComponent: void update()>"->"<FallDown.src.FallDownEngine: void update()>";
+    "<FallDown.src.Brick: void <init>(int,int)>"
+    "<FallDown.src.FallDownEngine: void createBrickLayer()>"->"<FallDown.src.Brick: void <init>(int,int)>";
+    "<FallDown.src.Ball: void <init>(int,int,double,double)>"
+    "<FallDown.src.Ball: void <init>(int,int)>"->"<FallDown.src.Ball: void <init>(int,int,double,double)>";
+    "<FallDown.src.Ball: FallDown.src.Ball moveLeft()>"
+    "<FallDown.src.FallDownEngine: void moveLeft()>"->"<FallDown.src.Ball: FallDown.src.Ball moveLeft()>";
+    "<FallDown.src.Ball: FallDown.src.Ball moveRight()>"
+    "<FallDown.src.FallDownEngine: void moveLeft()>"->"<FallDown.src.Ball: FallDown.src.Ball moveRight()>";
+    "<FallDown.src.Ball: java.awt.Point getLocation()>"
+    "<FallDown.src.FallDownEngine: void moveLeft()>"->"<FallDown.src.Ball: java.awt.Point getLocation()>";
+    "<FallDown.src.FallDownEngine: void moveRight()>"->"<FallDown.src.Ball: FallDown.src.Ball moveRight()>";
+    "<FallDown.src.FallDownEngine: void moveRight()>"->"<FallDown.src.Ball: FallDown.src.Ball moveLeft()>";
+    "<FallDown.src.FallDownEngine: void moveRight()>"->"<FallDown.src.Ball: java.awt.Point getLocation()>";
+    "<FallDown.src.FallDownEngine: void update()>"->"<FallDown.src.Ball: java.awt.Point getLocation()>";
+    "<FallDown.src.Ball: FallDown.src.Ball move()>"
+    "<FallDown.src.FallDownEngine: void update()>"->"<FallDown.src.Ball: FallDown.src.Ball move()>";
+    "<FallDown.src.FallDownEngine: void moveBricks()>"
+    "<FallDown.src.FallDownEngine: void update()>"->"<FallDown.src.FallDownEngine: void moveBricks()>";
+    "<FallDown.src.FallDownEngine: void removeOldBricks()>"
+    "<FallDown.src.FallDownEngine: void update()>"->"<FallDown.src.FallDownEngine: void removeOldBricks()>";
+    "<FallDown.src.FallDownEngine: void update()>"->"<FallDown.src.FallDownEngine: void createBrickLayer()>";
+    "<FallDown.src.FallDownEngine: void affectBall()>"
+    "<FallDown.src.FallDownEngine: void update()>"->"<FallDown.src.FallDownEngine: void affectBall()>";
+    "<FallDown.src.Ball: FallDown.src.Ball moveLeft()>"->"<FallDown.src.Ball: void <init>(int,int,double,double)>";
+    "<FallDown.src.Ball: FallDown.src.Ball moveRight()>"->"<FallDown.src.Ball: void <init>(int,int,double,double)>";
+    "<FallDown.src.Ball: FallDown.src.Ball move()>"->"<FallDown.src.Ball: void <init>(int,int,double,double)>";
+    "<FallDown.src.Brick: FallDown.src.Brick move(int,int)>"
+    "<FallDown.src.FallDownEngine: void moveBricks()>"->"<FallDown.src.Brick: FallDown.src.Brick move(int,int)>";
+    "<FallDown.src.Brick: java.awt.Point getLocation()>"
+    "<FallDown.src.FallDownEngine: void removeOldBricks()>"->"<FallDown.src.Brick: java.awt.Point getLocation()>";
+    "<FallDown.src.Brick: FallDown.src.Ball affect(FallDown.src.Ball)>"
+    "<FallDown.src.FallDownEngine: void affectBall()>"->"<FallDown.src.Brick: FallDown.src.Ball affect(FallDown.src.Ball)>";
+    "<FallDown.src.Ball: FallDown.src.Ball accelerate(double,double)>"
+    "<FallDown.src.FallDownEngine: void affectBall()>"->"<FallDown.src.Ball: FallDown.src.Ball accelerate(double,double)>";
+    "<FallDown.src.FallDownEngine: void affectBall()>"->"<FallDown.src.Ball: java.awt.Point getLocation()>";
+    "<FallDown.src.Ball: FallDown.src.Ball setPosition(int,int)>"
+    "<FallDown.src.FallDownEngine: void affectBall()>"->"<FallDown.src.Ball: FallDown.src.Ball setPosition(int,int)>";
+    "<FallDown.src.FallDownComponent: void paint(java.awt.Graphics)>"
+    "<FallDown.src.FallDownEngine: void draw(java.awt.Graphics)>"
+    "<FallDown.src.FallDownComponent: void paint(java.awt.Graphics)>"->"<FallDown.src.FallDownEngine: void draw(java.awt.Graphics)>";
+    "<FallDown.src.Brick: FallDown.src.Brick move(int,int)>"->"<FallDown.src.Brick: void <init>(int,int)>";
+    "<FallDown.src.Ball: FallDown.src.Ball move(int,int)>"
+    "<FallDown.src.Brick: FallDown.src.Ball affect(FallDown.src.Ball)>"->"<FallDown.src.Ball: FallDown.src.Ball move(int,int)>";
+    "<FallDown.src.Brick: boolean intersects(FallDown.src.Ball)>"
+    "<FallDown.src.Brick: FallDown.src.Ball affect(FallDown.src.Ball)>"->"<FallDown.src.Brick: boolean intersects(FallDown.src.Ball)>";
+    "<FallDown.src.Ball: FallDown.src.Ball accelerate(double,double)>"->"<FallDown.src.Ball: void <init>(int,int,double,double)>";
+    "<FallDown.src.Ball: FallDown.src.Ball setPosition(int,int)>"->"<FallDown.src.Ball: void <init>(int,int,double,double)>";
+    "<FallDown.src.FallDownEngine: void draw(java.awt.Graphics)>"->"<FallDown.src.Ball: java.awt.Point getLocation()>";
+    "<FallDown.src.Ball: void draw(java.awt.Graphics)>"
+    "<FallDown.src.FallDownEngine: void draw(java.awt.Graphics)>"->"<FallDown.src.Ball: void draw(java.awt.Graphics)>";
+    "<FallDown.src.Brick: void draw(java.awt.Graphics)>"
+    "<FallDown.src.FallDownEngine: void draw(java.awt.Graphics)>"->"<FallDown.src.Brick: void draw(java.awt.Graphics)>";
+    "<FallDown.src.Ball: FallDown.src.Ball move(int,int)>"->"<FallDown.src.Ball: void <init>(int,int,double,double)>";
+    "<FallDown.src.Ball: java.awt.Rectangle getBounds()>"
+    "<FallDown.src.Brick: boolean intersects(FallDown.src.Ball)>"->"<FallDown.src.Ball: java.awt.Rectangle getBounds()>";
+    "<FallDown.src.Brick: java.awt.Rectangle getBounds()>"
+    "<FallDown.src.Brick: boolean intersects(FallDown.src.Ball)>"->"<FallDown.src.Brick: java.awt.Rectangle getBounds()>";
+}

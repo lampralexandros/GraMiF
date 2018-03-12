@@ -1,0 +1,139 @@
+digraph "MathHero" {
+    "<MathHero.src.MathHero: void main(java.lang.String[])>"
+    "<MathHero.src.MathHero: void <init>()>"
+    "<MathHero.src.MathHero: void main(java.lang.String[])>"->"<MathHero.src.MathHero: void <init>()>";
+    "<MathHero.src.GameComponent: javax.swing.JFrame makeTestWindow()>"
+    "<MathHero.src.MathHero: void main(java.lang.String[])>"->"<MathHero.src.GameComponent: javax.swing.JFrame makeTestWindow()>";
+    "<MathHero.src.World: MathHero.src.World getWorld()>"
+    "<MathHero.src.MathHero: void <init>()>"->"<MathHero.src.World: MathHero.src.World getWorld()>";
+    "<MathHero.src.ListeningGameComponent: void <init>(int,int)>"
+    "<MathHero.src.MathHero: void <init>()>"->"<MathHero.src.ListeningGameComponent: void <init>(int,int)>";
+    "<MathHero.src.GameComponent: void start()>"
+    "<MathHero.src.MathHero: void <init>()>"->"<MathHero.src.GameComponent: void start()>";
+    "<MathHero.src.Player: void <init>()>"
+    "<MathHero.src.World: MathHero.src.World getWorld()>"->"<MathHero.src.Player: void <init>()>";
+    "<MathHero.src.Addition: void <init>()>"
+    "<MathHero.src.World: MathHero.src.World getWorld()>"->"<MathHero.src.Addition: void <init>()>";
+    "<MathHero.src.Level: void <init>(int,int,java.util.Vector)>"
+    "<MathHero.src.World: MathHero.src.World getWorld()>"->"<MathHero.src.Level: void <init>(int,int,java.util.Vector)>";
+    "<MathHero.src.Multiplication: void <init>()>"
+    "<MathHero.src.World: MathHero.src.World getWorld()>"->"<MathHero.src.Multiplication: void <init>()>";
+    "<MathHero.src.Subtraction: void <init>()>"
+    "<MathHero.src.World: MathHero.src.World getWorld()>"->"<MathHero.src.Subtraction: void <init>()>";
+    "<MathHero.src.Division: void <init>()>"
+    "<MathHero.src.World: MathHero.src.World getWorld()>"->"<MathHero.src.Division: void <init>()>";
+    "<MathHero.src.BigAddition: void <init>()>"
+    "<MathHero.src.World: MathHero.src.World getWorld()>"->"<MathHero.src.BigAddition: void <init>()>";
+    "<MathHero.src.BigMultiplication: void <init>()>"
+    "<MathHero.src.World: MathHero.src.World getWorld()>"->"<MathHero.src.BigMultiplication: void <init>()>";
+    "<MathHero.src.World: void <init>(MathHero.src.Player,MathHero.src.Level[])>"
+    "<MathHero.src.World: MathHero.src.World getWorld()>"->"<MathHero.src.World: void <init>(MathHero.src.Player,MathHero.src.Level[])>";
+    "<MathHero.src.GameComponent$1: void run()>"
+    "<MathHero.src.GameComponent: void access$1(MathHero.src.GameComponent)>"
+    "<MathHero.src.GameComponent$1: void run()>"->"<MathHero.src.GameComponent: void access$1(MathHero.src.GameComponent)>";
+    "<MathHero.src.GameComponent: java.awt.Graphics access$0(MathHero.src.GameComponent)>"
+    "<MathHero.src.GameComponent$1: void run()>"->"<MathHero.src.GameComponent: java.awt.Graphics access$0(MathHero.src.GameComponent)>";
+    "<MathHero.src.GameComponent: void <init>(int,int)>"
+    "<MathHero.src.ListeningGameComponent: void <init>(int,int)>"->"<MathHero.src.GameComponent: void <init>(int,int)>";
+    "<MathHero.src.GameComponent$1: void <init>(MathHero.src.GameComponent)>"
+    "<MathHero.src.GameComponent: void start()>"->"<MathHero.src.GameComponent$1: void <init>(MathHero.src.GameComponent)>";
+    "<MathHero.src.GameComponent: void start()>"->"<MathHero.src.GameComponent$1: void run()>";
+    "<MathHero.src.Enemy: void <init>(double)>"
+    "<MathHero.src.Addition: void <init>()>"->"<MathHero.src.Enemy: void <init>(double)>";
+    "<MathHero.src.Multiplication: void <init>()>"->"<MathHero.src.Enemy: void <init>(double)>";
+    "<MathHero.src.Subtraction: void <init>()>"->"<MathHero.src.Enemy: void <init>(double)>";
+    "<MathHero.src.Division: void <init>()>"->"<MathHero.src.Enemy: void <init>(double)>";
+    "<MathHero.src.BigAddition: void <init>()>"->"<MathHero.src.Enemy: void <init>(double)>";
+    "<MathHero.src.BigMultiplication: void <init>()>"->"<MathHero.src.Enemy: void <init>(double)>";
+    "<MathHero.src.GameComponent: void standardUpdates()>"
+    "<MathHero.src.GameComponent$1: void run()>"->"<MathHero.src.GameComponent: void standardUpdates()>";
+    "<MathHero.src.MathHero: void update()>"
+    "<MathHero.src.GameComponent$1: void run()>"->"<MathHero.src.MathHero: void update()>";
+    "<MathHero.src.GameComponent: void standardDraw(java.awt.Graphics)>"
+    "<MathHero.src.GameComponent$1: void run()>"->"<MathHero.src.GameComponent: void standardDraw(java.awt.Graphics)>";
+    "<MathHero.src.MathHero: void draw(java.awt.Graphics)>"
+    "<MathHero.src.GameComponent$1: void run()>"->"<MathHero.src.MathHero: void draw(java.awt.Graphics)>";
+    "<MathHero.src.GameComponent: void refreshImage()>"
+    "<MathHero.src.GameComponent: void access$1(MathHero.src.GameComponent)>"->"<MathHero.src.GameComponent: void refreshImage()>";
+    "<MathHero.src.GameComponent: java.awt.Graphics getCanvas()>"
+    "<MathHero.src.GameComponent: java.awt.Graphics access$0(MathHero.src.GameComponent)>"->"<MathHero.src.GameComponent: java.awt.Graphics getCanvas()>";
+    "<MathHero.src.World: void update()>"
+    "<MathHero.src.MathHero: void update()>"->"<MathHero.src.World: void update()>";
+    "<MathHero.src.World: void draw(java.awt.Graphics)>"
+    "<MathHero.src.MathHero: void draw(java.awt.Graphics)>"->"<MathHero.src.World: void draw(java.awt.Graphics)>";
+    "<MathHero.src.World: MathHero.src.Level getLevel()>"
+    "<MathHero.src.World: void update()>"->"<MathHero.src.World: MathHero.src.Level getLevel()>";
+    "<MathHero.src.Level: void update()>"
+    "<MathHero.src.World: void update()>"->"<MathHero.src.Level: void update()>";
+    "<MathHero.src.Level: int getHitting()>"
+    "<MathHero.src.World: void update()>"->"<MathHero.src.Level: int getHitting()>";
+    "<MathHero.src.Player: void hit(int)>"
+    "<MathHero.src.World: void update()>"->"<MathHero.src.Player: void hit(int)>";
+    "<MathHero.src.Player: boolean dead()>"
+    "<MathHero.src.World: void update()>"->"<MathHero.src.Player: boolean dead()>";
+    "<MathHero.src.Level: boolean finished()>"
+    "<MathHero.src.World: void update()>"->"<MathHero.src.Level: boolean finished()>";
+    "<MathHero.src.Player: void heal()>"
+    "<MathHero.src.World: void update()>"->"<MathHero.src.Player: void heal()>";
+    "<MathHero.src.World: void draw(java.awt.Graphics)>"->"<MathHero.src.World: MathHero.src.Level getLevel()>";
+    "<MathHero.src.Level: void drawEnemies(java.awt.Graphics)>"
+    "<MathHero.src.World: void draw(java.awt.Graphics)>"->"<MathHero.src.Level: void drawEnemies(java.awt.Graphics)>";
+    "<MathHero.src.Player: void draw(java.awt.Graphics)>"
+    "<MathHero.src.World: void draw(java.awt.Graphics)>"->"<MathHero.src.Player: void draw(java.awt.Graphics)>";
+    "<MathHero.src.Enemy: void update()>"
+    "<MathHero.src.Level: void update()>"->"<MathHero.src.Enemy: void update()>";
+    "<MathHero.src.Enemy: boolean dead()>"
+    "<MathHero.src.Level: void update()>"->"<MathHero.src.Enemy: boolean dead()>";
+    "<MathHero.src.Enemy: boolean hitting()>"
+    "<MathHero.src.Level: int getHitting()>"->"<MathHero.src.Enemy: boolean hitting()>";
+    "<MathHero.src.Enemy: void draw(java.awt.Graphics)>"
+    "<MathHero.src.Level: void drawEnemies(java.awt.Graphics)>"->"<MathHero.src.Enemy: void draw(java.awt.Graphics)>";
+    "<MathHero.src.Subtraction: java.lang.String getProblem()>"
+    "<MathHero.src.Enemy: void draw(java.awt.Graphics)>"->"<MathHero.src.Subtraction: java.lang.String getProblem()>";
+    "<MathHero.src.Addition: java.lang.String getProblem()>"
+    "<MathHero.src.Enemy: void draw(java.awt.Graphics)>"->"<MathHero.src.Addition: java.lang.String getProblem()>";
+    "<MathHero.src.BigAddition: java.lang.String getProblem()>"
+    "<MathHero.src.Enemy: void draw(java.awt.Graphics)>"->"<MathHero.src.BigAddition: java.lang.String getProblem()>";
+    "<MathHero.src.BigMultiplication: java.lang.String getProblem()>"
+    "<MathHero.src.Enemy: void draw(java.awt.Graphics)>"->"<MathHero.src.BigMultiplication: java.lang.String getProblem()>";
+    "<MathHero.src.Multiplication: java.lang.String getProblem()>"
+    "<MathHero.src.Enemy: void draw(java.awt.Graphics)>"->"<MathHero.src.Multiplication: java.lang.String getProblem()>";
+    "<MathHero.src.Division: java.lang.String getProblem()>"
+    "<MathHero.src.Enemy: void draw(java.awt.Graphics)>"->"<MathHero.src.Division: java.lang.String getProblem()>";
+    "<MathHero.src.Enemy: int x()>"
+    "<MathHero.src.Enemy: void draw(java.awt.Graphics)>"->"<MathHero.src.Enemy: int x()>";
+    "<MathHero.src.Enemy: int y()>"
+    "<MathHero.src.Enemy: void draw(java.awt.Graphics)>"->"<MathHero.src.Enemy: int y()>";
+    "<MathHero.src.Enemy: int arrowX1()>"
+    "<MathHero.src.Enemy: void draw(java.awt.Graphics)>"->"<MathHero.src.Enemy: int arrowX1()>";
+    "<MathHero.src.Enemy: int arrowY1()>"
+    "<MathHero.src.Enemy: void draw(java.awt.Graphics)>"->"<MathHero.src.Enemy: int arrowY1()>";
+    "<MathHero.src.Enemy: int arrowX2()>"
+    "<MathHero.src.Enemy: void draw(java.awt.Graphics)>"->"<MathHero.src.Enemy: int arrowX2()>";
+    "<MathHero.src.Enemy: int arrowY2()>"
+    "<MathHero.src.Enemy: void draw(java.awt.Graphics)>"->"<MathHero.src.Enemy: int arrowY2()>";
+    "<MathHero.src.MathHero: void keyTyped(java.awt.event.KeyEvent)>"
+    "<MathHero.src.World: void tryKey(int)>"
+    "<MathHero.src.MathHero: void keyTyped(java.awt.event.KeyEvent)>"->"<MathHero.src.World: void tryKey(int)>";
+    "<MathHero.src.MathHero: void keyTyped(java.awt.event.KeyEvent)>"->"<MathHero.src.World: MathHero.src.Level getLevel()>";
+    "<MathHero.src.Level: int process(int)>"
+    "<MathHero.src.MathHero: void keyTyped(java.awt.event.KeyEvent)>"->"<MathHero.src.Level: int process(int)>";
+    "<MathHero.src.Player: void addExp(int)>"
+    "<MathHero.src.MathHero: void keyTyped(java.awt.event.KeyEvent)>"->"<MathHero.src.Player: void addExp(int)>";
+    "<MathHero.src.Subtraction: int getSolution()>"
+    "<MathHero.src.Level: int process(int)>"->"<MathHero.src.Subtraction: int getSolution()>";
+    "<MathHero.src.Addition: int getSolution()>"
+    "<MathHero.src.Level: int process(int)>"->"<MathHero.src.Addition: int getSolution()>";
+    "<MathHero.src.BigAddition: int getSolution()>"
+    "<MathHero.src.Level: int process(int)>"->"<MathHero.src.BigAddition: int getSolution()>";
+    "<MathHero.src.BigMultiplication: int getSolution()>"
+    "<MathHero.src.Level: int process(int)>"->"<MathHero.src.BigMultiplication: int getSolution()>";
+    "<MathHero.src.Multiplication: int getSolution()>"
+    "<MathHero.src.Level: int process(int)>"->"<MathHero.src.Multiplication: int getSolution()>";
+    "<MathHero.src.Division: int getSolution()>"
+    "<MathHero.src.Level: int process(int)>"->"<MathHero.src.Division: int getSolution()>";
+    "<MathHero.src.Enemy: void die()>"
+    "<MathHero.src.Level: int process(int)>"->"<MathHero.src.Enemy: void die()>";
+    "<MathHero.src.Player: void levelUp()>"
+    "<MathHero.src.Player: void addExp(int)>"->"<MathHero.src.Player: void levelUp()>";
+}

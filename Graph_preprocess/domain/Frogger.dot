@@ -1,0 +1,115 @@
+digraph "Frogger" {
+    "<Frogger.src.PlayFrogger: void main(java.lang.String[])>"
+    "<Frogger.src.PlayFrogger: void <init>()>"
+    "<Frogger.src.PlayFrogger: void main(java.lang.String[])>"->"<Frogger.src.PlayFrogger: void <init>()>";
+    "<Frogger.src.Cronometro: void <init>()>"
+    "<Frogger.src.PlayFrogger: void <init>()>"->"<Frogger.src.Cronometro: void <init>()>";
+    "<Frogger.src.Cronometro: void inizio()>"
+    "<Frogger.src.PlayFrogger: void <init>()>"->"<Frogger.src.Cronometro: void inizio()>";
+    "<Frogger.src.FroggerComponent: void <init>()>"
+    "<Frogger.src.PlayFrogger: void <init>()>"->"<Frogger.src.FroggerComponent: void <init>()>";
+    "<Frogger.src.Cronometro$1: void <init>(Frogger.src.Cronometro)>"
+    "<Frogger.src.Cronometro: void <init>()>"->"<Frogger.src.Cronometro$1: void <init>(Frogger.src.Cronometro)>";
+    "<Frogger.src.FroggerComponent: int readPreference()>"
+    "<Frogger.src.FroggerComponent: void <init>()>"->"<Frogger.src.FroggerComponent: int readPreference()>";
+    "<Frogger.src.FroggerComponent: void levelInit()>"
+    "<Frogger.src.FroggerComponent: void <init>()>"->"<Frogger.src.FroggerComponent: void levelInit()>";
+    "<Frogger.src.FroggerLevelEngine: void <init>(Frogger.src.FroggerLevel)>"
+    "<Frogger.src.FroggerComponent: void <init>()>"->"<Frogger.src.FroggerLevelEngine: void <init>(Frogger.src.FroggerLevel)>";
+    "<Frogger.src.FroggerComponent: void run()>"
+    "<Frogger.src.FroggerComponent: void update()>"
+    "<Frogger.src.FroggerComponent: void run()>"->"<Frogger.src.FroggerComponent: void update()>";
+    "<Frogger.src.FroggerLevel: void <init>(int[],java.lang.String[])>"
+    "<Frogger.src.FroggerComponent: void levelInit()>"->"<Frogger.src.FroggerLevel: void <init>(int[],java.lang.String[])>";
+    "<Frogger.src.FroggerLevel: int[] getSpeeds()>"
+    "<Frogger.src.FroggerLevelEngine: void <init>(Frogger.src.FroggerLevel)>"->"<Frogger.src.FroggerLevel: int[] getSpeeds()>";
+    "<Frogger.src.FroggerLevel: java.lang.String[] getPatterns()>"
+    "<Frogger.src.FroggerLevelEngine: void <init>(Frogger.src.FroggerLevel)>"->"<Frogger.src.FroggerLevel: java.lang.String[] getPatterns()>";
+    "<Frogger.src.FroggerLevelEngine: void <init>(int[],java.lang.String[])>"
+    "<Frogger.src.FroggerLevelEngine: void <init>(Frogger.src.FroggerLevel)>"->"<Frogger.src.FroggerLevelEngine: void <init>(int[],java.lang.String[])>";
+    "<Frogger.src.FroggerLevelEngine: void moveUp()>"
+    "<Frogger.src.FroggerComponent: void update()>"->"<Frogger.src.FroggerLevelEngine: void moveUp()>";
+    "<Frogger.src.FroggerLevelEngine: void moveDown()>"
+    "<Frogger.src.FroggerComponent: void update()>"->"<Frogger.src.FroggerLevelEngine: void moveDown()>";
+    "<Frogger.src.FroggerLevelEngine: void moveLeft()>"
+    "<Frogger.src.FroggerComponent: void update()>"->"<Frogger.src.FroggerLevelEngine: void moveLeft()>";
+    "<Frogger.src.FroggerLevelEngine: void moveRight()>"
+    "<Frogger.src.FroggerComponent: void update()>"->"<Frogger.src.FroggerLevelEngine: void moveRight()>";
+    "<Frogger.src.FroggerLevelEngine: void update()>"
+    "<Frogger.src.FroggerComponent: void update()>"->"<Frogger.src.FroggerLevelEngine: void update()>";
+    "<Frogger.src.Cronometro: void stop()>"
+    "<Frogger.src.FroggerComponent: void update()>"->"<Frogger.src.Cronometro: void stop()>";
+    "<Frogger.src.FroggerComponent: void update()>"->"<Frogger.src.FroggerLevelEngine: void <init>(Frogger.src.FroggerLevel)>";
+    "<Frogger.src.FroggerComponent: void update()>"->"<Frogger.src.Cronometro: void inizio()>";
+    "<Frogger.src.FroggerLevelEngine: Frogger.src.FroggerState getState()>"
+    "<Frogger.src.FroggerComponent: void update()>"->"<Frogger.src.FroggerLevelEngine: Frogger.src.FroggerState getState()>";
+    "<Frogger.src.FroggerComponent: void checkHighscore()>"
+    "<Frogger.src.FroggerComponent: void update()>"->"<Frogger.src.FroggerComponent: void checkHighscore()>";
+    "<Frogger.src.Cronometro$1: void actionPerformed(java.awt.event.ActionEvent)>"
+    "<Frogger.src.Cronometro: javax.swing.JLabel access$1(Frogger.src.Cronometro)>"
+    "<Frogger.src.Cronometro$1: void actionPerformed(java.awt.event.ActionEvent)>"->"<Frogger.src.Cronometro: javax.swing.JLabel access$1(Frogger.src.Cronometro)>";
+    "<Frogger.src.Cronometro: long access$0(Frogger.src.Cronometro)>"
+    "<Frogger.src.Cronometro$1: void actionPerformed(java.awt.event.ActionEvent)>"->"<Frogger.src.Cronometro: long access$0(Frogger.src.Cronometro)>";
+    "<Frogger.src.FroggerLevelEngine: java.awt.Rectangle getBounds()>"
+    "<Frogger.src.FroggerLevelEngine: void <init>(int[],java.lang.String[])>"->"<Frogger.src.FroggerLevelEngine: java.awt.Rectangle getBounds()>";
+    "<Frogger.src.TrafficPattern: void <init>(int,java.lang.String,boolean,java.awt.Rectangle,int)>"
+    "<Frogger.src.FroggerLevelEngine: void <init>(int[],java.lang.String[])>"->"<Frogger.src.TrafficPattern: void <init>(int,java.lang.String,boolean,java.awt.Rectangle,int)>";
+    "<Frogger.src.Frog: void <init>(int,int,java.awt.Rectangle)>"
+    "<Frogger.src.FroggerLevelEngine: void <init>(int[],java.lang.String[])>"->"<Frogger.src.Frog: void <init>(int,int,java.awt.Rectangle)>";
+    "<Frogger.src.Frog: Frogger.src.Frog moveUp()>"
+    "<Frogger.src.FroggerLevelEngine: void moveUp()>"->"<Frogger.src.Frog: Frogger.src.Frog moveUp()>";
+    "<Frogger.src.Frog: Frogger.src.Frog moveDown()>"
+    "<Frogger.src.FroggerLevelEngine: void moveDown()>"->"<Frogger.src.Frog: Frogger.src.Frog moveDown()>";
+    "<Frogger.src.Frog: Frogger.src.Frog moveLeft()>"
+    "<Frogger.src.FroggerLevelEngine: void moveLeft()>"->"<Frogger.src.Frog: Frogger.src.Frog moveLeft()>";
+    "<Frogger.src.Frog: Frogger.src.Frog moveRight()>"
+    "<Frogger.src.FroggerLevelEngine: void moveRight()>"->"<Frogger.src.Frog: Frogger.src.Frog moveRight()>";
+    "<Frogger.src.TrafficPattern: void update()>"
+    "<Frogger.src.FroggerLevelEngine: void update()>"->"<Frogger.src.TrafficPattern: void update()>";
+    "<Frogger.src.TrafficPattern: boolean intersects(Frogger.src.Frog)>"
+    "<Frogger.src.FroggerLevelEngine: void update()>"->"<Frogger.src.TrafficPattern: boolean intersects(Frogger.src.Frog)>";
+    "<Frogger.src.FroggerLevelEngine: java.awt.Rectangle getWinBounds()>"
+    "<Frogger.src.FroggerLevelEngine: void update()>"->"<Frogger.src.FroggerLevelEngine: java.awt.Rectangle getWinBounds()>";
+    "<Frogger.src.Frog: java.awt.Rectangle getBounds()>"
+    "<Frogger.src.FroggerLevelEngine: void update()>"->"<Frogger.src.Frog: java.awt.Rectangle getBounds()>";
+    "<Frogger.src.FroggerComponent: void savePreference(int)>"
+    "<Frogger.src.FroggerComponent: void checkHighscore()>"->"<Frogger.src.FroggerComponent: void savePreference(int)>";
+    "<Frogger.src.TrafficPattern: void initCars()>"
+    "<Frogger.src.TrafficPattern: void <init>(int,java.lang.String,boolean,java.awt.Rectangle,int)>"->"<Frogger.src.TrafficPattern: void initCars()>";
+    "<Frogger.src.Frog: Frogger.src.Frog move(int,int)>"
+    "<Frogger.src.Frog: Frogger.src.Frog moveUp()>"->"<Frogger.src.Frog: Frogger.src.Frog move(int,int)>";
+    "<Frogger.src.Frog: Frogger.src.Frog moveDown()>"->"<Frogger.src.Frog: Frogger.src.Frog move(int,int)>";
+    "<Frogger.src.Frog: Frogger.src.Frog moveLeft()>"->"<Frogger.src.Frog: Frogger.src.Frog move(int,int)>";
+    "<Frogger.src.Frog: Frogger.src.Frog moveRight()>"->"<Frogger.src.Frog: Frogger.src.Frog move(int,int)>";
+    "<Frogger.src.TrafficPattern: void moveCars()>"
+    "<Frogger.src.TrafficPattern: void update()>"->"<Frogger.src.TrafficPattern: void moveCars()>";
+    "<Frogger.src.TrafficPattern: void testForNewCar()>"
+    "<Frogger.src.TrafficPattern: void update()>"->"<Frogger.src.TrafficPattern: void testForNewCar()>";
+    "<Frogger.src.Car: boolean empty()>"
+    "<Frogger.src.TrafficPattern: boolean intersects(Frogger.src.Frog)>"->"<Frogger.src.Car: boolean empty()>";
+    "<Frogger.src.TrafficPattern: boolean intersects(Frogger.src.Frog)>"->"<Frogger.src.Frog: java.awt.Rectangle getBounds()>";
+    "<Frogger.src.FroggerComponent: void paint(java.awt.Graphics)>"
+    "<Frogger.src.FroggerLevelEngine: void draw(java.awt.Graphics)>"
+    "<Frogger.src.FroggerComponent: void paint(java.awt.Graphics)>"->"<Frogger.src.FroggerLevelEngine: void draw(java.awt.Graphics)>";
+    "<Frogger.src.Car: void <init>(int,int,int,java.awt.Color)>"
+    "<Frogger.src.TrafficPattern: void initCars()>"->"<Frogger.src.Car: void <init>(int,int,int,java.awt.Color)>";
+    "<Frogger.src.Frog: Frogger.src.Frog move(int,int)>"->"<Frogger.src.Frog: void <init>(int,int,java.awt.Rectangle)>";
+    "<Frogger.src.Frog: Frogger.src.Frog move(int,int)>"->"<Frogger.src.Frog: java.awt.Rectangle getBounds()>";
+    "<Frogger.src.Car: Frogger.src.Car moveLeft()>"
+    "<Frogger.src.TrafficPattern: void moveCars()>"->"<Frogger.src.Car: Frogger.src.Car moveLeft()>";
+    "<Frogger.src.Car: Frogger.src.Car moveRight()>"
+    "<Frogger.src.TrafficPattern: void moveCars()>"->"<Frogger.src.Car: Frogger.src.Car moveRight()>";
+    "<Frogger.src.TrafficPattern: void addCar()>"
+    "<Frogger.src.TrafficPattern: void testForNewCar()>"->"<Frogger.src.TrafficPattern: void addCar()>";
+    "<Frogger.src.Frog: void drawLevel(java.awt.Graphics,int)>"
+    "<Frogger.src.FroggerLevelEngine: void draw(java.awt.Graphics)>"->"<Frogger.src.Frog: void drawLevel(java.awt.Graphics,int)>";
+    "<Frogger.src.Frog: void draw(java.awt.Graphics)>"
+    "<Frogger.src.FroggerLevelEngine: void draw(java.awt.Graphics)>"->"<Frogger.src.Frog: void draw(java.awt.Graphics)>";
+    "<Frogger.src.TrafficPattern: void draw(java.awt.Graphics)>"
+    "<Frogger.src.FroggerLevelEngine: void draw(java.awt.Graphics)>"->"<Frogger.src.TrafficPattern: void draw(java.awt.Graphics)>";
+    "<Frogger.src.Car: Frogger.src.Car moveLeft()>"->"<Frogger.src.Car: void <init>(int,int,int,java.awt.Color)>";
+    "<Frogger.src.Car: Frogger.src.Car moveRight()>"->"<Frogger.src.Car: void <init>(int,int,int,java.awt.Color)>";
+    "<Frogger.src.TrafficPattern: void addCar()>"->"<Frogger.src.Car: void <init>(int,int,int,java.awt.Color)>";
+    "<Frogger.src.Car: void draw(java.awt.Graphics)>"
+    "<Frogger.src.TrafficPattern: void draw(java.awt.Graphics)>"->"<Frogger.src.Car: void draw(java.awt.Graphics)>";
+}

@@ -1,0 +1,63 @@
+digraph "Pong" {
+    "<Pong.src.PlayPong: void main(java.lang.String[])>"
+    "<Pong.src.PlayPong: void <init>()>"
+    "<Pong.src.PlayPong: void main(java.lang.String[])>"->"<Pong.src.PlayPong: void <init>()>";
+    "<Pong.src.PongComponent: void <init>()>"
+    "<Pong.src.PlayPong: void <init>()>"->"<Pong.src.PongComponent: void <init>()>";
+    "<Pong.src.PongEnvironment: void <init>()>"
+    "<Pong.src.PongComponent: void <init>()>"->"<Pong.src.PongEnvironment: void <init>()>";
+    "<Pong.src.PongEnvironment: void setComputer(boolean,boolean)>"
+    "<Pong.src.PongComponent: void <init>()>"->"<Pong.src.PongEnvironment: void setComputer(boolean,boolean)>";
+    "<Pong.src.PongComponent: void run()>"
+    "<Pong.src.PongComponent: void update()>"
+    "<Pong.src.PongComponent: void run()>"->"<Pong.src.PongComponent: void update()>";
+    "<Pong.src.Ball: void <init>(java.awt.Color,int,int)>"
+    "<Pong.src.PongEnvironment: void <init>()>"->"<Pong.src.Ball: void <init>(java.awt.Color,int,int)>";
+    "<Pong.src.Paddle: void <init>(int,int)>"
+    "<Pong.src.PongEnvironment: void <init>()>"->"<Pong.src.Paddle: void <init>(int,int)>";
+    "<Pong.src.PongEnvironment: void update()>"
+    "<Pong.src.PongComponent: void update()>"->"<Pong.src.PongEnvironment: void update()>";
+    "<Pong.src.PongEnvironment: Pong.src.Paddle getLeft()>"
+    "<Pong.src.PongComponent: void update()>"->"<Pong.src.PongEnvironment: Pong.src.Paddle getLeft()>";
+    "<Pong.src.Paddle: void moveUp()>"
+    "<Pong.src.PongComponent: void update()>"->"<Pong.src.Paddle: void moveUp()>";
+    "<Pong.src.Paddle: void moveDown()>"
+    "<Pong.src.PongComponent: void update()>"->"<Pong.src.Paddle: void moveDown()>";
+    "<Pong.src.Ball: void move()>"
+    "<Pong.src.PongEnvironment: void update()>"->"<Pong.src.Ball: void move()>";
+    "<Pong.src.Ball: java.awt.Point getLocation()>"
+    "<Pong.src.PongEnvironment: void update()>"->"<Pong.src.Ball: java.awt.Point getLocation()>";
+    "<Pong.src.Ball: void bounceTop()>"
+    "<Pong.src.PongEnvironment: void update()>"->"<Pong.src.Ball: void bounceTop()>";
+    "<Pong.src.Paddle: boolean contains(Pong.src.Ball)>"
+    "<Pong.src.PongEnvironment: void update()>"->"<Pong.src.Paddle: boolean contains(Pong.src.Ball)>";
+    "<Pong.src.Ball: void bounceSide()>"
+    "<Pong.src.PongEnvironment: void update()>"->"<Pong.src.Ball: void bounceSide()>";
+    "<Pong.src.PongEnvironment: void rightScore()>"
+    "<Pong.src.PongEnvironment: void update()>"->"<Pong.src.PongEnvironment: void rightScore()>";
+    "<Pong.src.PongEnvironment: void leftScore()>"
+    "<Pong.src.PongEnvironment: void update()>"->"<Pong.src.PongEnvironment: void leftScore()>";
+    "<Pong.src.Paddle: void moveTo(int)>"
+    "<Pong.src.PongEnvironment: void update()>"->"<Pong.src.Paddle: void moveTo(int)>";
+    "<Pong.src.Paddle: void move(int)>"
+    "<Pong.src.Paddle: void moveUp()>"->"<Pong.src.Paddle: void move(int)>";
+    "<Pong.src.Paddle: void moveDown()>"->"<Pong.src.Paddle: void move(int)>";
+    "<Pong.src.PongComponent: void paint(java.awt.Graphics)>"
+    "<Pong.src.PongEnvironment: void draw(java.awt.Graphics)>"
+    "<Pong.src.PongComponent: void paint(java.awt.Graphics)>"->"<Pong.src.PongEnvironment: void draw(java.awt.Graphics)>";
+    "<Pong.src.Ball: double getUnitDX()>"
+    "<Pong.src.Ball: void move()>"->"<Pong.src.Ball: double getUnitDX()>";
+    "<Pong.src.Ball: double getUnitDY()>"
+    "<Pong.src.Ball: void move()>"->"<Pong.src.Ball: double getUnitDY()>";
+    "<Pong.src.Ball: void bounceTop()>"->"<Pong.src.Ball: void move()>";
+    "<Pong.src.Paddle: boolean contains(Pong.src.Ball)>"->"<Pong.src.Ball: java.awt.Point getLocation()>";
+    "<Pong.src.Ball: void bounceSide()>"->"<Pong.src.Ball: void move()>";
+    "<Pong.src.PongEnvironment: void rightScore()>"->"<Pong.src.Ball: void <init>(java.awt.Color,int,int)>";
+    "<Pong.src.PongEnvironment: void rightScore()>"->"<Pong.src.Paddle: void <init>(int,int)>";
+    "<Pong.src.PongEnvironment: void leftScore()>"->"<Pong.src.Ball: void <init>(java.awt.Color,int,int)>";
+    "<Pong.src.PongEnvironment: void leftScore()>"->"<Pong.src.Paddle: void <init>(int,int)>";
+    "<Pong.src.Ball: void draw(java.awt.Graphics)>"
+    "<Pong.src.PongEnvironment: void draw(java.awt.Graphics)>"->"<Pong.src.Ball: void draw(java.awt.Graphics)>";
+    "<Pong.src.Paddle: void draw(java.awt.Graphics)>"
+    "<Pong.src.PongEnvironment: void draw(java.awt.Graphics)>"->"<Pong.src.Paddle: void draw(java.awt.Graphics)>";
+}

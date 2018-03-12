@@ -1,0 +1,10 @@
+Cluster num=1
+getLocation getBounds getGraphicsHeight getGraphicsWidth getSolution getProblem getPatterns getWidth hitting getNumber getHeight getSingleBlocks updateState getDistance getLevel getWorld getWinBounds main hit finished bounceSide bounceTop getHitting getRandomBlock getCanvas start getMass getSingleBlock getX getState getY getLeft 
+Cluster num=2
+drawLevel moveBalls keyTyped createBrickLayer drawSquare moveBricks moveCars stop moveRight setComputer access addCar isKeyPressed upBet canFit draw drawEnemies addExp setPosition downBet keyPressed standardDraw moveDown initCars moveLeft addBall tryKey setLocation turnLeft move 
+Cluster num=3
+paint isFilled isRowFilled turnRight rowCheck dead rightScore clearRow arrowX checkHighscore die run accelerate getSpeeds standardUpdates update win leftScore clear 
+Cluster num=4
+savePreference contains intersects refreshImage affect lockWorkingBlock setWorkingBlock empty overlaps affectBall process setColor readPreference 
+Cluster num=5
+makeTestWindow testBallCatch reset roll arrowY resetKeys testReached isGood removeOldBricks inizio actionPerformed isMousePressed heal testForNewCar levelInit 

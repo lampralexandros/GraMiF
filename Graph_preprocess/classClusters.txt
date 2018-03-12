@@ -1,0 +1,4 @@
+Cluster num=1
+Multiplication TetrisComponent MathHero CrapsGame CrapsComponent GameComponent BigMultiplication PongComponent CatchComponent Planet PlayCraps BigAddition Addition Cronometro Dice ListeningGameComponent FallDownComponent FroggerComponent Car Bucket CrapsEngine 
+Cluster num=2
+Ball FroggerLevelEngine Paddle FallDownEngine World Goal TetrisGrid Enemy PongEnvironment TetrisBlock Division PlayTetris Player Frog PlayFrogger PlayFallDown Play PlayCatch Subtraction Comet FroggerLevel Brick CatchEngine PlayPong Level TrafficPattern BlockGrid 

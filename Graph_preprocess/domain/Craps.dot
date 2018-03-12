@@ -1,0 +1,55 @@
+digraph "Craps" {
+    "<Craps.src.PlayCraps: void main(java.lang.String[])>"
+    "<Craps.src.PlayCraps: void <init>()>"
+    "<Craps.src.PlayCraps: void main(java.lang.String[])>"->"<Craps.src.PlayCraps: void <init>()>";
+    "<Craps.src.CrapsComponent: void <init>()>"
+    "<Craps.src.PlayCraps: void <init>()>"->"<Craps.src.CrapsComponent: void <init>()>";
+    "<Craps.src.CrapsEngine: void <init>()>"
+    "<Craps.src.CrapsComponent: void <init>()>"->"<Craps.src.CrapsEngine: void <init>()>";
+    "<Craps.src.CrapsEngine: int getWidth()>"
+    "<Craps.src.CrapsComponent: void <init>()>"->"<Craps.src.CrapsEngine: int getWidth()>";
+    "<Craps.src.CrapsEngine: int getHeight()>"
+    "<Craps.src.CrapsComponent: void <init>()>"->"<Craps.src.CrapsEngine: int getHeight()>";
+    "<Craps.src.CrapsGame: void <init>()>"
+    "<Craps.src.CrapsEngine: void <init>()>"->"<Craps.src.CrapsGame: void <init>()>";
+    "<Craps.src.CrapsGame: int getWidth()>"
+    "<Craps.src.CrapsEngine: int getWidth()>"->"<Craps.src.CrapsGame: int getWidth()>";
+    "<Craps.src.CrapsGame: int getHeight()>"
+    "<Craps.src.CrapsEngine: int getHeight()>"->"<Craps.src.CrapsGame: int getHeight()>";
+    "<Craps.src.Dice: void <init>()>"
+    "<Craps.src.CrapsGame: void <init>()>"->"<Craps.src.Dice: void <init>()>";
+    "<Craps.src.Dice: void <init>(int)>"
+    "<Craps.src.Dice: void <init>()>"->"<Craps.src.Dice: void <init>(int)>";
+    "<Craps.src.CrapsComponent: void paint(java.awt.Graphics)>"
+    "<Craps.src.CrapsEngine: void draw(java.awt.Graphics)>"
+    "<Craps.src.CrapsComponent: void paint(java.awt.Graphics)>"->"<Craps.src.CrapsEngine: void draw(java.awt.Graphics)>";
+    "<Craps.src.Dice: void <init>(int,int)>"
+    "<Craps.src.Dice: void <init>(int)>"->"<Craps.src.Dice: void <init>(int,int)>";
+    "<Craps.src.CrapsGame: void draw(java.awt.Graphics)>"
+    "<Craps.src.CrapsEngine: void draw(java.awt.Graphics)>"->"<Craps.src.CrapsGame: void draw(java.awt.Graphics)>";
+    "<Craps.src.CrapsEngine: void draw(java.awt.Graphics)>"->"<Craps.src.CrapsGame: int getHeight()>";
+    "<Craps.src.CrapsComponent: void keyPressed(java.awt.event.KeyEvent)>"
+    "<Craps.src.CrapsEngine: void downBet()>"
+    "<Craps.src.CrapsComponent: void keyPressed(java.awt.event.KeyEvent)>"->"<Craps.src.CrapsEngine: void downBet()>";
+    "<Craps.src.CrapsEngine: void upBet()>"
+    "<Craps.src.CrapsComponent: void keyPressed(java.awt.event.KeyEvent)>"->"<Craps.src.CrapsEngine: void upBet()>";
+    "<Craps.src.CrapsEngine: void roll()>"
+    "<Craps.src.CrapsComponent: void keyPressed(java.awt.event.KeyEvent)>"->"<Craps.src.CrapsEngine: void roll()>";
+    "<Craps.src.Dice: void draw(java.awt.Graphics,int,int)>"
+    "<Craps.src.CrapsGame: void draw(java.awt.Graphics)>"->"<Craps.src.Dice: void draw(java.awt.Graphics,int,int)>";
+    "<Craps.src.CrapsGame: int getNumber()>"
+    "<Craps.src.CrapsGame: void draw(java.awt.Graphics)>"->"<Craps.src.CrapsGame: int getNumber()>";
+    "<Craps.src.CrapsGame: Craps.src.CrapsState getState()>"
+    "<Craps.src.CrapsEngine: void downBet()>"->"<Craps.src.CrapsGame: Craps.src.CrapsState getState()>";
+    "<Craps.src.CrapsEngine: void upBet()>"->"<Craps.src.CrapsGame: Craps.src.CrapsState getState()>";
+    "<Craps.src.CrapsEngine: void roll()>"->"<Craps.src.CrapsGame: Craps.src.CrapsState getState()>";
+    "<Craps.src.CrapsEngine: void roll()>"->"<Craps.src.CrapsGame: void <init>()>";
+    "<Craps.src.CrapsGame: void roll()>"
+    "<Craps.src.CrapsEngine: void roll()>"->"<Craps.src.CrapsGame: void roll()>";
+    "<Craps.src.Dice: int getState()>"
+    "<Craps.src.CrapsGame: int getNumber()>"->"<Craps.src.Dice: int getState()>";
+    "<Craps.src.Dice: Craps.src.Dice roll()>"
+    "<Craps.src.CrapsGame: void roll()>"->"<Craps.src.Dice: Craps.src.Dice roll()>";
+    "<Craps.src.CrapsGame: void roll()>"->"<Craps.src.CrapsGame: int getNumber()>";
+    "<Craps.src.Dice: Craps.src.Dice roll()>"->"<Craps.src.Dice: void <init>(int)>";
+}
