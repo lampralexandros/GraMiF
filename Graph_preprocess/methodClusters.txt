@@ -1,10 +1,18 @@
 Cluster num=1
-getLocation getBounds getGraphicsHeight getGraphicsWidth getSolution getProblem getPatterns getWidth hitting getNumber getHeight getSingleBlocks updateState getDistance getLevel getWorld getWinBounds main hit finished bounceSide bounceTop getHitting getRandomBlock getCanvas start getMass getSingleBlock getX getState getY getLeft 
+turnRight refreshImage addCar affect hitting rightScore clearRow addExp empty affectBall addBall win process clear 
 Cluster num=2
-drawLevel moveBalls keyTyped createBrickLayer drawSquare moveBricks moveCars stop moveRight setComputer access addCar isKeyPressed upBet canFit draw drawEnemies addExp setPosition downBet keyPressed standardDraw moveDown initCars moveLeft addBall tryKey setLocation turnLeft move 
+paint drawLevel setComputer setWorkingBlock setPosition removeOldBricks setLocation turnLeft leftScore setColor levelInit 
 Cluster num=3
-paint isFilled isRowFilled turnRight rowCheck dead rightScore clearRow arrowX checkHighscore die run accelerate getSpeeds standardUpdates update win leftScore clear 
+getLocation getBounds createBrickLayer getGraphicsHeight getGraphicsWidth getSolution getProblem access getPatterns lockWorkingBlock getWidth getNumber getHeight upBet getSingleBlocks getDistance getLevel getWorld getWinBounds downBet getHitting getRandomBlock heal getCanvas start getMass getSingleBlock getX getY getLeft 
 Cluster num=4
-savePreference contains intersects refreshImage affect lockWorkingBlock setWorkingBlock empty overlaps affectBall process setColor readPreference 
+drawSquare contains rowCheck roll checkHighscore overlaps 
 Cluster num=5
-makeTestWindow testBallCatch reset roll arrowY resetKeys testReached isGood removeOldBricks inizio actionPerformed isMousePressed heal testForNewCar levelInit 
+makeTestWindow testBallCatch hit accelerate testReached testForNewCar 
+Cluster num=6
+intersects arrowY initCars bounceSide bounceTop inizio isMousePressed 
+Cluster num=7
+moveBalls moveBricks moveCars stop moveRight arrowX die run finished moveDown getSpeeds moveLeft move 
+Cluster num=8
+savePreference isFilled isRowFilled updateState draw drawEnemies isGood standardDraw standardUpdates update actionPerformed getState readPreference 
+Cluster num=9
+keyTyped reset isKeyPressed dead canFit resetKeys main keyPressed tryKey 

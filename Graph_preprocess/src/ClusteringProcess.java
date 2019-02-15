@@ -30,8 +30,7 @@ public class ClusteringProcess {
 	private HashMap<String,Integer> labelClusterMap;
 	private ArrayList <Vector<Feature>> clusterFeatures;
 	private int numClusters;
-	// termArray initializes in semanticAnalysis() function 
-	//private String[] termArray;
+	private String[] wordModelWords;
 	
 	//Constructor
 	public ClusteringProcess(ArrayList<String> inputLabel){
@@ -67,6 +66,15 @@ public class ClusteringProcess {
 		return clusterFeatures;
 	}
 	
+	/**	Returns an array of Strings describing the WordModel
+	 * @author Alexandros Lampridis
+	 * @return String[]
+	 */
+	public String[] getWordModel(){
+		return wordModelWords;
+	}
+	
+	
 	// Basic Functions 
 	
 	// Function to do semantic analysis. This function creates a map of labels to features 
@@ -89,9 +97,10 @@ public class ClusteringProcess {
 			featureList.add(tempFeature);
 		}
 		//Saving the word model
-		//termArray=new String[featureList.get(0).getLabelFeature().length];
-		
-
+		double[] tempvector=new double[WordModel.commonWordNet.getCurrentFeatureVectorLength()]; 
+		for(int i=0;i<tempvector.length;i++)
+			tempvector[i]=1;
+ 		wordModelWords=WordModel.commonWordNet.convertVectorToFeatureSentence(tempvector).split(" ");
 	}
 	
 	/**
