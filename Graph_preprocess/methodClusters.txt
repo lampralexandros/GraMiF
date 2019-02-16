@@ -1,10 +1,14 @@
 Cluster num=1
-getLocation getBounds getGraphicsHeight getGraphicsWidth getSolution getProblem setComputer getPatterns getWidth hitting getNumber getHeight getDistance getWorld getWinBounds setPosition isGood bounceSide removeOldBricks bounceTop getHitting setLocation isMousePressed win getCanvas start getMass getX getY setColor readPreference getLeft 
+keyTyped reset access isKeyPressed upBet resetKeys downBet keyPressed tryKey 
 Cluster num=2
-savePreference keyTyped createBrickLayer makeTestWindow contains testBallCatch reset isKeyPressed affect arrowX resetKeys addExp run hit testReached keyPressed affectBall addBall actionPerformed tryKey process testForNewCar 
+drawLevel drawSquare contains rowCheck canFit draw drawEnemies checkHighscore standardDraw finished levelInit 
 Cluster num=3
-paint isFilled isRowFilled stop rowCheck lockWorkingBlock clearRow getSingleBlocks setWorkingBlock checkHighscore empty overlaps accelerate finished getRandomBlock clear getSingleBlock 
+getBounds refreshImage addCar dead getWinBounds addExp run accelerate getSpeeds addBall actionPerformed win start 
 Cluster num=4
-moveBalls moveBricks moveCars moveRight intersects dead upBet canFit updateState main downBet moveDown moveLeft update heal move getState 
+makeTestWindow testBallCatch affect overlaps testReached affectBall bounceSide bounceTop inizio heal process testForNewCar 
 Cluster num=5
-drawLevel drawSquare turnRight access refreshImage addCar roll rightScore draw drawEnemies getLevel arrowY die standardDraw getSpeeds standardUpdates initCars inizio turnLeft leftScore levelInit 
+moveBalls moveBricks moveCars stop setComputer roll hitting setWorkingBlock die setPosition hit moveDown initCars moveLeft removeOldBricks setLocation turnLeft move setColor 
+Cluster num=6
+getLocation savePreference createBrickLayer getGraphicsHeight getGraphicsWidth getSolution getProblem intersects getPatterns lockWorkingBlock getWidth getNumber getHeight getSingleBlocks getDistance arrowX getLevel arrowY getWorld getHitting getRandomBlock getCanvas getMass getSingleBlock getX getState getY readPreference getLeft 
+Cluster num=7
+paint isFilled isRowFilled moveRight turnRight rightScore clearRow updateState main empty isGood standardUpdates update isMousePressed leftScore clear 

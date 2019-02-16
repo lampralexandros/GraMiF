@@ -26,7 +26,7 @@ public class Main3 {
 		ClusteringProcess Clusterer=new ClusteringProcess(domainLabel);
 		Clusterer.semanticAnalysis();
 		Clusterer.removeZeroFeature();
-		Clusterer.doDefaultClusteringDense(5,20,10);
+		Clusterer.doDefaultClusteringDense(5,8,10);
 		//Clusterer.doQuickClusteringDense();
 		Clusterer.saveIntoFileClusters("methodClusters.txt");
 		

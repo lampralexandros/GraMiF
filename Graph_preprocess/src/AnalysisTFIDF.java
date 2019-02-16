@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Vector;
-
 import feature.Feature;
 
 /**
@@ -10,7 +9,7 @@ import feature.Feature;
  */
 public class AnalysisTFIDF {
 	
-	private ArrayList <Vector<Feature>> bagOfFeatures;
+	private ArrayList <Vector<Feature>> bagOfClusterFeatures;
 	private String[] wordModel;
 
 	//constructor
@@ -21,8 +20,8 @@ public class AnalysisTFIDF {
 	 * @param String[] inputWordModel
 	 */
 	public AnalysisTFIDF(ArrayList <Vector<Feature>> inputBagOfFeatures, String[] inputWordModel){
-		bagOfFeatures= new ArrayList<Vector<Feature>>();
-		bagOfFeatures=(ArrayList<Vector<Feature>>) inputBagOfFeatures.clone();
+		bagOfClusterFeatures= new ArrayList<Vector<Feature>>();
+		bagOfClusterFeatures=(ArrayList<Vector<Feature>>) inputBagOfFeatures.clone();
 		wordModel=inputWordModel.clone();
 	};
 	
@@ -41,6 +40,22 @@ public class AnalysisTFIDF {
 	
 	//Supplement Functions
 	
+	private double[] idf(){
+		double[] idfArray=new double[wordModel.length];
+		idfArray=setD();
+		idfArray=log10ElementWise(divideConstantByElementWise(bagOfClusterFeatures.size(),idfArray));
+		return idfArray;
+	}
+	
+	
+	
+	
+	/**
+	 * method to calculate the number of occurrences of a word in all sets.
+	 * @author Alexandros Lampridis
+	 * @return D[length of wordModel]
+	 * 
+	 */
 	private double[] setD(){
 		double[] D=new double[wordModel.length];
 		double[] tempSum=new double[wordModel.length];
@@ -48,7 +63,7 @@ public class AnalysisTFIDF {
 			D[i]=0;
 			tempSum[i]=0;
 		}
-		for(Vector<Feature> vec : bagOfFeatures ){
+		for(Vector<Feature> vec : bagOfClusterFeatures ){
 
 			for(int i=0;i<wordModel.length;i++){
 				tempSum[i]=0;
@@ -87,5 +102,10 @@ public class AnalysisTFIDF {
 		return array1;
 	}
 	
-	
+	private double[] log10ElementWise(double[] array1){
+		for(int i=0;i<array1.length;i++){
+				array1[i]=java.lang.Math.log10(array1[i]);
+		}
+		return array1;
+	}
 }
