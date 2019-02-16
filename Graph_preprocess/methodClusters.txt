@@ -1,18 +1,10 @@
 Cluster num=1
-turnRight refreshImage addCar affect hitting rightScore clearRow addExp empty affectBall addBall win process clear 
+getLocation getBounds getGraphicsHeight getGraphicsWidth getSolution getProblem setComputer getPatterns getWidth hitting getNumber getHeight getDistance getWorld getWinBounds setPosition isGood bounceSide removeOldBricks bounceTop getHitting setLocation isMousePressed win getCanvas start getMass getX getY setColor readPreference getLeft 
 Cluster num=2
-paint drawLevel setComputer setWorkingBlock setPosition removeOldBricks setLocation turnLeft leftScore setColor levelInit 
+savePreference keyTyped createBrickLayer makeTestWindow contains testBallCatch reset isKeyPressed affect arrowX resetKeys addExp run hit testReached keyPressed affectBall addBall actionPerformed tryKey process testForNewCar 
 Cluster num=3
-getLocation getBounds createBrickLayer getGraphicsHeight getGraphicsWidth getSolution getProblem access getPatterns lockWorkingBlock getWidth getNumber getHeight upBet getSingleBlocks getDistance getLevel getWorld getWinBounds downBet getHitting getRandomBlock heal getCanvas start getMass getSingleBlock getX getY getLeft 
+paint isFilled isRowFilled stop rowCheck lockWorkingBlock clearRow getSingleBlocks setWorkingBlock checkHighscore empty overlaps accelerate finished getRandomBlock clear getSingleBlock 
 Cluster num=4
-drawSquare contains rowCheck roll checkHighscore overlaps 
+moveBalls moveBricks moveCars moveRight intersects dead upBet canFit updateState main downBet moveDown moveLeft update heal move getState 
 Cluster num=5
-makeTestWindow testBallCatch hit accelerate testReached testForNewCar 
-Cluster num=6
-intersects arrowY initCars bounceSide bounceTop inizio isMousePressed 
-Cluster num=7
-moveBalls moveBricks moveCars stop moveRight arrowX die run finished moveDown getSpeeds moveLeft move 
-Cluster num=8
-savePreference isFilled isRowFilled updateState draw drawEnemies isGood standardDraw standardUpdates update actionPerformed getState readPreference 
-Cluster num=9
-keyTyped reset isKeyPressed dead canFit resetKeys main keyPressed tryKey 
+drawLevel drawSquare turnRight access refreshImage addCar roll rightScore draw drawEnemies getLevel arrowY die standardDraw getSpeeds standardUpdates initCars inizio turnLeft leftScore levelInit 
