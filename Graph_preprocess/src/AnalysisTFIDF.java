@@ -40,6 +40,36 @@ public class AnalysisTFIDF {
 	
 	//Supplement Functions
 	
+	private double[] tfOfVector(Vector<Feature> vec){
+		double[] tf=new double[wordModel.length];
+		double sumOfTerms=0;
+		for(int i=0;i<wordModel.length;i++){
+			tf[i]=0;
+		}
+		for(int i=0;i<wordModel.length;i++){
+			tf[i]=0;
+		}	
+		for(Feature tempf: vec){
+			tf=addElementWise(tf,tempf.getLabelFeature());
+			
+		}
+			
+		for(double d :tf){
+			sumOfTerms=d+sumOfTerms;
+		}
+		
+		tf=multConstantByElementWise(1/sumOfTerms,tf);
+		return tf;
+	}
+	
+	
+	
+	/**
+	 * method to calculate idf by the type idf(word[],D)=log(N/D[word1, word2,...,wordn]
+ 	 * @author Alexandros Lampridis
+ 	 * @return double[] idf of all words
+ 	 * 
+	 */
 	private double[] idf(){
 		double[] idfArray=new double[wordModel.length];
 		idfArray=setD();
@@ -101,6 +131,15 @@ public class AnalysisTFIDF {
 		}
 		return array1;
 	}
+	
+	private double[] multConstantByElementWise(double constant,double[] array1){
+		for(int i=0;i<array1.length;i++){
+				array1[i]=constant*array1[i];
+		}
+		return array1;
+	}
+	
+	
 	
 	private double[] log10ElementWise(double[] array1){
 		for(int i=0;i<array1.length;i++){
