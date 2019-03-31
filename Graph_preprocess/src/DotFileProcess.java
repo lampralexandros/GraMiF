@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -22,15 +22,15 @@ import net.sf.javaml.clustering.IterativeKMeans;
 import net.sf.javaml.clustering.KMeans;
 import net.sf.javaml.clustering.evaluation.AICScore;
 import net.sf.javaml.clustering.evaluation.ClusterEvaluation;
-import net.sf.javaml.clustering.evaluation.SumOfCentroidSimilarities;
+
 import net.sf.javaml.core.Dataset;
 import net.sf.javaml.core.DefaultDataset;
 import net.sf.javaml.core.DenseInstance;
 import net.sf.javaml.core.Instance;
-import net.sf.javaml.distance.CosineDistance;
+
 import net.sf.javaml.distance.CosineSimilarity;
 import net.sf.javaml.distance.DistanceMeasure;
-import net.sf.javaml.tools.data.FileHandler;
+
 
 public class DotFileProcess {
 	
