@@ -1,6 +1,10 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Vector;
 
 import feature.Feature;
@@ -173,5 +177,54 @@ public class OutlierProcess {
 			return inputArray[ (int)(inputArray.length/2)];
 		}
 	}
+	
+	
+	
+	/**
+	 * This function prints the cluster name and label content of the cluster in the "filename".
+	 * @author Alexandros Lampridis
+	 * @param fileName
+	 * The name of the file to save the clusters
+	 * 
+	 */
+	public void saveIntoFileClusters(String fileName){
+		int counter=1;
+		try {
+			FileWriter fileWriter=new FileWriter(fileName);
+			PrintWriter printWriter = new PrintWriter(fileWriter);
+			for(Vector<Feature> tempVec:clusterFeatures){
+				printWriter.println("Cluster num="+String.valueOf(counter));
+				for(Feature tempFeat:tempVec){
+					printWriter.print(tempFeat.getLabel()+" ");
+				}
+				counter=counter+1;
+				printWriter.println("");
+			}
+			printWriter.close();
+			fileWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	/**
+	 * This function prints the outliers or zero if there are none.
+	 * @author Alexandros Lampridis
+	 * 
+	 */
+	public void printOutliers(){
+		if(outlierMap.size()==0){
+			System.out.println("No outliers");
+		}
+		else{
+			Iterator<String> tempIter=outlierMap.keySet().iterator();
+			while(tempIter.hasNext()){
+				System.out.print("	"+tempIter.next());
+			}
+			System.out.println("");
+		}
+	}
+	
 	
 }

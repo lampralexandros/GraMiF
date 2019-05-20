@@ -15,6 +15,6 @@ moveCars addCar dead upBet run downBet standardDraw initCars inizio
 Cluster num=8
 drawLevel createBrickLayer drawSquare moveBricks rightScore draw getLevel moveDown moveLeft win move start leftScore levelInit readPreference 
 Cluster num=9
-moveBalls testBallCatch addExp affectBall isGood addBall 
+moveBalls testBallCatch addExp affectBall addBall 
 Cluster num=10
 isFilled isRowFilled moveRight turnRight rowCheck affect clearRow checkHighscore die empty overlaps actionPerformed turnLeft clear 

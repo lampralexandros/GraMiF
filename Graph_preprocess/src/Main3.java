@@ -26,9 +26,10 @@ public class Main3 {
 		ClusteringProcess Clusterer=new ClusteringProcess(domainLabel);
 		Clusterer.semanticAnalysis();
 		Clusterer.removeZeroFeature();
-		Clusterer.doDefaultClusteringDense(5,8,10);
+		System.out.println("Method word vector is:"+Clusterer.getWordModel().length);   
+		//Clusterer.doDefaultClusteringDense(5,8,10);
 		//Clusterer.doQuickClusteringDense();
-		Clusterer.saveIntoFileClusters("methodClusters.txt");
+		//Clusterer.saveIntoFileClusters("methodClusters.txt");
 		
 		//Classes names process
 		DotFileProcessTree GameDevDomain2=new DotFileProcessTree(folder);
@@ -41,12 +42,14 @@ public class Main3 {
 		ArrayList<String> classLabel=new ArrayList<String>();
 		Process2.getTreeList().forEach(node->node.getDataTraverser(classLabel));
 		
-		//ClusteringProcess Clusterer2=new ClusteringProcess(classLabel);
-		//Clusterer2.semanticAnalysis();
-		//Clusterer2.removeZeroFeature();
+		
+		ClusteringProcess Clusterer2=new ClusteringProcess(classLabel);
+		Clusterer2.semanticAnalysis();
+		Clusterer2.removeZeroFeature();
+		System.out.println("Class word vector is:"+Clusterer2.getWordModel().length);
 		//Clusterer2.doQuickClusteringDense();
 		//Clusterer2.doDefaultClusteringDense(3,20,10);
-		//Clusterer2.saveIntoFileClusters("classClusters.txt");
+		Clusterer2.saveIntoFileClusters("classClusters.txt");
 		
 		
 		OutlierProcess outlierProcess1=new OutlierProcess(Clusterer.getClusterFeatures());
