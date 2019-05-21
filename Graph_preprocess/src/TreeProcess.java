@@ -1,12 +1,19 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.regex.Pattern;
 
 import transfomations.ClassExtraction;
 import transfomations.ClassExtractionWithInput;
 import transfomations.MethodExtraction;
 import transfomations.MethodExtractionWithInput;
-
+/**
+ * There is a bug when you use extractClassLabel() before extractMethodLabel()
+ * @author Alex Lampridis
+ *
+ */
 public class TreeProcess {
+	
+	
 		
 	ArrayList<Node<String>> pTreeList;
 	
@@ -55,5 +62,7 @@ public class TreeProcess {
 			tNode.transform(transformer);
 		}
 	}
+	
 
+	
 }

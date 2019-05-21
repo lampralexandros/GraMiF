@@ -1,16 +1,18 @@
 Cluster num=1
-FroggerLevelEngine BigAddition Addition FroggerLevel Level 
+Division Player Subtraction TrafficPattern 
 Cluster num=2
-TetrisComponent Paddle GameComponent Enemy CatchComponent ListeningGameComponent FroggerComponent Subtraction 
+Paddle FallDownEngine Dice PlayFallDown FallDownComponent 
 Cluster num=3
-TetrisGrid TetrisBlock Division Planet CatchEngine BlockGrid 
+FroggerLevelEngine FroggerLevel Level 
 Cluster num=4
-FallDownEngine PlayFallDown FallDownComponent 
+PongComponent Goal PongEnvironment Frog CatchEngine PlayPong 
 Cluster num=5
-MathHero World PongComponent PongEnvironment 
+MathHero Enemy TetrisBlock Car BlockGrid 
 Cluster num=6
-Ball CrapsGame CrapsComponent Goal PlayCraps Frog CrapsEngine 
+TetrisGrid PlayTetris PlayFrogger Play PlayCatch 
 Cluster num=7
-PlayTetris Player Cronometro PlayFrogger Play PlayCatch Comet Car PlayPong 
+Ball Multiplication World BigMultiplication 
 Cluster num=8
-Multiplication BigMultiplication Dice Bucket Brick TrafficPattern 
+CrapsGame CrapsComponent Planet PlayCraps BigAddition Addition Comet Brick CrapsEngine 
+Cluster num=9
+TetrisComponent GameComponent CatchComponent Cronometro ListeningGameComponent FroggerComponent Bucket 

@@ -20,7 +20,7 @@ public class DotFileProcessTree {
 	
 	
 	//Constructor input a folder with dot files
-	DotFileProcessTree(File domainFolder){
+	public DotFileProcessTree(File domainFolder){
 		//initialize dotFileNames
 		dotFileNames= Arrays.asList(domainFolder.listFiles());
 		treeList=new ArrayList<Node<String>>();

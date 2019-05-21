@@ -1,7 +1,6 @@
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Vector;
-import java.util.concurrent.TimeUnit;
+
 
 public class Main4 {
 
@@ -33,6 +32,7 @@ public class Main4 {
 		ClusteringProcess methodClusterer=new ClusteringProcess(domainLabel);
 		methodClusterer.semanticAnalysis();
 		methodClusterer.removeZeroFeature();
+		System.out.println("Cluster methods");
 		methodClusterer.doDefaultClusteringDense(8,20,100);
 		methodClusterer.saveIntoFileClusters("methodClusters.txt");
 		
@@ -48,6 +48,7 @@ public class Main4 {
 		ClusteringProcess classClusterer=new ClusteringProcess(domainLabel);
 		classClusterer.semanticAnalysis();
 		classClusterer.removeZeroFeature();
+		System.out.println("Cluster class");
 		classClusterer.doDefaultClusteringDense(8,20,100);
 		classClusterer.saveIntoFileClusters("classClusters.txt");
 		
@@ -66,18 +67,37 @@ public class Main4 {
 		outlierProcess2.saveIntoFileClusters("cleanMethodClusters.txt");
 		methodClusterer.saveIntoFileClusters("methodClusters2.txt");
 		
-		
-		//Sequence mining
-		GameDevDomain.getTreeList().clear();
-		GameDevDomain.dotProcess_CreateTrees();
-		SequenceMining miner=new SequenceMining(methodClusterer.getNumClusters());
-		ArrayList<Vector<String>> sequencesList=new ArrayList<Vector<String>>();
-		for(Node<String> tempTree :GameDevDomain.getTreeList()){
-			tempTree.serializer(sequencesList);
-			miner.addSequence(sequencesList,methodClusterer.getLabelClusterMap());
-			sequencesList.clear();
-		}
-		miner.RunPrefixSpan(0.5, false);
+
+
+//		ObjectOutputStream oos,oos1;
+//		try {
+//			oos = new ObjectOutputStream(new FileOutputStream("hashClassMapLabelCluster"));
+//			try {
+//				oos.writeObject(classClusterer.getLabelClusterMap());
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//			oos.close();
+//		} catch (FileNotFoundException e1) {
+//			e1.printStackTrace();
+//		} catch (IOException e1) {
+//			e1.printStackTrace();
+//		}
+//
+//		try {
+//			oos1 = new ObjectOutputStream(new FileOutputStream("hashMethodMapLabelCluster"));
+//			try {
+//				oos1.writeObject(methodClusterer.getLabelClusterMap());
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//			oos1.close();
+//		} catch (FileNotFoundException e1) {
+//			e1.printStackTrace();
+//		} catch (IOException e1) {
+//			e1.printStackTrace();
+//		}
+
 	}
 
 }

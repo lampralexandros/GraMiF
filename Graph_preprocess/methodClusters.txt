@@ -1,20 +1,36 @@
 Cluster num=1
-keyTyped contains reset rowCheck isKeyPressed checkHighscore resetKeys keyPressed tryKey 
+makeTestWindow testBallCatch refreshImage arrowX finished testForNewCar 
 Cluster num=2
-dead initCars actionPerformed isMousePressed testForNewCar 
+drawLevel setComputer standardUpdates update 
 Cluster num=3
-updateState die run update process getState 
+savePreference accelerate bounceTop readPreference 
 Cluster num=4
-savePreference isFilled isRowFilled intersects roll lockWorkingBlock overlaps accelerate affectBall isGood heal readPreference 
+keyTyped isKeyPressed keyPressed tryKey isMousePressed 
 Cluster num=5
-moveBalls getBounds moveBricks moveCars upBet getWinBounds downBet moveDown bounceSide bounceTop inizio win move levelInit 
+isFilled isRowFilled clearRow getSingleBlocks main actionPerformed getRandomBlock clear getSingleBlock 
 Cluster num=6
-createBrickLayer setComputer addCar canFit addExp main setPosition addBall setLocation start 
+lockWorkingBlock arrowY getWinBounds win getY 
 Cluster num=7
-getLocation paint getGraphicsHeight getGraphicsWidth getSolution getProblem refreshImage getPatterns getWidth getNumber getHeight getSingleBlocks getDistance getLevel arrowY getWorld getRandomBlock getCanvas getMass getSingleBlock getX getY 
+getGraphicsHeight getGraphicsWidth getSolution getWidth getHeight getWorld removeOldBricks heal 
 Cluster num=8
-drawLevel drawSquare moveRight turnRight affect clearRow draw drawEnemies setWorkingBlock empty standardDraw standardUpdates clear setColor 
+affect dead rightScore empty affectBall process 
 Cluster num=9
-access hitting hit getSpeeds moveLeft removeOldBricks getHitting turnLeft getLeft 
+turnRight access intersects upBet setPosition setLocation start setColor 
 Cluster num=10
-makeTestWindow testBallCatch stop rightScore arrowX testReached finished leftScore 
+rowCheck checkHighscore downBet overlaps moveDown moveLeft turnLeft leftScore getLeft 
+Cluster num=11
+moveBalls createBrickLayer moveBricks moveCars stop moveRight initCars move 
+Cluster num=12
+getLocation getBounds getProblem getPatterns getNumber updateState getDistance run getCanvas getMass getX getState 
+Cluster num=13
+paint drawSquare draw drawEnemies setWorkingBlock inizio 
+Cluster num=14
+addCar addExp getSpeeds addBall 
+Cluster num=15
+roll hitting canFit getLevel die hit getHitting levelInit 
+Cluster num=16
+contains testReached 
+Cluster num=17
+isGood standardDraw bounceSide 
+Cluster num=18
+reset resetKeys 
