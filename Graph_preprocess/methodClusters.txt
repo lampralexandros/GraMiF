@@ -1,20 +1,20 @@
 Cluster num=1
-roll getSingleBlocks arrowY getRandomBlock heal getSingleBlock getState 
+keyTyped contains reset rowCheck isKeyPressed checkHighscore resetKeys keyPressed tryKey 
 Cluster num=2
-getLocation savePreference getBounds getGraphicsHeight getGraphicsWidth getSolution getProblem getPatterns getWidth getNumber getHeight getDistance arrowX getWorld getWinBounds getSpeeds getHitting getCanvas getMass getX getY getLeft 
+dead initCars actionPerformed isMousePressed testForNewCar 
 Cluster num=3
-keyTyped reset setComputer access refreshImage isKeyPressed resetKeys setPosition accelerate keyPressed tryKey setLocation setColor 
+updateState die run update process getState 
 Cluster num=4
-paint drawEnemies main bounceSide bounceTop 
+savePreference isFilled isRowFilled intersects roll lockWorkingBlock overlaps accelerate affectBall isGood heal readPreference 
 Cluster num=5
-contains stop lockWorkingBlock hitting canFit updateState setWorkingBlock hit finished standardUpdates update isMousePressed process 
+moveBalls getBounds moveBricks moveCars upBet getWinBounds downBet moveDown bounceSide bounceTop inizio win move levelInit 
 Cluster num=6
-makeTestWindow intersects testReached removeOldBricks testForNewCar 
+createBrickLayer setComputer addCar canFit addExp main setPosition addBall setLocation start 
 Cluster num=7
-moveCars addCar dead upBet run downBet standardDraw initCars inizio 
+getLocation paint getGraphicsHeight getGraphicsWidth getSolution getProblem refreshImage getPatterns getWidth getNumber getHeight getSingleBlocks getDistance getLevel arrowY getWorld getRandomBlock getCanvas getMass getSingleBlock getX getY 
 Cluster num=8
-drawLevel createBrickLayer drawSquare moveBricks rightScore draw getLevel moveDown moveLeft win move start leftScore levelInit readPreference 
+drawLevel drawSquare moveRight turnRight affect clearRow draw drawEnemies setWorkingBlock empty standardDraw standardUpdates clear setColor 
 Cluster num=9
-moveBalls testBallCatch addExp affectBall isGood addBall 
+access hitting hit getSpeeds moveLeft removeOldBricks getHitting turnLeft getLeft 
 Cluster num=10
-isFilled isRowFilled moveRight turnRight rowCheck affect clearRow checkHighscore die empty overlaps actionPerformed turnLeft clear 
+makeTestWindow testBallCatch stop rightScore arrowX testReached finished leftScore 

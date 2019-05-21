@@ -98,6 +98,7 @@ public class OutlierProcess {
 		
 	}
 	/**
+	 * TESTING FUNCTION
 	 * This function performs a basic IQR method to determine outliers in a cluster.
 	 * The metric used is sum of feature vector.
 	 * @author Alexandros Lampridis
