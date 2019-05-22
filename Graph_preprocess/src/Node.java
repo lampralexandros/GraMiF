@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
@@ -22,6 +23,7 @@ public class Node<T> {
 	public void setData(T inputData){
 		data=inputData;
 	}
+	
 	
 	public T getData(){
 		return data;
@@ -75,6 +77,41 @@ public class Node<T> {
 		}	
 	}
 	
+	/**
+	 * Basic (right most traverser) traverse the tree and returning node starting from the leaf of a branch and recursively returns the rest.
+	 * @author Alexandros Lampridis
+	 * @return Node<T>
+	 */
+	public Node<T> getNodeTraverser(){
+		for(Node<T> child:children)
+			if(!children.isEmpty()){
+				child.getNodeTraverser();
+			}
+		return this;
+		
+	}
+	
+	/**
+	 * Check in the HashMap for the String key and sets a string (from Integer value) as the data 
+	 * @author Alexandros Lampridis
+	 * @param HashMap<String,Integer> hashMap
+	 */
+	public void nodeDataStringTransformHashMap(HashMap<String,Integer> hashMap){
+		
+		if(hashMap.containsKey(this.getData())){
+			
+			this.setData((T) hashMap.get(this.getData()).toString());
+		}
+		
+		if(!children.isEmpty()){
+			for(Node<T> child:children)
+				child.nodeDataStringTransformHashMap(hashMap);
+		}
+		
+	}
+	
+
+
 	//Serializer wrapper 
 	public void serializer(ArrayList<Vector<T>> dataSequence){
 		Vector<T> sequence=new Vector<T>();

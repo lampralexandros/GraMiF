@@ -1,36 +1,10 @@
 Cluster num=1
-makeTestWindow testBallCatch refreshImage arrowX finished testForNewCar 
+keyTyped makeTestWindow testBallCatch reset access intersects isKeyPressed resetKeys main testReached keyPressed tryKey testForNewCar readPreference 
 Cluster num=2
-drawLevel setComputer standardUpdates update 
+getLocation savePreference getBounds getGraphicsHeight isFilled isRowFilled getGraphicsWidth getSolution getProblem setComputer affect getPatterns getWidth getNumber getHeight getDistance getWorld getWinBounds addExp setPosition empty affectBall isGood getSpeeds addBall inizio getHitting setLocation getCanvas getMass getX getY setColor getLeft 
 Cluster num=3
-savePreference accelerate bounceTop readPreference 
+createBrickLayer stop rowCheck lockWorkingBlock dead upBet clearRow canFit getSingleBlocks arrowX arrowY setWorkingBlock checkHighscore die hit downBet accelerate finished removeOldBricks getRandomBlock heal clear getSingleBlock 
 Cluster num=4
-keyTyped isKeyPressed keyPressed tryKey isMousePressed 
+moveBalls moveBricks moveCars moveRight turnRight refreshImage addCar roll hitting standardDraw moveDown standardUpdates initCars moveLeft update isMousePressed turnLeft win move process 
 Cluster num=5
-isFilled isRowFilled clearRow getSingleBlocks main actionPerformed getRandomBlock clear getSingleBlock 
-Cluster num=6
-lockWorkingBlock arrowY getWinBounds win getY 
-Cluster num=7
-getGraphicsHeight getGraphicsWidth getSolution getWidth getHeight getWorld removeOldBricks heal 
-Cluster num=8
-affect dead rightScore empty affectBall process 
-Cluster num=9
-turnRight access intersects upBet setPosition setLocation start setColor 
-Cluster num=10
-rowCheck checkHighscore downBet overlaps moveDown moveLeft turnLeft leftScore getLeft 
-Cluster num=11
-moveBalls createBrickLayer moveBricks moveCars stop moveRight initCars move 
-Cluster num=12
-getLocation getBounds getProblem getPatterns getNumber updateState getDistance run getCanvas getMass getX getState 
-Cluster num=13
-paint drawSquare draw drawEnemies setWorkingBlock inizio 
-Cluster num=14
-addCar addExp getSpeeds addBall 
-Cluster num=15
-roll hitting canFit getLevel die hit getHitting levelInit 
-Cluster num=16
-contains testReached 
-Cluster num=17
-isGood standardDraw bounceSide 
-Cluster num=18
-reset resetKeys 
+paint drawLevel drawSquare contains rightScore updateState draw drawEnemies getLevel run overlaps bounceSide bounceTop actionPerformed start leftScore getState levelInit 

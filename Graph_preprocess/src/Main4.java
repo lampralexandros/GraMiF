@@ -1,10 +1,12 @@
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
 public class Main4 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 		File folder=new File("domain");
 		DotFileProcessTree GameDevDomain=new DotFileProcessTree(folder);
 		GameDevDomain.printTheDotFiles();
@@ -33,7 +35,7 @@ public class Main4 {
 		methodClusterer.semanticAnalysis();
 		methodClusterer.removeZeroFeature();
 		System.out.println("Cluster methods");
-		methodClusterer.doDefaultClusteringDense(8,20,100);
+		methodClusterer.doDefaultClusteringDense(5,15,500);
 		methodClusterer.saveIntoFileClusters("methodClusters.txt");
 		
 		
@@ -49,7 +51,7 @@ public class Main4 {
 		classClusterer.semanticAnalysis();
 		classClusterer.removeZeroFeature();
 		System.out.println("Cluster class");
-		classClusterer.doDefaultClusteringDense(8,20,100);
+		classClusterer.doDefaultClusteringDense(5,15,500);
 		classClusterer.saveIntoFileClusters("classClusters.txt");
 		
 		// Outliers process
@@ -66,8 +68,8 @@ public class Main4 {
 		outlierProcess2.printOutliers();
 		outlierProcess2.saveIntoFileClusters("cleanMethodClusters.txt");
 		methodClusterer.saveIntoFileClusters("methodClusters2.txt");
-		
-
+		Utilities.outputToFile("hashClassMapLabelCluster1", classClusterer.getLabelClusterMap());
+		Utilities.outputToFile("hashMethodMapLabelCluster1", methodClusterer.getLabelClusterMap());
 
 //		ObjectOutputStream oos,oos1;
 //		try {

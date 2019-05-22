@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.Vector;
+import java.util.regex.Pattern;
 
 
 // This class is basic class to extract tree structures from the input graphs
@@ -37,8 +39,10 @@ public class DotFileProcessTree {
 	
 	
 // Basic Utilities functions
-	
-	// Creating tree structures from the graphs
+	/**
+	 * Process to create Trees from Soot file.
+	 *@author Alexandros Lampridis
+	 */
 	public void  dotProcess_CreateTrees(){
 		HashMap<String,Vector<String>> connection=new HashMap<String,Vector<String>>();
 		List<String> treeRoots=new ArrayList<String>();	
@@ -100,6 +104,54 @@ public class DotFileProcessTree {
 			treeRoots.clear();
 		}	
 	
+	/**
+	 * 
+	 * @author Alexandros Lampridis
+	 */
+	public void  dotProcessCreateTreesFromGspan(){
+		
+		List<String> treeRoots=new ArrayList<String>();	
+		HashMap<String,String> nodeToLabelMap=new HashMap<String,String>();
+		Pattern nodeId=Pattern.compile("Node_[0-9]*");
+		Pattern nodeLabel=Pattern.compile("label=\"[0-9]*\"");
+		String tempNodeId;
+		String tempNodeLabel;
+		
+		for( File fTemp:dotFileNames){
+			try{
+				Scanner scannerByLine = new Scanner(fTemp);
+				while(scannerByLine.hasNextLine()){
+						String tempLine=scannerByLine.nextLine();
+						// New graph
+						if(tempLine.contains("{")){
+							while(!tempLine.contains("}")){
+								// Not a connection 
+								if(!tempLine.contains("->")){
+									tempNodeId=scannerByLine.findInLine(nodeId);
+									tempNodeLabel=scannerByLine.findInLine(nodeLabel);
+									
+									tempLine=scannerByLine.nextLine();
+								}
+							}
+						}
+					}
+				scannerByLine.close();
+
+									
+			}
+			catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}				
+		}
+		
+
+		
+	
+		}
+	
+	
+	
+	
 	// A wrapper function to recursively create the tree
 	private void createTrees(List<String> treeRoots, HashMap<String,Vector<String>> connection){
 		for(String RootLabel: treeRoots){
@@ -124,12 +176,32 @@ public class DotFileProcessTree {
 	
 	
 	
-// Variant Utilities functions 
+// Various Utilities functions 
 	// printing the path of the dot files
 	public void printTheDotFiles(){
 		System.out.println("The file to be processed");
 		for(File fileTemp : dotFileNames){
 			System.out.println(fileTemp.toString());
 		}	
-	}	
+	}
+	
+	/**
+	 * Function to recreate a Tree in a dot file
+	 * @author Alexandros Lampridis
+	 * @param node Node String the starting node of a Tree
+	 * @param counter int should start with zero  
+	 * @param printWriter must be opened at the wrapper
+	 */
+	static public int createDotFilesLikeTrees(Node<String> node, int counter,PrintWriter printWriter){
+		String idNode="node"+counter;
+		if(!node.getChildren().isEmpty())
+			for(Node<String> child : node.getChildren()){
+				printWriter.println(idNode+" -> "+"node"+String.valueOf(counter+1));
+				
+				counter=createDotFilesLikeTrees(child,counter+1,printWriter);
+			}
+		printWriter.println(idNode+" [label="+node.getData()+"]");
+		return counter;
+	}
+	
 }

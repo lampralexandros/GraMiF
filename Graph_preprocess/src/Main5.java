@@ -1,9 +1,9 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
-
-import bin.TreeProcess;
 
 public class Main5 {
 
@@ -17,21 +17,30 @@ public class Main5 {
 		tempProcess.extractMethodLabel();
 		tempProcess.extractClassLabel();
 		
-		HashMap<String,Integer> mapClassLabelCluster = Utilities.inputToMemory("hashClassMapLabelCluster");
-		HashMap<String,Integer> mapMethodLabelCluster = Utilities.inputToMemory("hashMethodMapLabelCluster");
+		HashMap<String,Integer> mapClassLabelCluster = Utilities.inputToMemory("hashClassMapLabelCluster1");
+		HashMap<String,Integer> mapMethodLabelCluster = Utilities.inputToMemory("hashMethodMapLabelCluster1");
 				
-		Integer max=0;
-		for(Integer i : mapClassLabelCluster.values()){
-			if( i.intValue() > max.intValue() ){
-				max=i;
-			}
+		HashMap<String,Integer> wholeLabelCluster=new HashMap<String,Integer>();
+		
+		wholeLabelCluster=Utilities.mergeHashMapsIntoOne(mapMethodLabelCluster, mapClassLabelCluster);
+		
+		// traversing the tree with a hash Map
+		for( Node<String> rootNode : tempProcess.getTreeList()){
+			rootNode.nodeDataStringTransformHashMap(wholeLabelCluster);
 		}
 		
-		for( String temp : mapMethodLabelCluster.keySet()){
-			mapMethodLabelCluster.put(temp, Integer.sum(mapMethodLabelCluster.get(temp).intValue(), max.intValue()));
+		FileWriter fileWriter=new FileWriter("concat.dot");
+		PrintWriter printWriter = new PrintWriter(fileWriter);
+		int counter=0;
+		for( Node<String> rootNode : tempProcess.getTreeList()){
+			printWriter.println("digraph Tree"+counter+" {");
+			DotFileProcessTree.createDotFilesLikeTrees(rootNode, 0, printWriter);
+			printWriter.println("}");
+			counter=counter+1;
 		}
+		printWriter.close();
+		fileWriter.close();
 		
-
 		
 	}
 

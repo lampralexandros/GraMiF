@@ -1,766 +1,1011 @@
-digraph "Catch" {
-" main"
-".PlayCatch:"
-" main"->".PlayCatch:"
-".PlayCatch:"
-".CatchComponent:"
-".PlayCatch:"->".CatchComponent:"
-".CatchComponent:"
-".CatchEngine:"
-".CatchComponent:"->".CatchEngine:"
-"Cluster7"
-"Cluster4"
-"Cluster7"->"Cluster4"
-".CatchEngine:"
-".Bucket:"
-".CatchEngine:"->".Bucket:"
-"Cluster4"
-"Cluster9"
-"Cluster4"->"Cluster9"
-"Cluster4"
-"Cluster4"
-"Cluster4"->"Cluster4"
-"Cluster9"
-"Cluster9"
-"Cluster9"->"Cluster9"
-"Cluster9"
-"Cluster3"
-"Cluster9"->"Cluster3"
-"Cluster9"
-"Cluster0"
-"Cluster9"->"Cluster0"
-"Cluster4"
-"Cluster3"
-"Cluster4"->"Cluster3"
-"Cluster4"
-"Cluster0"
-"Cluster4"->"Cluster0"
-"Cluster0"
-".Bucket:"
-"Cluster0"->".Bucket:"
-"Cluster0"
-".Ball:"
-"Cluster0"->".Ball:"
-"Cluster9"
-"Cluster1"
-"Cluster9"->"Cluster1"
-"Cluster0"
-"Cluster8"
-"Cluster0"->"Cluster8"
-"Cluster0"
-"Cluster0"
-"Cluster0"->"Cluster0"
-"Cluster0"
-"Cluster3"
-"Cluster0"->"Cluster3"
-"Cluster2"
-"Cluster1"
-"Cluster2"->"Cluster1"
-"Cluster9"
-".Bucket:"
-"Cluster9"->".Bucket:"
-"Cluster1"
-"Cluster9"
-"Cluster1"->"Cluster9"
-"Cluster8"
-"Cluster3"
-"Cluster8"->"Cluster3"
-"Cluster1"
-"Cluster1"
-"Cluster1"->"Cluster1"
-"Cluster9"
-".Ball:"
-"Cluster9"->".Ball:"
+digraph Tree0 {
+node0 -> node1
+node1 -> node2
+node2 -> node3
+node3 -> node4
+node4 -> node5
+node5 [label=9]
+node4 -> node6
+node6 [label=2]
+node4 [label=4]
+node3 [label=moveUp]
+node2 [label=moveUp]
+node1 -> node7
+node7 -> node8
+node8 -> node9
+node9 -> node10
+node10 [label=9]
+node9 -> node11
+node11 [label=2]
+node9 [label=4]
+node8 [label=4]
+node7 [label=4]
+node1 -> node12
+node12 -> node13
+node13 -> node14
+node14 -> node15
+node15 [label=9]
+node14 -> node16
+node16 [label=2]
+node14 [label=4]
+node13 [label=4]
+node12 [label=4]
+node1 -> node17
+node17 -> node18
+node18 -> node19
+node19 -> node20
+node20 [label=9]
+node19 -> node21
+node21 [label=2]
+node19 [label=4]
+node18 [label=4]
+node17 [label=4]
+node1 -> node22
+node22 -> node23
+node23 -> node24
+node24 -> node25
+node25 -> node26
+node26 [label=6]
+node25 [label=4]
+node24 -> node27
+node27 -> node28
+node28 [label=6]
+node27 [label=4]
+node24 [label=4]
+node23 -> node29
+node29 -> node30
+node30 -> node31
+node31 [label=6]
+node30 [label=4]
+node29 [label=1]
+node23 [label=4]
+node22 -> node32
+node32 -> node33
+node33 [label=2]
+node32 -> node34
+node34 [label=2]
+node32 [label=1]
+node22 -> node35
+node35 [label=2]
+node22 -> node36
+node36 [label=2]
+node22 [label=4]
+node1 -> node37
+node37 [label=3]
+node1 -> node38
+node38 -> node39
+node39 [label=2]
+node38 -> node40
+node40 [label=2]
+node38 -> node41
+node41 -> node42
+node42 [label=2]
+node41 -> node43
+node43 -> node44
+node44 -> node45
+node45 [label=6]
+node44 [label=4]
+node43 [label=8]
+node41 -> node46
+node46 [label=9]
+node41 [label=7]
+node38 [label=7]
+node1 -> node47
+node47 [label=2]
+node1 -> node48
+node48 [label=5]
+node1 -> node49
+node49 -> node50
+node50 [label=2]
+node49 [label=3]
+node1 [label=4]
+node0 [label=5]
 }
-digraph "Comet" {
-" main"
-".Play:"
-" main"->".Play:"
-" main"
-"Cluster0"
-" main"->"Cluster0"
-".Play:"
-".ListeningGameComponent:"
-".Play:"->".ListeningGameComponent:"
-"Cluster7"
-" access$1"
-"Cluster7"->" access$1"
-"Cluster7"
-" access$0"
-"Cluster7"->" access$0"
-".ListeningGameComponent:"
-".GameComponent:"
-".ListeningGameComponent:"->".GameComponent:"
-"Cluster7"
-"Cluster8"
-"Cluster7"->"Cluster8"
-"Cluster7"
-"Cluster4"
-"Cluster7"->"Cluster4"
-"Cluster7"
-"Cluster1"
-"Cluster7"->"Cluster1"
-" access$1"
-"Cluster6"
-" access$1"->"Cluster6"
-" access$0"
-"Cluster3"
-" access$0"->"Cluster3"
-".GameComponent:"
-":"
-".GameComponent:"->":"
-".GameComponent:"
-"Cluster7"
-".GameComponent:"->"Cluster7"
-"Cluster4"
-"Cluster5"
-"Cluster4"->"Cluster5"
-"Cluster4"
-"Cluster7"
-"Cluster4"->"Cluster7"
-"Cluster4"
-"Cluster2"
-"Cluster4"->"Cluster2"
-"Cluster4"
-"Cluster9"
-"Cluster4"->"Cluster9"
-"Cluster4"
-"Cluster4"
-"Cluster4"->"Cluster4"
-"Cluster4"
-"Cluster0"
-"Cluster4"->"Cluster0"
-"Cluster4"
-"Cluster3"
-"Cluster4"->"Cluster3"
-"Cluster4"
-".Comet:"
-"Cluster4"->".Comet:"
-"Cluster4"
-".Planet:"
-"Cluster4"->".Planet:"
-"Cluster4"
-".Goal:"
-"Cluster4"->".Goal:"
-"Cluster1"
-"Cluster1"
-"Cluster1"->"Cluster1"
-"Cluster1"
-"Cluster2"
-"Cluster1"->"Cluster2"
-"Cluster9"
-"Cluster8"
-"Cluster9"->"Cluster8"
-"Cluster9"
-"Cluster3"
-"Cluster9"->"Cluster3"
-".Comet:"
-".Planet:"
-".Comet:"->".Planet:"
+digraph Tree1 {
+node0 -> node1
+node1 -> node2
+node2 -> node3
+node3 -> node4
+node4 [label=9]
+node3 [label=9]
+node2 [label=4]
+node1 -> node5
+node5 -> node6
+node6 [label=2]
+node5 -> node7
+node7 [label=2]
+node5 -> node8
+node8 [label=2]
+node5 -> node9
+node9 [label=2]
+node5 -> node10
+node10 [label=2]
+node5 -> node11
+node11 -> node12
+node12 [label=5]
+node11 [label=5]
+node5 [label=3]
+node1 [label=4]
+node0 -> node13
+node13 -> node14
+node14 -> node15
+node15 -> node16
+node16 [label=9]
+node15 [label=9]
+node14 [label=4]
+node13 -> node17
+node17 -> node18
+node18 [label=2]
+node17 -> node19
+node19 [label=2]
+node17 -> node20
+node20 [label=2]
+node17 -> node21
+node21 [label=2]
+node17 -> node22
+node22 [label=2]
+node17 -> node23
+node23 -> node24
+node24 [label=5]
+node23 [label=5]
+node17 [label=3]
+node13 [label=4]
+node0 -> node25
+node25 -> node26
+node26 -> node27
+node27 -> node28
+node28 [label=9]
+node27 [label=9]
+node26 [label=4]
+node25 -> node29
+node29 -> node30
+node30 [label=2]
+node29 -> node31
+node31 [label=2]
+node29 -> node32
+node32 [label=2]
+node29 -> node33
+node33 [label=2]
+node29 -> node34
+node34 [label=2]
+node29 -> node35
+node35 -> node36
+node36 [label=5]
+node35 [label=5]
+node29 [label=3]
+node25 -> node37
+node37 -> node38
+node38 -> node39
+node39 -> node40
+node40 -> node41
+node41 [label=9]
+node40 [label=9]
+node39 [label=3]
+node38 [label=3]
+node37 -> node42
+node42 -> node43
+node43 -> node44
+node44 [label=2]
+node43 -> node45
+node45 [label=2]
+node43 [label=2]
+node42 -> node46
+node46 -> node47
+node47 [label=2]
+node46 -> node48
+node48 -> node49
+node49 -> node50
+node50 [label=9]
+node49 [label=9]
+node48 [label=4]
+node46 [label=3]
+node42 -> node51
+node51 [label=2]
+node42 [label=3]
+node37 [label=3]
+node25 [label=4]
+node0 -> node52
+node52 -> node53
+node53 -> node54
+node54 -> node55
+node55 [label=9]
+node54 [label=9]
+node53 [label=4]
+node52 -> node56
+node56 -> node57
+node57 [label=2]
+node56 -> node58
+node58 [label=2]
+node56 -> node59
+node59 [label=2]
+node56 -> node60
+node60 [label=2]
+node56 -> node61
+node61 [label=2]
+node56 -> node62
+node62 -> node63
+node63 [label=5]
+node62 [label=5]
+node56 [label=3]
+node52 [label=4]
+node0 -> node64
+node64 -> node65
+node65 -> node66
+node66 -> node67
+node67 [label=9]
+node66 [label=9]
+node65 [label=4]
+node64 -> node68
+node68 -> node69
+node69 [label=2]
+node68 -> node70
+node70 [label=2]
+node68 -> node71
+node71 [label=2]
+node68 -> node72
+node72 [label=2]
+node68 -> node73
+node73 [label=2]
+node68 -> node74
+node74 -> node75
+node75 [label=5]
+node74 [label=5]
+node68 [label=3]
+node64 [label=4]
+node0 [label=1]
 }
-digraph "Craps" {
-" main"
-".PlayCraps:"
-" main"->".PlayCraps:"
-".PlayCraps:"
-".CrapsComponent:"
-".PlayCraps:"->".CrapsComponent:"
-".CrapsComponent:"
-".CrapsEngine:"
-".CrapsComponent:"->".CrapsEngine:"
-".CrapsComponent:"
-"Cluster3"
-".CrapsComponent:"->"Cluster3"
-".CrapsEngine:"
-".CrapsGame:"
-".CrapsEngine:"->".CrapsGame:"
-"Cluster3"
-"Cluster3"
-"Cluster3"->"Cluster3"
-".CrapsGame:"
-".Dice:"
-".CrapsGame:"->".Dice:"
-".Dice:"
-".Dice:"
-".Dice:"->".Dice:"
-"Cluster2"
-"Cluster1"
-"Cluster2"->"Cluster1"
-"Cluster1"
-"Cluster1"
-"Cluster1"->"Cluster1"
-"Cluster1"
-"Cluster3"
-"Cluster1"->"Cluster3"
-"Cluster7"
-"Cluster1"
-"Cluster7"->"Cluster1"
-"Cluster7"
-"Cluster2"
-"Cluster7"->"Cluster2"
-"Cluster7"
-"Cluster0"
-"Cluster7"->"Cluster0"
-"Cluster2"
-"Cluster3"
-"Cluster2"->"Cluster3"
-"Cluster0"
-"Cluster3"
-"Cluster0"->"Cluster3"
-"Cluster0"
-".CrapsGame:"
-"Cluster0"->".CrapsGame:"
-"Cluster0"
-"Cluster0"
-"Cluster0"->"Cluster0"
-"Cluster0"
-".Dice:"
-"Cluster0"->".Dice:"
+digraph Tree2 {
+node0 -> node1
+node1 -> node2
+node2 -> node3
+node3 [label=8]
+node2 [label=8]
+node1 -> node4
+node4 [label=2]
+node1 -> node5
+node5 -> node6
+node6 [label=1]
+node5 -> node7
+node7 -> node8
+node8 [label=7]
+node7 [label=5]
+node5 -> node9
+node9 -> node10
+node10 [label=2]
+node9 -> node11
+node11 [label=2]
+node9 -> node12
+node12 -> node13
+node13 [label=2]
+node12 -> node14
+node14 -> node15
+node15 -> node16
+node16 [label=6]
+node15 [label=4]
+node14 [label=8]
+node12 -> node17
+node17 [label=9]
+node12 [label=7]
+node9 [label=7]
+node5 [label=6]
+node1 [label=6]
+node0 [label=1]
 }
-digraph "FallDown" {
-" main"
-".PlayFallDown:"
-" main"->".PlayFallDown:"
-".PlayFallDown:"
-".FallDownComponent:"
-".PlayFallDown:"->".FallDownComponent:"
-".FallDownComponent:"
-".FallDownEngine:"
-".FallDownComponent:"->".FallDownEngine:"
-"Cluster7"
-"Cluster4"
-"Cluster7"->"Cluster4"
-".FallDownEngine:"
-"Cluster0"
-".FallDownEngine:"->"Cluster0"
-".FallDownEngine:"
-".Ball:"
-".FallDownEngine:"->".Ball:"
-"Cluster4"
-"Cluster9"
-"Cluster4"->"Cluster9"
-"Cluster4"
-"Cluster4"
-"Cluster4"->"Cluster4"
-"Cluster0"
-".Brick:"
-"Cluster0"->".Brick:"
-".Ball:"
-".Ball:"
-".Ball:"->".Ball:"
-"Cluster9"
-"Cluster9"
-"Cluster9"->"Cluster9"
-"Cluster9"
-"Cluster4"
-"Cluster9"->"Cluster4"
-"Cluster9"
-"Cluster3"
-"Cluster9"->"Cluster3"
-"Cluster4"
-"Cluster3"
-"Cluster4"->"Cluster3"
-"Cluster4"
-"Cluster0"
-"Cluster4"->"Cluster0"
-"Cluster9"
-".Ball:"
-"Cluster9"->".Ball:"
-"Cluster4"
-".Ball:"
-"Cluster4"->".Ball:"
-"Cluster4"
-"Cluster5"
-"Cluster4"->"Cluster5"
-"Cluster4"
-"Cluster6"
-"Cluster4"->"Cluster6"
-"Cluster2"
-"Cluster1"
-"Cluster2"->"Cluster1"
-"Cluster9"
-".Brick:"
-"Cluster9"->".Brick:"
-"Cluster5"
-".Ball:"
-"Cluster5"->".Ball:"
-"Cluster6"
-".Ball:"
-"Cluster6"->".Ball:"
-"Cluster1"
-"Cluster3"
-"Cluster1"->"Cluster3"
-"Cluster1"
-"Cluster1"
-"Cluster1"->"Cluster1"
-"Cluster0"
-"Cluster3"
-"Cluster0"->"Cluster3"
+digraph Tree3 {
+node0 -> node1
+node1 -> node2
+node2 -> node3
+node3 [label=9]
+node2 -> node4
+node4 -> node5
+node5 [label=8]
+node4 [label=6]
+node2 -> node6
+node6 [label=7]
+node2 -> node7
+node7 -> node8
+node8 [label=8]
+node7 [label=10]
+node2 -> node9
+node9 -> node10
+node10 [label=8]
+node9 [label=9]
+node2 -> node11
+node11 -> node12
+node12 [label=8]
+node11 [label=7]
+node2 -> node13
+node13 -> node14
+node14 [label=8]
+node13 [label=6]
+node2 -> node15
+node15 -> node16
+node16 [label=8]
+node15 [label=10]
+node2 -> node17
+node17 [label=7]
+node2 [label=2]
+node1 -> node18
+node18 -> node19
+node19 [label=6]
+node18 [label=6]
+node1 -> node20
+node20 -> node21
+node21 [label=6]
+node20 -> node22
+node22 -> node23
+node23 -> node24
+node24 [label=4]
+node23 [label=1]
+node22 -> node25
+node25 -> node26
+node26 [label=2]
+node25 [label=1]
+node22 -> node27
+node27 [label=4]
+node22 -> node28
+node28 -> node29
+node29 -> node30
+node30 [label=5]
+node29 -> node31
+node31 -> node32
+node32 [label=4]
+node31 -> node33
+node33 [label=3]
+node31 [label=4]
+node29 -> node34
+node34 -> node35
+node35 [label=4]
+node34 [label=2]
+node29 -> node36
+node36 [label=3]
+node29 -> node37
+node37 [label=3]
+node29 -> node38
+node38 [label=3]
+node29 -> node39
+node39 [label=3]
+node29 [label=4]
+node28 [label=4]
+node22 -> node40
+node40 [label=4]
+node22 -> node41
+node41 -> node42
+node42 -> node43
+node43 [label=5]
+node42 -> node44
+node44 -> node45
+node45 -> node46
+node46 [label=2]
+node45 -> node47
+node47 [label=2]
+node45 -> node48
+node48 [label=2]
+node45 -> node49
+node49 [label=2]
+node45 -> node50
+node50 [label=2]
+node45 -> node51
+node51 [label=2]
+node45 -> node52
+node52 [label=x]
+node45 -> node53
+node53 [label=y]
+node45 -> node54
+node54 [label=3]
+node45 -> node55
+node55 [label=3]
+node45 -> node56
+node56 [label=3]
+node45 -> node57
+node57 [label=3]
+node45 [label=5]
+node44 [label=5]
+node42 -> node58
+node58 [label=5]
+node42 [label=5]
+node41 [label=5]
+node22 [label=5]
+node20 [label=5]
+node1 [label=10]
+node0 -> node59
+node59 [label=1]
+node0 [label=1]
 }
-digraph "Frogger" {
-" main"
-".PlayFrogger:"
-" main"->".PlayFrogger:"
-".PlayFrogger:"
-".Cronometro:"
-".PlayFrogger:"->".Cronometro:"
-".PlayFrogger:"
-"Cluster6"
-".PlayFrogger:"->"Cluster6"
-".PlayFrogger:"
-".FroggerComponent:"
-".PlayFrogger:"->".FroggerComponent:"
-".Cronometro:"
-":"
-".Cronometro:"->":"
-".FroggerComponent:"
-"Cluster0"
-".FroggerComponent:"->"Cluster0"
-".FroggerComponent:"
-"Cluster6"
-".FroggerComponent:"->"Cluster6"
-".FroggerComponent:"
-".FroggerLevelEngine:"
-".FroggerComponent:"->".FroggerLevelEngine:"
-"Cluster7"
-"Cluster4"
-"Cluster7"->"Cluster4"
-"Cluster6"
-".FroggerLevel:"
-"Cluster6"->".FroggerLevel:"
-".FroggerLevelEngine:"
-"Cluster9"
-".FroggerLevelEngine:"->"Cluster9"
-".FroggerLevelEngine:"
-"Cluster3"
-".FroggerLevelEngine:"->"Cluster3"
-".FroggerLevelEngine:"
-".FroggerLevelEngine:"
-".FroggerLevelEngine:"->".FroggerLevelEngine:"
-"Cluster4"
-"Cluster0"
-"Cluster4"->"Cluster0"
-"Cluster4"
-"Cluster1"
-"Cluster4"->"Cluster1"
-"Cluster4"
-"Cluster9"
-"Cluster4"->"Cluster9"
-"Cluster4"
-"Cluster4"
-"Cluster4"->"Cluster4"
-"Cluster4"
-".FroggerLevelEngine:"
-"Cluster4"->".FroggerLevelEngine:"
-"Cluster4"
-"Cluster6"
-"Cluster4"->"Cluster6"
-"Cluster4"
-"Cluster3"
-"Cluster4"->"Cluster3"
-"Cluster4"
-"Cluster5"
-"Cluster4"->"Cluster5"
-"Cluster6"
-" access$1"
-"Cluster6"->" access$1"
-"Cluster6"
-" access$0"
-"Cluster6"->" access$0"
-".FroggerLevelEngine:"
-".TrafficPattern:"
-".FroggerLevelEngine:"->".TrafficPattern:"
-".FroggerLevelEngine:"
-".Frog:"
-".FroggerLevelEngine:"->".Frog:"
-"Cluster0"
-"Cluster0"
-"Cluster0"->"Cluster0"
-"Cluster1"
-"Cluster1"
-"Cluster1"->"Cluster1"
-"Cluster9"
-"Cluster9"
-"Cluster9"->"Cluster9"
-"Cluster5"
-"Cluster1"
-"Cluster5"->"Cluster1"
-".TrafficPattern:"
-"Cluster9"
-".TrafficPattern:"->"Cluster9"
-"Cluster0"
-"Cluster9"
-"Cluster0"->"Cluster9"
-"Cluster1"
-"Cluster9"
-"Cluster1"->"Cluster9"
-"Cluster0"
-"Cluster4"
-"Cluster0"->"Cluster4"
-"Cluster0"
-"Cluster3"
-"Cluster0"->"Cluster3"
-"Cluster2"
-"Cluster1"
-"Cluster2"->"Cluster1"
-"Cluster9"
-".Car:"
-"Cluster9"->".Car:"
-"Cluster9"
-".Frog:"
-"Cluster9"->".Frog:"
-"Cluster9"
-"Cluster3"
-"Cluster9"->"Cluster3"
-"Cluster9"
-"Cluster4"
-"Cluster9"->"Cluster4"
-"Cluster0"
-"Cluster7"
-"Cluster0"->"Cluster7"
-"Cluster1"
-"Cluster6"
-"Cluster1"->"Cluster6"
-"Cluster4"
-".Car:"
-"Cluster4"->".Car:"
-"Cluster7"
-".Car:"
-"Cluster7"->".Car:"
+digraph Tree4 {
+node0 -> node1
+node1 -> node2
+node2 [label=2]
+node1 -> node3
+node3 [label=5]
+node1 -> node4
+node4 [label=5]
+node1 [label=5]
+node0 [label=5]
 }
-digraph "MathHero" {
-" main"
-".MathHero:"
-" main"->".MathHero:"
-" main"
-"Cluster0"
-" main"->"Cluster0"
-".MathHero:"
-"Cluster3"
-".MathHero:"->"Cluster3"
-".MathHero:"
-".ListeningGameComponent:"
-".MathHero:"->".ListeningGameComponent:"
-".MathHero:"
-"Cluster5"
-".MathHero:"->"Cluster5"
-"Cluster3"
-".Player:"
-"Cluster3"->".Player:"
-"Cluster3"
-".Addition:"
-"Cluster3"->".Addition:"
-"Cluster3"
-".Level:"
-"Cluster3"->".Level:"
-"Cluster3"
-".Multiplication:"
-"Cluster3"->".Multiplication:"
-"Cluster3"
-".Subtraction:"
-"Cluster3"->".Subtraction:"
-"Cluster3"
-".Division:"
-"Cluster3"->".Division:"
-"Cluster3"
-".BigAddition:"
-"Cluster3"->".BigAddition:"
-"Cluster3"
-".BigMultiplication:"
-"Cluster3"->".BigMultiplication:"
-"Cluster3"
-".World:"
-"Cluster3"->".World:"
-"Cluster7"
-" access$1"
-"Cluster7"->" access$1"
-"Cluster7"
-" access$0"
-"Cluster7"->" access$0"
-".ListeningGameComponent:"
-".GameComponent:"
-".ListeningGameComponent:"->".GameComponent:"
-"Cluster5"
-":"
-"Cluster5"->":"
-"Cluster5"
-"Cluster7"
-"Cluster5"->"Cluster7"
-".Addition:"
-".Enemy:"
-".Addition:"->".Enemy:"
-".Multiplication:"
-".Enemy:"
-".Multiplication:"->".Enemy:"
-".Subtraction:"
-".Enemy:"
-".Subtraction:"->".Enemy:"
-".Division:"
-".Enemy:"
-".Division:"->".Enemy:"
-".BigAddition:"
-".Enemy:"
-".BigAddition:"->".Enemy:"
-".BigMultiplication:"
-".Enemy:"
-".BigMultiplication:"->".Enemy:"
-"Cluster7"
-"Cluster8"
-"Cluster7"->"Cluster8"
-"Cluster7"
-"Cluster4"
-"Cluster7"->"Cluster4"
-"Cluster7"
-"Cluster1"
-"Cluster7"->"Cluster1"
-" access$1"
-"Cluster6"
-" access$1"->"Cluster6"
-" access$0"
-"Cluster3"
-" access$0"->"Cluster3"
-"Cluster4"
-"Cluster4"
-"Cluster4"->"Cluster4"
-"Cluster1"
-"Cluster1"
-"Cluster1"->"Cluster1"
-"Cluster4"
-"Cluster3"
-"Cluster4"->"Cluster3"
-"Cluster4"
-"Cluster8"
-"Cluster4"->"Cluster8"
-"Cluster4"
-"Cluster9"
-"Cluster4"->"Cluster9"
-"Cluster4"
-"Cluster6"
-"Cluster4"->"Cluster6"
-"Cluster4"
-"Cluster0"
-"Cluster4"->"Cluster0"
-"Cluster1"
-"Cluster3"
-"Cluster1"->"Cluster3"
-"Cluster3"
-"Cluster8"
-"Cluster3"->"Cluster8"
-"Cluster1"
-"Cluster0"
-"Cluster1"->"Cluster0"
-"Cluster1"
-" arrowX1"
-"Cluster1"->" arrowX1"
-"Cluster1"
-" arrowY1"
-"Cluster1"->" arrowY1"
-"Cluster1"
-" arrowX2"
-"Cluster1"->" arrowX2"
-"Cluster1"
-" arrowY2"
-"Cluster1"->" arrowY2"
-"Cluster7"
-"Cluster7"
-"Cluster7"->"Cluster7"
-"Cluster7"
-"Cluster3"
-"Cluster7"->"Cluster3"
-"Cluster7"
-"Cluster9"
-"Cluster7"->"Cluster9"
-"Cluster9"
-"Cluster3"
-"Cluster9"->"Cluster3"
-"Cluster9"
-"Cluster8"
-"Cluster9"->"Cluster8"
-"Cluster7"
-"Cluster0"
-"Cluster7"->"Cluster0"
+digraph Tree5 {
+node0 -> node1
+node1 -> node2
+node2 [label=5]
+node1 -> node3
+node3 [label=5]
+node1 -> node4
+node4 -> node5
+node5 [label=5]
+node4 [label=5]
+node1 [label=5]
+node0 [label=5]
 }
-digraph "Pong" {
-" main"
-".PlayPong:"
-" main"->".PlayPong:"
-".PlayPong:"
-".PongComponent:"
-".PlayPong:"->".PongComponent:"
-".PongComponent:"
-".PongEnvironment:"
-".PongComponent:"->".PongEnvironment:"
-".PongComponent:"
-"Cluster6"
-".PongComponent:"->"Cluster6"
-"Cluster7"
-"Cluster4"
-"Cluster7"->"Cluster4"
-".PongEnvironment:"
-".Ball:"
-".PongEnvironment:"->".Ball:"
-".PongEnvironment:"
-".Paddle:"
-".PongEnvironment:"->".Paddle:"
-"Cluster4"
-"Cluster4"
-"Cluster4"->"Cluster4"
-"Cluster4"
-"Cluster3"
-"Cluster4"->"Cluster3"
-"Cluster4"
-"Cluster0"
-"Cluster4"->"Cluster0"
-"Cluster4"
-"Cluster1"
-"Cluster4"->"Cluster1"
-"Cluster4"
-"Cluster9"
-"Cluster4"->"Cluster9"
-"Cluster4"
-"Cluster8"
-"Cluster4"->"Cluster8"
-"Cluster0"
-"Cluster9"
-"Cluster0"->"Cluster9"
-"Cluster1"
-"Cluster9"
-"Cluster1"->"Cluster9"
-"Cluster2"
-"Cluster1"
-"Cluster2"->"Cluster1"
-"Cluster9"
-"Cluster0"
-"Cluster9"->"Cluster0"
-"Cluster9"
-"Cluster9"
-"Cluster9"->"Cluster9"
-"Cluster8"
-"Cluster3"
-"Cluster8"->"Cluster3"
-"Cluster4"
-".Ball:"
-"Cluster4"->".Ball:"
-"Cluster4"
-".Paddle:"
-"Cluster4"->".Paddle:"
-"Cluster8"
-".Ball:"
-"Cluster8"->".Ball:"
-"Cluster8"
-".Paddle:"
-"Cluster8"->".Paddle:"
-"Cluster1"
-"Cluster1"
-"Cluster1"->"Cluster1"
+digraph Tree6 {
+node0 -> node1
+node1 -> node2
+node2 -> node3
+node3 -> node4
+node4 [label=9]
+node3 [label=10]
+node2 -> node5
+node5 -> node6
+node6 [label=2]
+node5 [label=2]
+node2 -> node7
+node7 -> node8
+node8 [label=2]
+node7 [label=2]
+node2 [label=6]
+node1 [label=6]
+node0 [label=1]
 }
-digraph "Tetris" {
-" main"
-".PlayTetris:"
-" main"->".PlayTetris:"
-".PlayTetris:"
-".TetrisComponent:"
-".PlayTetris:"->".TetrisComponent:"
-".TetrisComponent:"
-".TetrisGrid:"
-".TetrisComponent:"->".TetrisGrid:"
-".TetrisComponent:"
-"Cluster3"
-".TetrisComponent:"->"Cluster3"
-"Cluster7"
-"Cluster4"
-"Cluster7"->"Cluster4"
-".TetrisGrid:"
-".BlockGrid:"
-".TetrisGrid:"->".BlockGrid:"
-"Cluster3"
-"Cluster3"
-"Cluster3"->"Cluster3"
-"Cluster4"
-"Cluster1"
-"Cluster4"->"Cluster1"
-"Cluster4"
-"Cluster4"
-"Cluster4"->"Cluster4"
-"Cluster4"
-"Cluster3"
-"Cluster4"->"Cluster3"
-"Cluster1"
-"Cluster1"
-"Cluster1"->"Cluster1"
-"Cluster1"
-"Cluster2"
-"Cluster1"->"Cluster2"
-"Cluster4"
-"Cluster2"
-"Cluster4"->"Cluster2"
-"Cluster4"
-"Cluster6"
-"Cluster4"->"Cluster6"
-"Cluster1"
-".TetrisBlock:"
-"Cluster1"->".TetrisBlock:"
-"Cluster2"
-"Cluster3"
-"Cluster2"->"Cluster3"
-"Cluster2"
-"Cluster5"
-"Cluster2"->"Cluster5"
-"Cluster2"
-"Cluster2"
-"Cluster2"->"Cluster2"
-"Cluster6"
-".TetrisBlock:"
-"Cluster6"->".TetrisBlock:"
-"Cluster2"
-"Cluster1"
-"Cluster2"->"Cluster1"
-".TetrisBlock:"
-".TetrisBlock:"
-".TetrisBlock:"->".TetrisBlock:"
-"Cluster5"
-"Cluster4"
-"Cluster5"->"Cluster4"
-"Cluster5"
-"Cluster3"
-"Cluster5"->"Cluster3"
-"Cluster3"
-".TetrisBlock:"
-"Cluster3"->".TetrisBlock:"
-"Cluster1"
-"Cluster4"
-"Cluster1"->"Cluster4"
-"Cluster1"
-"Cluster3"
-"Cluster1"->"Cluster3"
-"Cluster1"
-"Cluster6"
-"Cluster1"->"Cluster6"
-"Cluster7"
-"Cluster9"
-"Cluster7"->"Cluster9"
-"Cluster7"
-"Cluster1"
-"Cluster7"->"Cluster1"
-"Cluster7"
-"Cluster6"
-"Cluster7"->"Cluster6"
-"Cluster9"
-"Cluster9"
-"Cluster9"->"Cluster9"
-"Cluster9"
-"Cluster2"
-"Cluster9"->"Cluster2"
-"Cluster6"
-"Cluster6"
-"Cluster6"->"Cluster6"
-"Cluster6"
-"Cluster2"
-"Cluster6"->"Cluster2"
-"Cluster9"
-".TetrisBlock:"
-"Cluster9"->".TetrisBlock:"
-"Cluster4"
-".TetrisBlock:"
-"Cluster4"->".TetrisBlock:"
+digraph Tree7 {
+node0 -> node1
+node1 -> node2
+node2 -> node3
+node3 -> node4
+node4 -> node5
+node5 [label=8]
+node4 [label=4]
+node3 [label=4]
+node2 -> node6
+node6 [label=2]
+node2 -> node7
+node7 -> node8
+node8 [label=8]
+node7 [label=moveTo]
+node2 [label=4]
+node1 -> node9
+node9 -> node10
+node10 -> node11
+node11 -> node12
+node12 [label=8]
+node11 [label=4]
+node10 [label=4]
+node9 -> node13
+node13 [label=2]
+node9 -> node14
+node14 -> node15
+node15 [label=8]
+node14 [label=moveTo]
+node9 [label=4]
+node1 -> node16
+node16 -> node17
+node17 -> node18
+node18 [label=8]
+node17 [label=2]
+node16 -> node19
+node19 -> node20
+node20 -> node21
+node21 -> node22
+node22 [label=8]
+node21 [label=4]
+node20 [label=4]
+node19 [label=4]
+node16 -> node23
+node23 -> node24
+node24 -> node25
+node25 [label=2]
+node24 -> node26
+node26 [label=2]
+node24 [label=5]
+node23 -> node27
+node27 [label=2]
+node23 -> node28
+node28 [label=2]
+node23 [label=1]
+node16 [label=4]
+node1 [label=5]
+node0 [label=5]
+}
+digraph Tree8 {
+node0 -> node1
+node1 -> node2
+node2 -> node3
+node3 -> node4
+node4 [label=8]
+node3 -> node5
+node5 [label=10]
+node3 [label=6]
+node2 -> node6
+node6 [label=2]
+node2 [label=6]
+node1 [label=6]
+node0 [label=1]
+}
+digraph Tree9 {
+node0 -> node1
+node1 -> node2
+node2 [label=5]
+node1 -> node3
+node3 [label=5]
+node1 [label=5]
+node0 [label=5]
+}
+digraph Tree10 {
+node0 -> node1
+node1 -> node2
+node2 -> node3
+node3 -> node4
+node4 [label=6]
+node3 -> node5
+node5 -> node6
+node6 -> node7
+node7 [label=4]
+node6 [label=1]
+node5 -> node8
+node8 -> node9
+node9 [label=2]
+node8 [label=1]
+node5 -> node10
+node10 [label=4]
+node5 -> node11
+node11 -> node12
+node12 [label=4]
+node11 -> node13
+node13 [label=1]
+node11 -> node14
+node14 [label=4]
+node11 -> node15
+node15 [label=1]
+node11 -> node16
+node16 [label=4]
+node11 -> node17
+node17 -> node18
+node18 [label=5]
+node17 -> node19
+node19 [label=2]
+node17 -> node20
+node20 [label=2]
+node17 -> node21
+node21 [label=2]
+node17 [label=4]
+node11 -> node22
+node22 [label=4]
+node11 -> node23
+node23 [label=1]
+node11 -> node24
+node24 [label=2]
+node11 -> node25
+node25 [label=1]
+node11 -> node26
+node26 -> node27
+node27 [label=8]
+node26 [label=6]
+node11 -> node28
+node28 [label=8]
+node11 -> node29
+node29 [label=6]
+node11 [label=4]
+node5 -> node30
+node30 [label=4]
+node5 -> node31
+node31 -> node32
+node32 [label=5]
+node31 -> node33
+node33 [label=5]
+node31 -> node34
+node34 [label=5]
+node31 -> node35
+node35 [label=4]
+node31 [label=5]
+node5 [label=5]
+node3 [label=6]
+node2 [label=6]
+node1 [label=6]
+node0 -> node36
+node36 [label=1]
+node0 [label=1]
+}
+digraph Tree11 {
+node0 -> node1
+node1 -> node2
+node2 -> node3
+node3 -> node4
+node4 [label=getUnitDX]
+node3 -> node5
+node5 [label=getUnitDY]
+node3 [label=4]
+node2 -> node6
+node6 [label=2]
+node2 -> node7
+node7 -> node8
+node8 -> node9
+node9 [label=getUnitDX]
+node8 -> node10
+node10 [label=getUnitDY]
+node8 [label=4]
+node7 [label=5]
+node2 -> node11
+node11 -> node12
+node12 [label=2]
+node11 [label=5]
+node2 -> node13
+node13 -> node14
+node14 -> node15
+node15 [label=getUnitDX]
+node14 -> node16
+node16 [label=getUnitDY]
+node14 [label=4]
+node13 [label=5]
+node2 -> node17
+node17 -> node18
+node18 [label=8]
+node17 -> node19
+node19 [label=10]
+node17 [label=5]
+node2 -> node20
+node20 -> node21
+node21 [label=8]
+node20 -> node22
+node22 [label=10]
+node20 [label=5]
+node2 -> node23
+node23 [label=moveTo]
+node2 [label=4]
+node1 -> node24
+node24 [label=2]
+node1 -> node25
+node25 -> node26
+node26 [label=4]
+node25 [label=moveUp]
+node1 -> node27
+node27 -> node28
+node28 [label=4]
+node27 [label=4]
+node1 [label=4]
+node0 [label=5]
+}
+digraph Tree12 {
+node0 -> node1
+node1 -> node2
+node2 -> node3
+node3 -> node4
+node4 [label=8]
+node3 [label=4]
+node2 -> node5
+node5 -> node6
+node6 [label=8]
+node5 [label=4]
+node2 -> node7
+node7 [label=2]
+node2 [label=4]
+node1 -> node8
+node8 -> node9
+node9 -> node10
+node10 [label=8]
+node9 [label=4]
+node8 -> node11
+node11 -> node12
+node12 [label=8]
+node11 [label=4]
+node8 -> node13
+node13 [label=2]
+node8 [label=4]
+node1 -> node14
+node14 -> node15
+node15 [label=2]
+node14 -> node16
+node16 -> node17
+node17 [label=8]
+node16 [label=4]
+node14 -> node18
+node18 -> node19
+node19 -> node20
+node20 [label=6]
+node19 [label=4]
+node18 [label=4]
+node14 -> node21
+node21 -> node22
+node22 [label=2]
+node21 [label=3]
+node14 -> node23
+node23 -> node24
+node24 [label=6]
+node23 [label=3]
+node14 -> node25
+node25 -> node26
+node26 -> node27
+node27 -> node28
+node28 [label=8]
+node27 [label=4]
+node26 -> node29
+node29 -> node30
+node30 [label=2]
+node29 -> node31
+node31 [label=2]
+node29 [label=1]
+node26 [label=2]
+node25 -> node32
+node32 -> node33
+node33 [label=8]
+node32 [label=3]
+node25 -> node34
+node34 [label=2]
+node25 -> node35
+node35 -> node36
+node36 [label=8]
+node35 [label=2]
+node25 [label=2]
+node14 [label=4]
+node1 [label=4]
+node0 [label=5]
+}
+digraph Tree13 {
+node0 -> node1
+node1 -> node2
+node2 [label=5]
+node1 [label=3]
+node0 -> node3
+node3 -> node4
+node4 [label=5]
+node3 [label=3]
+node0 -> node5
+node5 -> node6
+node6 [label=5]
+node5 -> node7
+node7 -> node8
+node8 -> node9
+node9 -> node10
+node10 [label=10]
+node9 [label=10]
+node8 [label=10]
+node7 [label=8]
+node5 -> node11
+node11 -> node12
+node12 -> node13
+node13 -> node14
+node14 [label=10]
+node13 [label=10]
+node12 [label=4]
+node11 -> node15
+node15 -> node16
+node16 [label=5]
+node15 [label=2]
+node11 [label=4]
+node5 [label=4]
+node0 [label=1]
+}
+digraph Tree14 {
+node0 -> node1
+node1 -> node2
+node2 -> node3
+node3 -> node4
+node4 [label=8]
+node3 [label=8]
+node2 [label=6]
+node1 [label=6]
+node0 [label=1]
+}
+digraph Tree15 {
+node0 -> node1
+node1 -> node2
+node2 [label=5]
+node1 -> node3
+node3 [label=5]
+node1 [label=5]
+node0 [label=5]
+}
+digraph Tree16 {
+node0 -> node1
+node1 [label=1]
+node0 -> node2
+node2 [label=1]
+node0 [label=5]
+}
+digraph Tree17 {
+node0 -> node1
+node1 [label=1]
+node0 -> node2
+node2 [label=5]
+node0 -> node3
+node3 -> node4
+node4 [label=2]
+node3 -> node5
+node5 [label=2]
+node3 -> node6
+node6 [label=2]
+node3 -> node7
+node7 [label=2]
+node3 -> node8
+node8 [label=2]
+node3 -> node9
+node9 [label=2]
+node3 -> node10
+node10 [label=3]
+node3 [label=4]
+node0 -> node11
+node11 -> node12
+node12 [label=levelUp]
+node11 [label=2]
+node0 [label=1]
+}
+digraph Tree18 {
+node0 -> node1
+node1 -> node2
+node2 -> node3
+node3 -> node4
+node4 -> node5
+node5 [label=9]
+node4 [label=9]
+node3 [label=4]
+node2 -> node6
+node6 -> node7
+node7 [label=2]
+node6 -> node8
+node8 [label=2]
+node6 -> node9
+node9 [label=2]
+node6 -> node10
+node10 [label=2]
+node6 -> node11
+node11 [label=2]
+node6 -> node12
+node12 -> node13
+node13 [label=5]
+node12 [label=5]
+node6 [label=3]
+node2 -> node14
+node14 -> node15
+node15 -> node16
+node16 -> node17
+node17 -> node18
+node18 [label=9]
+node17 [label=9]
+node16 [label=3]
+node15 [label=3]
+node14 -> node19
+node19 -> node20
+node20 -> node21
+node21 [label=2]
+node20 -> node22
+node22 [label=2]
+node20 [label=2]
+node19 -> node23
+node23 -> node24
+node24 [label=2]
+node23 -> node25
+node25 -> node26
+node26 -> node27
+node27 [label=9]
+node26 [label=9]
+node25 [label=4]
+node23 [label=3]
+node19 -> node28
+node28 [label=2]
+node19 [label=3]
+node14 [label=3]
+node2 [label=4]
+node1 -> node29
+node29 -> node30
+node30 [label=3]
+node29 -> node31
+node31 [label=2]
+node29 -> node32
+node32 -> node33
+node33 -> node34
+node34 [label=2]
+node33 -> node35
+node35 [label=2]
+node33 -> node36
+node36 [label=2]
+node33 -> node37
+node37 [label=2]
+node33 -> node38
+node38 [label=2]
+node33 -> node39
+node39 -> node40
+node40 [label=5]
+node39 [label=5]
+node33 [label=3]
+node32 [label=3]
+node29 -> node41
+node41 -> node42
+node42 -> node43
+node43 [label=9]
+node42 [label=9]
+node41 [label=2]
+node29 [label=4]
+node1 [label=4]
+node0 [label=5]
+}
+digraph Tree19 {
+node0 -> node1
+node1 -> node2
+node2 [label=3]
+node1 -> node3
+node3 [label=5]
+node1 -> node4
+node4 -> node5
+node5 [label=2]
+node4 [label=2]
+node1 -> node6
+node6 -> node7
+node7 [label=2]
+node6 [label=2]
+node1 -> node8
+node8 -> node9
+node9 [label=2]
+node8 [label=2]
+node1 -> node10
+node10 -> node11
+node11 [label=2]
+node10 -> node12
+node12 [label=5]
+node10 [label=5]
+node1 [label=5]
+node0 [label=5]
+}
+digraph Tree20 {
+node0 -> node1
+node1 -> node2
+node2 -> node3
+node3 -> node4
+node4 -> node5
+node5 -> node6
+node6 -> node7
+node7 [label=10]
+node6 [label=10]
+node5 [label=10]
+node4 [label=8]
+node3 [label=8]
+node2 -> node8
+node8 -> node9
+node9 [label=2]
+node8 [label=2]
+node2 -> node10
+node10 -> node11
+node11 [label=2]
+node10 [label=2]
+node2 [label=8]
+node1 [label=8]
+node0 [label=1]
+}
+digraph Tree21 {
+node0 -> node1
+node1 -> node2
+node2 -> node3
+node3 -> node4
+node4 -> node5
+node5 [label=6]
+node4 [label=3]
+node3 -> node6
+node6 -> node7
+node7 [label=8]
+node6 [label=8]
+node3 [label=9]
+node2 [label=9]
+node1 [label=9]
+node0 [label=1]
+}
+digraph Tree22 {
+node0 -> node1
+node1 -> node2
+node2 -> node3
+node3 [label=5]
+node2 -> node4
+node4 -> node5
+node5 [label=5]
+node4 [label=2]
+node2 [label=5]
+node1 -> node6
+node6 [label=2]
+node1 [label=5]
+node0 [label=5]
 }
