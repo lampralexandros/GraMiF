@@ -10,6 +10,10 @@ import java.util.Set;
 import java.util.Vector;
 import java.util.regex.Pattern;
 
+import nodes.Node;
+import nodes.RootNode;
+import transformations.ExtractionWithInputPattern;
+
 
 // This class is basic class to extract tree structures from the input graphs
 
@@ -110,29 +114,35 @@ public class DotFileProcessTree {
 	 */
 	public void  dotProcessCreateTreesFromGspan(){
 		
-		List<String> treeRoots=new ArrayList<String>();	
 		HashMap<String,String> nodeToLabelMap=new HashMap<String,String>();
-		Pattern nodeId=Pattern.compile("Node_[0-9]*");
-		Pattern nodeLabel=Pattern.compile("label=\"[0-9]*\"");
-		String tempNodeId;
-		String tempNodeLabel;
+		HashMap<String,Vector<String>> connectionNodesMaps=new HashMap<String,Vector<String>>();
+		String tempLine;
+		Scanner scannerByLine;
 		
-		for( File fTemp:dotFileNames){
+		
+		for( File fTemp : dotFileNames){
 			try{
-				Scanner scannerByLine = new Scanner(fTemp);
+				scannerByLine = new Scanner(fTemp);
 				while(scannerByLine.hasNextLine()){
-						String tempLine=scannerByLine.nextLine();
+						tempLine=scannerByLine.nextLine();
 						// New graph
 						if(tempLine.contains("{")){
+							nodeToLabelMap.clear();
+							connectionNodesMaps.clear();
+							RootNode<String> root=new RootNode<String>(null,tempLine,null);
 							while(!tempLine.contains("}")){
-								// Not a connection 
-								if(!tempLine.contains("->")){
-									tempNodeId=scannerByLine.findInLine(nodeId);
-									tempNodeLabel=scannerByLine.findInLine(nodeLabel);
-									
-									tempLine=scannerByLine.nextLine();
-								}
+								processOneDotGraph(tempLine,nodeToLabelMap,connectionNodesMaps);
+								tempLine=scannerByLine.nextLine();
 							}
+							root.setGraphStatistics(tempLine);
+							root.setData(findRoot(connectionNodesMaps,nodeToLabelMap));
+							populateTree(root,connectionNodesMaps);
+							root.nodeDataStringTransformHashMap1(nodeToLabelMap);
+							ExtractionWithInputPattern patternLabelsFromGSPAN=new ExtractionWithInputPattern(Pattern.compile("[0-9][0-9]*"));
+							root.transform(patternLabelsFromGSPAN);
+							treeList.add(root);
+							
+
 						}
 					}
 				scannerByLine.close();
@@ -143,14 +153,64 @@ public class DotFileProcessTree {
 				e.printStackTrace();
 			}				
 		}
-		
 
-		
-	
 		}
+	/**
+	 * @author Alexandros Lampridis
+	 */
+	private void processOneDotGraph(String graphLine, HashMap<String,String> nodeToLabelMap, HashMap<String,Vector<String>> connectionNodesMaps){
+		Pattern nodeId=Pattern.compile("Node_[0-9]*");
+		Pattern nodeLabel=Pattern.compile("label=\"[0-9]*\"");
+		String tempNodeId;
+		String tempNodeId1;
+		String tempNodeLabel;
+		Scanner scanLine;
+		
+		scanLine =new Scanner(graphLine);
+		if(!graphLine.contains("{")){
+			// Not a connection 
+			if(!graphLine.contains("->")){
+				tempNodeId=scanLine.findInLine(nodeId);
+				tempNodeLabel=scanLine.findInLine(nodeLabel);
+				if( !(tempNodeId==null) & ! (tempNodeLabel==null) ) {
+					nodeToLabelMap.put(tempNodeId, tempNodeLabel);
+				}
+				
+			}
+			
+			if(graphLine.contains("->")){
+				tempNodeId=scanLine.findInLine(nodeId);
+				tempNodeId1=scanLine.findInLine(nodeId);
+				Vector<String> tempVec= connectionNodesMaps.get(tempNodeId);
+				if(tempVec==null){
+					tempVec=new Vector<String>();
+					tempVec.addElement(tempNodeId1);
+					connectionNodesMaps.put(tempNodeId, tempVec);
+				}else{
+					tempVec.add(tempNodeId1);
+				}
+			}
+
+		}
+		scanLine.close();
+	}
 	
-	
-	
+	private String findRoot(HashMap<String,Vector<String>> connectionNodesMaps, HashMap<String, String> nodeToLabelMap){
+		String rootLabel = null;
+		HashMap<String,Integer> tempHash=new HashMap<String,Integer>();
+		connectionNodesMaps.values().forEach(vec -> vec.forEach(str->tempHash.put(str, 1)));
+		
+		for(String temp:connectionNodesMaps.keySet()){
+			if(!tempHash.containsKey(temp)){
+				rootLabel=temp;
+			}
+		}
+		// One node only
+		if(rootLabel==null)
+			rootLabel=nodeToLabelMap.keySet().iterator().next();
+		return rootLabel;
+		
+	}
 	
 	// A wrapper function to recursively create the tree
 	private void createTrees(List<String> treeRoots, HashMap<String,Vector<String>> connection){

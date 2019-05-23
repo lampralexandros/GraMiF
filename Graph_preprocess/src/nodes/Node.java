@@ -1,19 +1,23 @@
+package nodes;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
-import transfomations.GeneralTransform;
+import transformations.GeneralTransform;
 
 
 // A classic node representing a tree
 
 public class Node<T> {
 
-	private List<Node<T>> children=new ArrayList<Node<T>>();
-	private Node<T> parent = null;
-	private T data=null;
+	protected List<Node<T>> children=new ArrayList<Node<T>>();
+	protected Node<T> parent = null;
+	protected T data=null;
 	
+	public Node(){
+		
+	}
 	public Node(T inputData, Node<T> inputParent){
 		parent=inputParent;
 		data=inputData;
@@ -110,7 +114,24 @@ public class Node<T> {
 		
 	}
 	
-
+	/**
+	 * Check in the HashMap for the String key and sets a string as the data 
+	 * @author Alexandros Lampridis
+	 * @param HashMap<String,String> hashMap
+	 */
+	public void nodeDataStringTransformHashMap1(HashMap<String,String> hashMap){
+		
+		if(hashMap.containsKey(this.getData())){
+			
+			this.setData((T) hashMap.get(this.getData()));
+		}
+		
+		if(!children.isEmpty()){
+			for(Node<T> child:children)
+				child.nodeDataStringTransformHashMap1(hashMap);
+		}
+		
+	}
 
 	//Serializer wrapper 
 	public void serializer(ArrayList<Vector<T>> dataSequence){
@@ -119,7 +140,7 @@ public class Node<T> {
 			
 	}
 	// A traverser to complement the serializer wrapper
-	private void traverserForSerializer(Vector<T> sequence,ArrayList<Vector<T>> dataSequence){	
+	protected void traverserForSerializer(Vector<T> sequence,ArrayList<Vector<T>> dataSequence){	
 		sequence.add(data);
 		if(!children.isEmpty()){
 			for(Node<T> child:children){

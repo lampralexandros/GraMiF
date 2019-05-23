@@ -1,10 +1,14 @@
 Cluster num=1
-keyTyped makeTestWindow testBallCatch reset access intersects isKeyPressed resetKeys main testReached keyPressed tryKey testForNewCar readPreference 
+makeTestWindow testBallCatch addCar upBet arrowX run main accelerate testReached initCars heal leftScore testForNewCar 
 Cluster num=2
-getLocation savePreference getBounds getGraphicsHeight isFilled isRowFilled getGraphicsWidth getSolution getProblem setComputer affect getPatterns getWidth getNumber getHeight getDistance getWorld getWinBounds addExp setPosition empty affectBall isGood getSpeeds addBall inizio getHitting setLocation getCanvas getMass getX getY setColor getLeft 
+getLocation getBounds getGraphicsHeight getGraphicsWidth getSolution getProblem getPatterns getWidth getNumber getHeight canFit getWorld getWinBounds getCanvas getMass getX getState getY getLeft 
 Cluster num=3
-createBrickLayer stop rowCheck lockWorkingBlock dead upBet clearRow canFit getSingleBlocks arrowX arrowY setWorkingBlock checkHighscore die hit downBet accelerate finished removeOldBricks getRandomBlock heal clear getSingleBlock 
+moveBalls moveBricks moveCars contains stop moveRight clearRow die downBet overlaps moveDown getSpeeds moveLeft inizio isMousePressed turnLeft move clear 
 Cluster num=4
-moveBalls moveBricks moveCars moveRight turnRight refreshImage addCar roll hitting standardDraw moveDown standardUpdates initCars moveLeft update isMousePressed turnLeft win move process 
+turnRight intersects rowCheck hitting rightScore arrowY checkHighscore bounceSide removeOldBricks bounceTop actionPerformed win readPreference 
 Cluster num=5
-paint drawLevel drawSquare contains rightScore updateState draw drawEnemies getLevel run overlaps bounceSide bounceTop actionPerformed start leftScore getState levelInit 
+createBrickLayer isFilled isRowFilled lockWorkingBlock getSingleBlocks updateState hit isGood standardUpdates update getRandomBlock getSingleBlock 
+Cluster num=6
+keyTyped drawSquare reset setComputer isKeyPressed dead drawEnemies setWorkingBlock resetKeys setPosition keyPressed standardDraw finished tryKey start setColor 
+Cluster num=7
+paint drawLevel access affect roll getLevel addExp empty affectBall addBall process levelInit 

@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 
+import nodes.Node;
+
 public class Main5 {
 
 	public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, IOException {

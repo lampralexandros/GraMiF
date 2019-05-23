@@ -1,4 +1,4 @@
-package transfomations;
+package transformations;
 
 public abstract class GeneralTransform<T> {
 

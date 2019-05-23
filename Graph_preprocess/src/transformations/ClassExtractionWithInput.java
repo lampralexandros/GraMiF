@@ -1,4 +1,4 @@
-package transfomations;
+package transformations;
 
 import java.util.Scanner;
 

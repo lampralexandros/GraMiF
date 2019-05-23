@@ -2,10 +2,11 @@ import java.util.ArrayList;
 
 import java.util.regex.Pattern;
 
-import transfomations.ClassExtraction;
-import transfomations.ClassExtractionWithInput;
-import transfomations.MethodExtraction;
-import transfomations.MethodExtractionWithInput;
+import nodes.Node;
+import transformations.ClassExtraction;
+import transformations.ClassExtractionWithInput;
+import transformations.MethodExtraction;
+import transformations.MethodExtractionWithInput;
 /**
  * There is a bug when you use extractClassLabel() before extractMethodLabel()
  * @author Alex Lampridis
