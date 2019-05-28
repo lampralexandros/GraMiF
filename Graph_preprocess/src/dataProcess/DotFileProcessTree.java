@@ -1,3 +1,4 @@
+package dataProcess;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -20,7 +21,7 @@ import transformations.ExtractionWithInputPattern;
 public class DotFileProcessTree {
 	
 	// List of the dot file names to be processed
-	private List<File> dotFileNames;
+	private List<File> dotFileNames=new ArrayList<File>();
 	// ArrayList of Tree structures with raw labels
 	private ArrayList<Node<String>> treeList;
 	
@@ -31,6 +32,15 @@ public class DotFileProcessTree {
 		dotFileNames= Arrays.asList(domainFolder.listFiles());
 		treeList=new ArrayList<Node<String>>();
 	}
+	
+	//Constructor input a folder name with dot file
+	public DotFileProcessTree(String fileName){
+		//initialize dotFileNames
+		File file=new File(fileName);
+		dotFileNames.add(file);
+		treeList=new ArrayList<Node<String>>();
+	}
+	
 	
 	// Set/Get
 	public void setTreeList(ArrayList<Node<String>> inputTreeList){
@@ -47,13 +57,18 @@ public class DotFileProcessTree {
 	 * Process to create Trees from Soot file.
 	 *@author Alexandros Lampridis
 	 */
-	public void  dotProcess_CreateTrees(){
-		HashMap<String,Vector<String>> connection=new HashMap<String,Vector<String>>();
+	public void  dotProcess_CreateTrees(boolean debugFlag){
+		final HashMap<String,Vector<String>> connection=new HashMap<String,Vector<String>>();
 		List<String> treeRoots=new ArrayList<String>();	
+		int counter=0;
 		// Accessing each dot file and creating a connection between a parent node and children nodes 
 		for( File fTemp:dotFileNames){
 			try{
 				Scanner scannerByLine = new Scanner(fTemp);
+				if(debugFlag==true){
+					counter=counter+1;
+					System.out.println("Processing Tree num: "+counter);
+				}
 				while(scannerByLine.hasNextLine()){
 					String tempLine=scannerByLine.nextLine();
 						if(tempLine.contains("->")){
@@ -86,12 +101,12 @@ public class DotFileProcessTree {
 		Set<String> startingSet=connection.keySet();
 		ArrayList<String> temp =new ArrayList<String>();
 		connection.values().forEach(VecStr->VecStr.forEach(StrTemp->temp.add(StrTemp)));
-		int counter;
+		int flagCounter;
 		for(String start:startingSet){
 				counter=0;
 				for(String end:temp){
 				if(start.compareTo(end)==0){
-					counter=counter+1;
+					flagCounter=counter+1;
 					break;
 				}
 			}

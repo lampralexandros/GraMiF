@@ -1,7 +1,9 @@
 package feature;
 
+import java.io.Serializable;
+
 //Class to represent a data point as a feature the name of the method as a string and its Feature vector from the Wordnet
-public class Feature {
+public class Feature implements Serializable {
 	private String Label;
 	private double[] LabelFeature;
 	//Constructor

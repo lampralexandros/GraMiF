@@ -28,7 +28,7 @@ public class ClusteringProcess {
 	private ArrayList<Feature> featureList;
 	private ArrayList<String> Labels;
 	private HashMap<String,Integer> labelClusterMap;
-	private ArrayList <Vector<Feature>> clusterFeatures;
+	private ArrayList <Vector<Feature>> clusterFeatures  ;
 	private int numClusters;
 	private String[] wordModelWords;
 	

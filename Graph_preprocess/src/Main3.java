@@ -2,6 +2,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import dataProcess.DotFileProcessTree;
+import dataProcess.TreeProcess;
 import nodes.Node;
 
 public class Main3 {
@@ -11,7 +13,7 @@ public class Main3 {
 		File folder=new File("domain");
 		DotFileProcessTree GameDevDomain=new DotFileProcessTree(folder);
 		GameDevDomain.printTheDotFiles();
-		GameDevDomain.dotProcess_CreateTrees();
+		GameDevDomain.dotProcess_CreateTrees(false);
 		
 		ArrayList<Node<String>> treeList=GameDevDomain.getTreeList();
 		
@@ -35,7 +37,7 @@ public class Main3 {
 		
 		//Classes names process
 		DotFileProcessTree GameDevDomain2=new DotFileProcessTree(folder);
-		GameDevDomain2.dotProcess_CreateTrees();
+		GameDevDomain2.dotProcess_CreateTrees(false);
 		
 		TreeProcess Process2=new TreeProcess(GameDevDomain2.getTreeList());
 		Process2.extractClassLabel();
@@ -61,8 +63,8 @@ public class Main3 {
 		
 		SequenceMining miner=new SequenceMining(Clusterer.getNumClusters());
 		
-		AnalysisTFIDF analyzer=new AnalysisTFIDF(Clusterer.getClusterFeatures(),Clusterer.getWordModel());
-		analyzer.perfomTFIDF();
+		//AnalysisTFIDF analyzer=new AnalysisTFIDF(Clusterer.getClusterFeatures(),Clusterer.getWordModel());
+		//analyzer.perfomTFIDF();
 		
 		ArrayList<Vector<String>> sequencesList=new ArrayList<Vector<String>>();
 		for(Node<String> tempTree :Process1.getTreeList()){

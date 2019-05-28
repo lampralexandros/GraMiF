@@ -1,3 +1,4 @@
+package dataProcess;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -15,6 +16,7 @@ import java.util.Set;
 import java.util.Vector;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
 
 import feature.Feature;
 import net.sf.javaml.clustering.Clusterer;
@@ -343,7 +345,7 @@ public class DotFileProcess {
 		// Passing first time to calculate all the dimensions 
 		while(iter.hasNext()){
 			Temp=iter.next();
-			WordModel.commonWordNet.getSentenceFeatureVector(Temp);
+//			WordModel.commonWordNet.getSentenceFeatureVector(Temp);
 			}
 		// Passing Second time to create the Features 
 		iter=UniqueLabels.iterator();
@@ -351,9 +353,9 @@ public class DotFileProcess {
 		ArrayList<Feature> AllFeature=new ArrayList<Feature>();
 		while(iter.hasNext()){
 			Temp=iter.next();
-			LabelsFeature.add(WordModel.commonWordNet.getSentenceFeatureVector(Temp));
-			tempFeature=new Feature(Temp,WordModel.commonWordNet.getSentenceFeatureVector(Temp));
-			AllFeature.add(tempFeature);
+	//		LabelsFeature.add(WordModel.commonWordNet.getSentenceFeatureVector(Temp));
+	//		tempFeature=new Feature(Temp,WordModel.commonWordNet.getSentenceFeatureVector(Temp));
+	//		AllFeature.add(tempFeature);
 		}
 		// Removing Duplicate Feature and populating the UniqueFeatures and the DuplicateFeatures based on feature Vector
 		removeDuplicateFeature(AllFeature);		

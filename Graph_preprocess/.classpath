@@ -13,5 +13,6 @@
 	<classpathentry kind="src" path="/stringManager"/>
 	<classpathentry kind="lib" path="C:/SPB_Data/git/GraMiF/Graph_preprocess/spmf.jar"/>
 	<classpathentry kind="lib" path="C:/SPB_Data/git/GraMiF/Graph_preprocess/parsemis-2008-12-01.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/apted"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

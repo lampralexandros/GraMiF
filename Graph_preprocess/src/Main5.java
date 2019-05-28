@@ -3,8 +3,13 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Vector;
 
+import dataProcess.DotFileProcessTree;
+import dataProcess.TreeProcess;
+import feature.Feature;
 import nodes.Node;
 
 public class Main5 {
@@ -13,7 +18,7 @@ public class Main5 {
 		File folder=new File("domain");
 		DotFileProcessTree GameDevDomain=new DotFileProcessTree(folder);
 		GameDevDomain.printTheDotFiles();
-		GameDevDomain.dotProcess_CreateTrees();
+		GameDevDomain.dotProcess_CreateTrees(false);
 		// First the whole world model is created
 		TreeProcess tempProcess=new TreeProcess(GameDevDomain.getTreeList());
 		tempProcess.extractMethodLabel();
@@ -24,7 +29,16 @@ public class Main5 {
 				
 		HashMap<String,Integer> wholeLabelCluster=new HashMap<String,Integer>();
 		
+		
+		
 		wholeLabelCluster=Utilities.mergeHashMapsIntoOne(mapMethodLabelCluster, mapClassLabelCluster);
+		
+		ArrayList <Vector<Feature>> clusterFeatures= Utilities.inputToMemory2("MethodClusterFeatures");
+		
+		
+		
+		
+		
 		
 		// traversing the tree with a hash Map
 		for( Node<String> rootNode : tempProcess.getTreeList()){

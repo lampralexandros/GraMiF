@@ -1,3 +1,4 @@
+package dataProcess;
 import java.util.ArrayList;
 
 import java.util.regex.Pattern;
@@ -18,6 +19,10 @@ public class TreeProcess {
 		
 	ArrayList<Node<String>> pTreeList;
 	
+	public TreeProcess(){
+		pTreeList=new ArrayList<Node<String>>();
+	}
+	
 	public TreeProcess(ArrayList<Node<String>> treeList){
 		pTreeList=new ArrayList<Node<String>>();
 		treeList.forEach(node->pTreeList.add(node));	
@@ -34,7 +39,7 @@ public class TreeProcess {
 	
 	
 	public void extractMethodLabel(){
-		Pattern methodName=Pattern.compile(" [<]*[a-zA-Z]*[$]*[0-9]*[>]*[(]");
+		Pattern methodName=Pattern.compile(" [[<]*[a-zA-Z]*[$]*[0-9]*[>]*[_]*]*[(]");
 		MethodExtraction transformer=new MethodExtraction(methodName);
 		for(Node<String> tNode : pTreeList){
 			tNode.transform(transformer);
@@ -42,7 +47,7 @@ public class TreeProcess {
 	}
 	
 	public void extractMethodLabel(String input){
-		Pattern methodName=Pattern.compile(" [<]*[a-zA-Z]*[$]*[0-9]*[>]*[(]");
+		Pattern methodName=Pattern.compile(" [[<]*[a-zA-Z]*[$]*[0-9]*[>]*[_]*]*[(]");
 		MethodExtractionWithInput transformer=new MethodExtractionWithInput(methodName,input);
 		for(Node<String> tNode : pTreeList){
 			tNode.transform(transformer);
@@ -64,6 +69,12 @@ public class TreeProcess {
 		}
 	}
 	
-
+	public void addTrees(ArrayList<Node<String>> inputTreeList){
+		pTreeList.addAll(inputTreeList);
+	}
+	
+	public void addTrees(Node<String> singleTree){
+		pTreeList.add(singleTree);
+	}
 	
 }

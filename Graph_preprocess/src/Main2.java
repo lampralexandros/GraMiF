@@ -2,6 +2,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import dataProcess.DotFileProcessTree;
+import dataProcess.TreeProcess;
 import nodes.Node;
 
 
@@ -12,7 +14,7 @@ public class Main2 {
 		File folder=new File("domain");
 		DotFileProcessTree GameDevDomain=new DotFileProcessTree(folder);
 		GameDevDomain.printTheDotFiles();
-		GameDevDomain.dotProcess_CreateTrees();
+		GameDevDomain.dotProcess_CreateTrees(false);
 		
 		ArrayList<Node<String>> treeList=GameDevDomain.getTreeList();
 		TreeProcess Process1=new TreeProcess(treeList);

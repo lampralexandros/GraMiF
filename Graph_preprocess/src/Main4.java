@@ -3,6 +3,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import dataProcess.DotFileProcessTree;
+import dataProcess.TreeProcess;
+
 
 public class Main4 {
 
@@ -10,7 +13,7 @@ public class Main4 {
 		File folder=new File("domain");
 		DotFileProcessTree GameDevDomain=new DotFileProcessTree(folder);
 		GameDevDomain.printTheDotFiles();
-		GameDevDomain.dotProcess_CreateTrees();
+		GameDevDomain.dotProcess_CreateTrees(false);
 		
 		// First the whole world model is created
 		TreeProcess tempProcess=new TreeProcess(GameDevDomain.getTreeList());
@@ -25,7 +28,7 @@ public class Main4 {
 		
 		// Then the methods labels are clustered 
 		GameDevDomain.getTreeList().clear();
-		GameDevDomain.dotProcess_CreateTrees();
+		GameDevDomain.dotProcess_CreateTrees(false);
 		TreeProcess methodProcess=new TreeProcess(GameDevDomain.getTreeList());
 		methodProcess.extractMethodLabel();
 		methodProcess.extractClassLabel(null);
@@ -41,7 +44,7 @@ public class Main4 {
 		
 		// Then the class labels are clustered 
 		GameDevDomain.getTreeList().clear();
-		GameDevDomain.dotProcess_CreateTrees();
+		GameDevDomain.dotProcess_CreateTrees(false);
 		TreeProcess classProcess=new TreeProcess(GameDevDomain.getTreeList());
 		classProcess.extractClassLabel();
 		classProcess.extractMethodLabel(null);
@@ -68,9 +71,20 @@ public class Main4 {
 		outlierProcess2.printOutliers();
 		outlierProcess2.saveIntoFileClusters("cleanMethodClusters.txt");
 		methodClusterer.saveIntoFileClusters("methodClusters2.txt");
+		
+		//peform TFIDF
+		AnalysisTFIDF analizerClass=new AnalysisTFIDF(outlierProcess1.getClusterFeature(),tempClusterer.getWordModel());
+		analizerClass.perfomTFIDF();
+		AnalysisTFIDF analizerMethod=new AnalysisTFIDF(outlierProcess2.getClusterFeature(),tempClusterer.getWordModel());
+		analizerMethod.perfomTFIDF();
+		
+		Utilities.outputToFile2("hashClusterClassToCommonTerm", analizerClass.getMapClustersCommonTerms());
+		Utilities.outputToFile2("hashClusterMethodToCommonTerm", analizerMethod.getMapClustersCommonTerms());
+	  
 		Utilities.outputToFile("hashClassMapLabelCluster1", classClusterer.getLabelClusterMap());
+		Utilities.outputToFile("ClassClusterFeatures",methodClusterer.getClusterFeatures());
 		Utilities.outputToFile("hashMethodMapLabelCluster1", methodClusterer.getLabelClusterMap());
-
+		Utilities.outputToFile("MethodClusterFeatures",methodClusterer.getClusterFeatures());
 //		ObjectOutputStream oos,oos1;
 //		try {
 //			oos = new ObjectOutputStream(new FileOutputStream("hashClassMapLabelCluster"));

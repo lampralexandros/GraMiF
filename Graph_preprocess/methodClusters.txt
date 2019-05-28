@@ -1,14 +1,10 @@
 Cluster num=1
-makeTestWindow testBallCatch addCar upBet arrowX run main accelerate testReached initCars heal leftScore testForNewCar 
+keyTyped isFilled isRowFilled turnRight rowCheck isKeyPressed affect upBet checkHighscore resetKeys die empty keyPressed affectBall isGood standardUpdates update tryKey process readPreference 
 Cluster num=2
-getLocation getBounds getGraphicsHeight getGraphicsWidth getSolution getProblem refreshImage getPatterns getWidth getNumber getHeight canFit getDistance getWorld getWinBounds getHitting getCanvas getMass getX getState getY getLeft 
+savePreference drawLevel drawSquare addCar dead rightScore draw drawEnemies arrowX getLevel addExp run main standardDraw finished initCars addBall win leftScore levelInit 
 Cluster num=3
-moveBalls moveBricks moveCars contains stop moveRight clearRow die downBet overlaps moveDown getSpeeds moveLeft inizio isMousePressed turnLeft move clear 
+paint stop refreshImage clearRow arrowY overlaps bounceSide removeOldBricks bounceTop inizio isMousePressed clear 
 Cluster num=4
-turnRight intersects rowCheck hitting rightScore arrowY checkHighscore bounceSide removeOldBricks bounceTop actionPerformed win readPreference 
+getLocation getBounds getGraphicsHeight makeTestWindow getGraphicsWidth getSolution getProblem testBallCatch access intersects getPatterns getWidth hitting getNumber getHeight canFit getSingleBlocks getDistance updateState getWorld getWinBounds hit testReached getSpeeds getHitting getRandomBlock heal getCanvas getMass start getSingleBlock getX getState testForNewCar getY getLeft 
 Cluster num=5
-createBrickLayer isFilled isRowFilled lockWorkingBlock getSingleBlocks updateState hit isGood standardUpdates update getRandomBlock getSingleBlock 
-Cluster num=6
-savePreference keyTyped drawSquare reset setComputer isKeyPressed dead draw drawEnemies setWorkingBlock resetKeys setPosition keyPressed standardDraw finished tryKey setLocation start setColor 
-Cluster num=7
-paint drawLevel access affect roll getLevel addExp empty affectBall addBall process levelInit 
+moveBalls createBrickLayer moveBricks moveCars contains moveRight reset setComputer roll lockWorkingBlock setWorkingBlock setPosition downBet accelerate moveDown moveLeft actionPerformed setLocation turnLeft move setColor 
