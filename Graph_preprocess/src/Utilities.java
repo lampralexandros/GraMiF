@@ -175,6 +175,16 @@ public class Utilities {
 	}
 	
 	
+	public static ArrayList<String> exportLabelTreesToBracketForm(ArrayList<Node<String>> listOfTrees){
+		ArrayList<String> treeOfBracketForm = new ArrayList<String>();
+		for(Node<String> rootNode : listOfTrees){
+			treeOfBracketForm.add(exportALabelTreeIntoBracketForm(rootNode));
+		}
+		return treeOfBracketForm;
+	}
+	
+	
+	
 	public static String exportALabelTreeIntoBracketForm(Node<String> rootNode){
 		String output="";
 		return traverseTreeToBracketForm(output,rootNode);
@@ -202,7 +212,16 @@ public class Utilities {
 			}
 			System.out.println("]");
 		}
-		
+	}
+	
+	public static void print2dArray(float[][] array,int rows,int cols){
+		for(int i=0 ; i < rows ; i++){
+			System.out.print("[ ");
+			for(int j=0 ; j < cols ; j++){
+				System.out.print(array[i][j]+" ");
+			}
+			System.out.println("]");
+		}
 	}
 	
 	public static void printDotFileAsInputToGspan(String fileName, ArrayList<Node<String>> treeList ,HashMap<String,Integer> wholeLabelCluster ) throws IOException{

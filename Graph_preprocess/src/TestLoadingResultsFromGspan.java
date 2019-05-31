@@ -1,5 +1,6 @@
 
 import java.io.File;
+import java.util.ArrayList;
 
 import at.unisalzburg.dbresearch.apted.costmodel.StringUnitCostModel;
 import at.unisalzburg.dbresearch.apted.distance.APTED;
@@ -17,14 +18,15 @@ public class TestLoadingResultsFromGspan {
 		gspanResults.printTheDotFiles();
 		gspanResults.dotProcessCreateTreesFromGspan();
 		
-		String temp1=Utilities.exportALabelTreeIntoBracketForm(gspanResults.getTreeList().get(0));
-		String temp2=Utilities.exportALabelTreeIntoBracketForm(gspanResults.getTreeList().get(1));
-		System.out.println(temp1+" "+temp2);
+//		String temp1=Utilities.exportALabelTreeIntoBracketForm(gspanResults.getTreeList().get(0));
+//		String temp2=Utilities.exportALabelTreeIntoBracketForm(gspanResults.getTreeList().get(1));
+//		System.out.println(temp1+" "+temp2);
+		ArrayList<String> treeBracketForm=Utilities.exportLabelTreesToBracketForm(gspanResults.getTreeList());
 		
 		// Parse the input and transform to Node objects storing node information in MyNodeData.
 		BracketStringInputParser parser = new BracketStringInputParser();
-		Node<StringNodeData> t1 = parser.fromString(temp1);
-		Node<StringNodeData> t2 = parser.fromString(temp2);
+		Node<StringNodeData> t1 = parser.fromString(treeBracketForm.get(0));
+		Node<StringNodeData> t2 = parser.fromString(treeBracketForm.get(1));
 		// Initialise APTED.
 		APTED<StringUnitCostModel, StringNodeData> apted = new APTED<>(new StringUnitCostModel());
 		// Execute APTED.
