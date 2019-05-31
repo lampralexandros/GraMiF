@@ -1,10 +1,16 @@
 Cluster num=1
-keyTyped isFilled isRowFilled turnRight rowCheck isKeyPressed affect upBet checkHighscore resetKeys die empty keyPressed affectBall isGood standardUpdates update tryKey process readPreference 
+keyTyped reset rowCheck refreshImage isKeyPressed upBet checkHighscore resetKeys accelerate keyPressed tryKey isMousePressed heal 
 Cluster num=2
-savePreference drawLevel drawSquare addCar dead rightScore draw drawEnemies arrowX getLevel addExp run main standardDraw finished initCars addBall win leftScore levelInit 
+addCar roll canFit addExp initCars removeOldBricks addBall inizio 
 Cluster num=3
-paint stop refreshImage clearRow arrowY overlaps bounceSide removeOldBricks bounceTop inizio isMousePressed clear 
+moveBalls moveBricks moveCars stop moveRight intersects die moveDown getSpeeds moveLeft win move readPreference 
 Cluster num=4
-getLocation getBounds getGraphicsHeight makeTestWindow getGraphicsWidth getSolution getProblem testBallCatch access intersects getPatterns getWidth hitting getNumber getHeight canFit getSingleBlocks getDistance updateState getWorld getWinBounds hit testReached getSpeeds getHitting getRandomBlock heal getCanvas getMass start getSingleBlock getX getState testForNewCar getY getLeft 
+getLocation getBounds createBrickLayer getGraphicsHeight getGraphicsWidth getSolution getProblem getPatterns lockWorkingBlock getWidth getNumber getHeight getSingleBlocks getDistance arrowX getLevel getWorld getWinBounds getHitting getRandomBlock getCanvas getMass start getSingleBlock getX getState getY 
 Cluster num=5
-moveBalls createBrickLayer moveBricks moveCars contains moveRight reset setComputer roll lockWorkingBlock setWorkingBlock setPosition downBet accelerate moveDown moveLeft actionPerformed setLocation turnLeft move setColor 
+drawLevel drawSquare makeTestWindow contains testBallCatch access draw drawEnemies main testReached isGood testForNewCar levelInit 
+Cluster num=6
+standardDraw finished standardUpdates bounceSide bounceTop turnLeft leftScore getLeft 
+Cluster num=7
+savePreference isFilled isRowFilled turnRight affect rightScore clearRow updateState run empty downBet overlaps affectBall update process clear 
+Cluster num=8
+paint setComputer dead hitting arrowY setWorkingBlock setPosition hit actionPerformed setLocation setColor 

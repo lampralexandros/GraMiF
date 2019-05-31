@@ -1,13 +1,16 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Vector;
 
+import dataProcess.DotFileProcessTree;
 import feature.Feature;
 import nodes.Node;
 
@@ -40,6 +43,7 @@ public class Utilities {
 		oos.writeObject(hashMapToBeSaved);
 		oos.close();
 	}
+	
 	/**
 	 * This function saves a ArrayCluster  into a file with the given name
 	 * @author Alexandros Lampridis
@@ -54,6 +58,19 @@ public class Utilities {
 		oos.close();
 	}
 	
+	/**
+	 * This function saves a Array list of Trees into a file with the given name
+	 * @author Alexandros Lampridis
+	 * @param String fileName
+	 * @param ArrayList Nodes of Strings to be saved
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	public static void outputToFile2(String fileName, ArrayList <Node<String>> TreesToBeSaved) throws FileNotFoundException, IOException{
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName));
+		oos.writeObject(TreesToBeSaved);
+		oos.close();
+	}
 	
 	/**
 	 * This function returns a hashmap from a file with the given name
@@ -71,6 +88,8 @@ public class Utilities {
 		return labelClusterMap;
 	}
 	
+	
+	
 	/**
 	 * This function returns a hashmap from a file with the given name
 	 * @author Alexandros Lampridis
@@ -87,6 +106,42 @@ public class Utilities {
 		ois.close();
 		return clusterFeatures;
 	}
+	
+	/**
+	 * This function returns a hashmap with keys Integers to values Vectors of Strings from a file with the given name
+	 * @author Alexandros Lampridis
+	 * @param String fileName
+	 * @return 
+	 * @return ArrayList of cluster with labels
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
+	public static HashMap<Integer,Vector<String>> inputToMemory3(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException{
+		ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName));
+		HashMap<Integer,Vector<String>> clusterFeatures=(HashMap<Integer,Vector<String>>) ois.readObject();
+		ois.close();
+		return clusterFeatures;
+	}
+	
+	/**
+	 * This function returns an array list with nodes of Strings, representing trees, from a file with the given name.
+	 * @author Alexandros Lampridis
+	 * @param String fileName
+	 * @return 
+	 * @return ArrayList of cluster with labels
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
+	public static ArrayList<Node<String>> inputToMemory4(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException{
+		ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName));
+		ArrayList<Node<String>> treeList=(ArrayList<Node<String>>) ois.readObject();
+		ois.close();
+		return treeList;
+	}
+	
+	
 	
 	/**
 	 * This function merge two hashMaps into one keeping the cluster number unique (<Label as key, Cluster number as value>) 
@@ -138,5 +193,36 @@ public class Utilities {
 		return output.concat("}");
 		
 	}
+	
+	public static void print2dArray(double[][] array,int rows,int cols){
+		for(int i=0 ; i < rows ; i++){
+			System.out.print("[ ");
+			for(int j=0 ; j < cols ; j++){
+				System.out.print(array[i][j]+" ");
+			}
+			System.out.println("]");
+		}
+		
+	}
+	
+	public static void printDotFileAsInputToGspan(String fileName, ArrayList<Node<String>> treeList ,HashMap<String,Integer> wholeLabelCluster ) throws IOException{
+	
+	for( Node<String> rootNode : treeList){
+		rootNode.nodeDataStringTransformHashMap(wholeLabelCluster);
+	}
+	
+	FileWriter fileWriter=new FileWriter(fileName);
+	PrintWriter printWriter = new PrintWriter(fileWriter);
+	int counter=0;
+	for( Node<String> rootNode : treeList){
+		printWriter.println("digraph Tree"+counter+" {");
+		DotFileProcessTree.createDotFilesLikeTrees(rootNode, 0, printWriter);
+		printWriter.println("}");
+		counter=counter+1;
+	}
+	printWriter.close();
+	fileWriter.close();
+	}
+	
 	
 }

@@ -1,4 +1,5 @@
 package nodes;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +10,7 @@ import transformations.GeneralTransform;
 
 // A classic node representing a tree
 
-public class Node<T> {
+public class Node<T> implements Serializable {
 
 	protected List<Node<T>> children=new ArrayList<Node<T>>();
 	protected Node<T> parent = null;

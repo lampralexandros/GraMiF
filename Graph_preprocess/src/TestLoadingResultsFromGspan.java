@@ -9,7 +9,7 @@ import at.unisalzburg.dbresearch.apted.parser.BracketStringInputParser;
 import dataProcess.DotFileProcessTree;
 
 
-public class TestLodingResultsFromGspan {
+public class TestLoadingResultsFromGspan {
 
 	public static void main(String[] args) {
 		File folder=new File("results_from_gspan");

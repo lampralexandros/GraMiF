@@ -1,3 +1,6 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Vector;
@@ -38,7 +41,6 @@ public class AnalysisTFIDF {
 	 * @return
 	 */
 	public void perfomTFIDF(){
-		String temps = null;
 		int clusterCounter=1;
 		double[] idf=idf();
 		double[] tfidf;
@@ -69,18 +71,9 @@ public class AnalysisTFIDF {
 					answer[i]=0;
 				}		
 			}
-			clusterCounter=clusterCounter+1;
 			mapClustersCommonTerms.put(clusterCounter, returnTermsAsVector(answer));
-			
-			
-			
+			clusterCounter=clusterCounter+1;
 		}
-		
-		
-		
-		
-		
-		
 	}
 	
 	
@@ -229,6 +222,28 @@ public class AnalysisTFIDF {
 			}
 		}
 		return tempVec;
+	}
+	
+	public void printTheCommonTerms(String fileName) throws IOException{
+		FileWriter fileWriter=new FileWriter(fileName);
+		PrintWriter printWriter = new PrintWriter(fileWriter);
+		for(Integer key : mapClustersCommonTerms.keySet()){
+			Vector<String> tempV= mapClustersCommonTerms.get(key);
+			printWriter.println("Key="+key+" {");
+			if( tempV == null){
+				printWriter.println("[]");
+			}
+			else{
+				for(String tempS : tempV){
+				printWriter.print(tempS+", ");	
+				}
+			}
+			printWriter.println(" }");
+			
+		}
+		
+		printWriter.close();
+		fileWriter.close();
 	}
 	
 }

@@ -75,8 +75,11 @@ public class Main4 {
 		//peform TFIDF
 		AnalysisTFIDF analizerClass=new AnalysisTFIDF(outlierProcess1.getClusterFeature(),tempClusterer.getWordModel());
 		analizerClass.perfomTFIDF();
+		analizerClass.printTheCommonTerms("ClassCommonTerms.txt");
+		
 		AnalysisTFIDF analizerMethod=new AnalysisTFIDF(outlierProcess2.getClusterFeature(),tempClusterer.getWordModel());
 		analizerMethod.perfomTFIDF();
+		analizerMethod.printTheCommonTerms("MethodCommonTerms.txt");
 		
 		Utilities.outputToFile2("hashClusterClassToCommonTerm", analizerClass.getMapClustersCommonTerms());
 		Utilities.outputToFile2("hashClusterMethodToCommonTerm", analizerMethod.getMapClustersCommonTerms());
@@ -85,6 +88,8 @@ public class Main4 {
 		Utilities.outputToFile("ClassClusterFeatures",methodClusterer.getClusterFeatures());
 		Utilities.outputToFile("hashMethodMapLabelCluster1", methodClusterer.getLabelClusterMap());
 		Utilities.outputToFile("MethodClusterFeatures",methodClusterer.getClusterFeatures());
+		
+		Utilities.outputToFile2("ArrayListOfTrees", tempProcess.getTreeList());
 //		ObjectOutputStream oos,oos1;
 //		try {
 //			oos = new ObjectOutputStream(new FileOutputStream("hashClassMapLabelCluster"));
