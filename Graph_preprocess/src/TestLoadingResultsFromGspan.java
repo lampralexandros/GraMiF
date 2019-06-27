@@ -8,6 +8,7 @@ import at.unisalzburg.dbresearch.apted.node.Node;
 import at.unisalzburg.dbresearch.apted.node.StringNodeData;
 import at.unisalzburg.dbresearch.apted.parser.BracketStringInputParser;
 import dataProcess.DotFileProcessTree;
+import utilities.Utilities;
 
 
 public class TestLoadingResultsFromGspan {

@@ -153,7 +153,7 @@ public class DotFileProcessTree {
 							root.setData(findRoot(connectionNodesMaps,nodeToLabelMap));
 							populateTree(root,connectionNodesMaps);
 							root.nodeDataStringTransformHashMap1(nodeToLabelMap);
-							ExtractionWithInputPattern patternLabelsFromGSPAN=new ExtractionWithInputPattern(Pattern.compile("[0-9][0-9]*"));
+							ExtractionWithInputPattern patternLabelsFromGSPAN=new ExtractionWithInputPattern(Pattern.compile("label=\"[0-9]*[a-z]*[A-Z]*\""));
 							root.transform(patternLabelsFromGSPAN);
 							treeList.add(root);
 							
@@ -175,7 +175,7 @@ public class DotFileProcessTree {
 	 */
 	private void processOneDotGraph(String graphLine, HashMap<String,String> nodeToLabelMap, HashMap<String,Vector<String>> connectionNodesMaps){
 		Pattern nodeId=Pattern.compile("Node_[0-9]*");
-		Pattern nodeLabel=Pattern.compile("label=\"[0-9]*\"");
+		Pattern nodeLabel=Pattern.compile("label=\"[0-9]*[a-z]*[A-Z]*\"");
 		String tempNodeId;
 		String tempNodeId1;
 		String tempNodeLabel;
@@ -279,4 +279,34 @@ public class DotFileProcessTree {
 		return counter;
 	}
 	
+	
+	/**
+	 * Function to recreate a Tree in a dot file if the label is not a number or null change it to wild card
+	 * @author Alexandros Lampridis
+	 * @param node Node String the starting node of a Tree
+	 * @param counter int should start with zero  
+	 * @param printWriter must be opened at the wrapper
+	 */
+	static public int createDotFilesLikeTrees2(Node<String> node, int counter,PrintWriter printWriter){
+		String idNode="node"+counter;
+		if(!node.getChildren().isEmpty())
+			for(Node<String> child : node.getChildren()){
+				printWriter.println(idNode+" -> "+"node"+String.valueOf(counter+1));
+				
+				counter=createDotFilesLikeTrees2(child,counter+1,printWriter);
+			}
+		
+		String temps=node.getData();
+		if( temps.length()==0){
+			temps="wildcard";
+		}else{
+			if(!temps.matches("[0-9]*")){
+				temps="wildcard";
+			}
+		}
+		
+		
+		printWriter.println(idNode+" [label="+temps+"]");
+		return counter;
+	}
 }

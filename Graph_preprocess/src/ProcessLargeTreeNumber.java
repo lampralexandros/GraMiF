@@ -7,8 +7,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import clusteringRefinement.AnalysisTFIDF;
 import dataProcess.DotFileProcessTree;
 import dataProcess.TreeProcess;
+import utilities.Utilities;
 
 public class ProcessLargeTreeNumber {
 

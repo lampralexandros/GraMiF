@@ -15,5 +15,6 @@ public class Feature implements Serializable {
 	//Get-Set methods
 	public String getLabel(){return Label;};
 	public void setLabel(String label){Label=label;};
+	public void setLabelFeature(double[] inputLabelFeature){ for(int i=0 ; i < LabelFeature.length; i++)LabelFeature[i] =inputLabelFeature[i];};
 	public double[] getLabelFeature(){return LabelFeature;};
 }

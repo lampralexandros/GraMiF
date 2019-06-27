@@ -19,14 +19,17 @@ public class MethodExtractionWithInput extends GeneralTransform<String>{
 	public
 	String transform(String input) {
 		String methodName;
-		Scanner scanLine = new Scanner(input);
+		
 		
 		
 		if(input!=null){
+			Scanner scanLine = new Scanner(input);
 			methodName=scanLine.findInLine(MethodName);
-			if(methodName !=null)
-				methodName.replaceAll("[(]*[$]*[0-9]*","").replaceAll(" ","");
-				scanLine.close();
+			scanLine.close();
+			// not needed due to replacement with repstring
+			//if(methodName !=null)
+			//	methodName.replaceAll("[(]*[$]*[0-9]*","").replaceAll(" ","");
+				
 			//if(methodName.contains("<init>") || methodName==null)
 			if(methodName!=null){
 				if(methodName.contains("<init>") )
@@ -35,9 +38,9 @@ public class MethodExtractionWithInput extends GeneralTransform<String>{
 					return repString;}
 			else{
 				return input;
-			}
+				}
 		}else{
-			scanLine.close();
+			//scanLine.close();
 			return input;
 		}
 	}

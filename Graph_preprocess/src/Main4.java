@@ -3,8 +3,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import clusteringRefinement.AnalysisTFIDF;
+import clusteringRefinement.OutlierProcess;
 import dataProcess.DotFileProcessTree;
 import dataProcess.TreeProcess;
+import utilities.Utilities;
 
 
 public class Main4 {

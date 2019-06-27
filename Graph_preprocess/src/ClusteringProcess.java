@@ -1,7 +1,5 @@
-/**
- * 
- * @author Alexandros Lampridis 
- */
+
+
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,26 +9,64 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
 
+import org.jfree.data.xy.XYSeries;
+
 import feature.Feature;
+
 import net.sf.javaml.clustering.Clusterer;
 import net.sf.javaml.clustering.IterativeKMeans;
 import net.sf.javaml.clustering.KMeans;
+import net.sf.javaml.clustering.KMedoids;
 import net.sf.javaml.clustering.evaluation.AICScore;
+import net.sf.javaml.clustering.evaluation.BICScore;
 import net.sf.javaml.clustering.evaluation.ClusterEvaluation;
+import net.sf.javaml.clustering.evaluation.HybridCentroidSimilarity;
+import net.sf.javaml.clustering.evaluation.HybridPairwiseSimilarities;
+import net.sf.javaml.clustering.evaluation.SumOfAveragePairwiseSimilarities;
+import net.sf.javaml.clustering.evaluation.SumOfCentroidSimilarities;
+import net.sf.javaml.clustering.evaluation.SumOfSquaredErrors;
+import net.sf.javaml.clustering.evaluation.TraceScatterMatrix;
 import net.sf.javaml.core.Dataset;
 import net.sf.javaml.core.DefaultDataset;
 import net.sf.javaml.core.DenseInstance;
 import net.sf.javaml.core.Instance;
+import net.sf.javaml.distance.AngularDistance;
+import net.sf.javaml.distance.ChebychevDistance;
+import net.sf.javaml.distance.CosineDistance;
 import net.sf.javaml.distance.CosineSimilarity;
 import net.sf.javaml.distance.DistanceMeasure;
+import net.sf.javaml.distance.EuclideanDistance;
+import net.sf.javaml.distance.JaccardIndexDistance;
+import net.sf.javaml.distance.JaccardIndexSimilarity;
+import net.sf.javaml.distance.LinearKernel;
+import net.sf.javaml.distance.MahalanobisDistance;
+import net.sf.javaml.distance.ManhattanDistance;
+import net.sf.javaml.distance.MaxProductSimilarity;
+import net.sf.javaml.distance.MinkowskiDistance;
+import net.sf.javaml.distance.NormDistance;
+import net.sf.javaml.distance.PearsonCorrelationCoefficient;
+import net.sf.javaml.distance.RBFKernel;
+import net.sf.javaml.distance.RBFKernelDistance;
+import net.sf.javaml.distance.SpearmanFootruleDistance;
+import net.sf.javaml.distance.SpearmanRankCorrelation;
+import net.sf.javaml.distance.dtw.DTWSimilarity;
+
 
 public class ClusteringProcess {
 	private ArrayList<Feature> featureList;
 	private ArrayList<String> Labels;
 	private HashMap<String,Integer> labelClusterMap;
-	private ArrayList <Vector<Feature>> clusterFeatures  ;
+	private ArrayList <Vector<Feature>> clusterFeatures;
 	private int numClusters;
 	private String[] wordModelWords;
+	private int kmeansClusterSizeMin,kmeansClusterSizeMax,kmeansIterations;
+	private DistanceMeasure kmeansDM;
+	private ClusterEvaluation kmeansCE;
+	private ArrayList<Dataset[]> clusterOfData;
+	private ArrayList<Double> scoresOfCluster;
+	private ArrayList<String> emptyFeatureVectorLabel;
+	private int clusteringRepeatNumber;
+	private double clusterEvaluation;
 	
 	//Constructor
 	public ClusteringProcess(ArrayList<String> inputLabel){
@@ -38,6 +74,7 @@ public class ClusteringProcess {
 		labelClusterMap=new HashMap<String,Integer>();
 		featureList=new ArrayList<Feature>();
 		Labels=new ArrayList<String>();
+		emptyFeatureVectorLabel=new ArrayList<String>();
 		Labels=inputLabel;
 	}
 	// Set/Get
@@ -58,6 +95,14 @@ public class ClusteringProcess {
 		return numClusters;
 	}
 	
+	/**
+	 * @author Alexandros Lampridis
+	 * @return featureList
+	 */
+	public ArrayList<Feature> getFeatureList(){
+		return featureList;
+	}
+	
 	/** Returns an array list of clusters containing features 
 	 * @author Alexandros Lampridis
 	 * @return ArrayList<Vector<Feature>>
@@ -73,7 +118,13 @@ public class ClusteringProcess {
 	public String[] getWordModel(){
 		return wordModelWords;
 	}
-	
+	/**
+	 * @author Alexandros Lampridis
+	 * @return Double The evaluation of the clusters
+	 */
+	public Double getClusterEvaluation(){
+		return clusterEvaluation;
+	}
 	
 	// Basic Functions 
 	
@@ -111,14 +162,61 @@ public class ClusteringProcess {
 		Iterator<Feature> iter= featureList.iterator();
 		while(iter.hasNext()){
 			flag=0;
-			for(double vec :iter.next().getLabelFeature()){
+			Feature tempFeature = iter.next();
+			for(double vec :tempFeature.getLabelFeature()){
 				flag=flag+vec;
 			}
 			if(flag==0){
+				emptyFeatureVectorLabel.add(tempFeature.getLabel());
 				iter.remove();
 			}	
 		}
 	}
+	
+	
+	/**
+	 * A clusterer Iterative Knn with input args as parameters
+	 * @author Alexandros Lampridis
+	 * @param testingArgs
+	 */
+	
+	public void iterativeClusteringWithInputArgs(HashMap<String,String> testingArgs){
+		
+		
+		inputTestingArguments(testingArgs);
+		
+		//creating the data set
+		Dataset data=new DefaultDataset();
+		for(Feature tempFeature:featureList){
+			Instance tempInstance=new DenseInstance(tempFeature.getLabelFeature());
+			data.add(tempInstance);
+		}
+
+		Clusterer km=new IterativeKMeans(kmeansClusterSizeMin,kmeansClusterSizeMax,kmeansIterations,kmeansDM,kmeansCE);
+		
+		Dataset[] clusters = km.cluster(data);
+		
+		numClusters=clusters.length;
+		Double[] a = new Double[data.get(0).values().size()];
+		int counter=0;
+		for(Dataset cluster:clusters){
+			counter=counter+1;
+			Vector<Feature> tempVec=new Vector<Feature>();
+			for(Instance inst:cluster){
+				for(Feature tempFeature :featureList){
+					inst.values().toArray(a);
+					if(compare2doubleArr(a,tempFeature.getLabelFeature())){
+						labelClusterMap.put(tempFeature.getLabel(),counter);
+						tempVec.add(tempFeature);
+					} 
+				}
+			}
+			clusterFeatures.add(tempVec);
+		}
+		
+	}
+	
+	
 	
 	/**
 	 * A simple quick clusterer Iterative Knn with AIC metric
@@ -202,8 +300,157 @@ public class ClusteringProcess {
 	}
 	
 	
+	public void doClusteringKeepingResultsWithInputArgs(HashMap<String,String> testCaseArgs){
+		
+		// initialize ArrayList of clusters
+		clusterOfData =new ArrayList<Dataset[]>();
+		scoresOfCluster = new ArrayList<Double>();
+		// input the TestCase parameters
+		inputTestingArguments(testCaseArgs);
+		
+		//creating the data set
+		Dataset data=new DefaultDataset();
+		for(Feature tempFeature:featureList){
+			Instance tempInstance=new DenseInstance(tempFeature.getLabelFeature());
+			data.add(tempInstance);
+		}
+		
+		Clusterer kmeans,kmeans2;
+		Dataset[] dataResults=null;
+		for(int k = kmeansClusterSizeMin ; k <= kmeansClusterSizeMax ; k++ ){
+			System.out.println("Clustering with: "+ k +" Centers");
+		   
+			try {
+		    	kmeans=new KMeans(k,kmeansIterations,kmeansDM);
+		    	dataResults=kmeans.cluster(data);
+		      } catch (Exception e) {
+		        System.out.println("Something went wrong. But moving forward");
+		      }
+			
+			
+			
+			kmeans2=new KMedoids(k,kmeansIterations,kmeansDM);
+			for( int numberOfRepeats = 0 ; numberOfRepeats < clusteringRepeatNumber ; numberOfRepeats++ ){
+				
+				  try {
+					    Dataset[] tempData=kmeans2.cluster(data);
+					    System.out.println("Repetition number:" + (numberOfRepeats+1) +" Temp score: "+ kmeansCE.score(tempData) +" Score: " + kmeansCE.score(dataResults) );
+						dataResults = ( kmeansCE.compareScore( kmeansCE.score(tempData) ,  kmeansCE.score(dataResults) )  ) ? dataResults : tempData ;
+				      } catch (Exception e) {
+				        System.out.println("Something went wrong. But moving forward");
+				      }
+				
+				
+				 
+				
+			}
+			
+			
+			clusterOfData.add(dataResults);
+		}
+		
+		for(Dataset[] tempDataset :clusterOfData){
+			scoresOfCluster.add(kmeansCE.score(tempDataset));
+		}
+		
+		Dataset[] clusters= clusterOfData.get(getTheBestSocre());
+		
+		numClusters=clusters.length;
+		Double[] a = new Double[data.get(0).values().size()];
+		int counter=0;
+		for(Dataset cluster:clusters){
+			counter=counter+1;
+			Vector<Feature> tempVec=new Vector<Feature>();
+			for(Instance inst:cluster){
+				for(Feature tempFeature :featureList){
+					inst.values().toArray(a);
+					if(compare2doubleArr(a,tempFeature.getLabelFeature())){
+						labelClusterMap.put(tempFeature.getLabel(),counter);
+						tempVec.add(tempFeature);
+					} 
+				}
+			}
+			clusterFeatures.add(tempVec);
+		}
+		
+		
+	}
+
 	
-	
+	public void doClusteringWithInputArgsExceptKmeansCenters(HashMap<String,String> testCaseArgs, int numClusters){
+		
+		// initialize ArrayList of clusters
+		clusterOfData =new ArrayList<Dataset[]>();
+		scoresOfCluster = new ArrayList<Double>();
+		// input the TestCase parameters
+		// TODO change the input method 
+		inputTestingArguments(testCaseArgs);
+		
+		//creating the data set
+		Dataset data=new DefaultDataset();
+		for(Feature tempFeature:featureList){
+			Instance tempInstance=new DenseInstance(tempFeature.getLabelFeature());
+			data.add(tempInstance);
+		}
+		
+		Clusterer kmeans,kmeans2;
+		Dataset[] dataResults=null;
+
+			System.out.println("Clustering with: "+ numClusters +" Centers");
+		   
+			try {
+				
+		    	kmeans = new KMeans( numClusters , kmeansIterations , kmeansDM );
+		    	dataResults = kmeans.cluster( data );
+		    	System.out.println( "Repetition number: 0 Score: " + kmeansCE.score( dataResults ) );
+		    	
+		      } catch (Exception e) {
+		        System.out.println("Something went wrong. But moving forward");
+		      }
+			
+			
+			
+			kmeans2=new KMedoids( numClusters , kmeansIterations , kmeansDM );
+			for( int numberOfRepeats = 0 ; numberOfRepeats < clusteringRepeatNumber ; numberOfRepeats++ ){
+				
+				  try {
+					    Dataset[] tempData=kmeans2.cluster(data);
+					    System.out.println("Repetition number:" + (numberOfRepeats+1) +" Temp score: "+ kmeansCE.score(tempData) +" Score: " + kmeansCE.score(dataResults) );
+						dataResults = ( kmeansCE.compareScore( kmeansCE.score(tempData) ,  kmeansCE.score(dataResults) )  ) ? dataResults : tempData ;
+				      } catch (Exception e) {
+				        System.out.println("Something went wrong. But moving forward with kmeans");
+				        kmeans = new KMeans( numClusters , kmeansIterations , kmeansDM );
+				        Dataset[] tempData=kmeans.cluster(data);
+					    System.out.println("Repetition number:" + (numberOfRepeats+1) +" Temp score: "+ kmeansCE.score(tempData) +" Score: " + kmeansCE.score(dataResults) );
+						dataResults = ( kmeansCE.compareScore( kmeansCE.score(tempData) ,  kmeansCE.score(dataResults) )  ) ? dataResults : tempData ;
+				      }
+			}
+		
+			
+		Dataset[] clusters= dataResults;
+		//keeping final score
+		clusterEvaluation = kmeansCE.score(clusters);
+		
+		numClusters=clusters.length;
+		Double[] a = new Double[data.get(0).values().size()];
+		int counter=0;
+		for(Dataset cluster:clusters){
+			counter=counter+1;
+			Vector<Feature> tempVec=new Vector<Feature>();
+			for(Instance inst:cluster){
+				for(Feature tempFeature :featureList){
+					inst.values().toArray(a);
+					if(compare2doubleArr(a,tempFeature.getLabelFeature())){
+						labelClusterMap.put(tempFeature.getLabel(),counter);
+						tempVec.add(tempFeature);
+					} 
+				}
+			}
+			clusterFeatures.add(tempVec);
+		}
+		
+		
+	}
 	
 	
 	/**
@@ -276,8 +523,118 @@ public class ClusteringProcess {
 		
 	}
 	
+	/**
+	 * @author Alexandros Lampridis
+	 * @return maxIndex which is the best Clustering set based on the Clustering Evaluation
+	 */
+	private int getTheBestSocre(){
+		int maxIndex=0;
+		for( int i=1 ; i < scoresOfCluster.size() ; i++){
+				boolean flag2 = kmeansCE.compareScore( scoresOfCluster.get(maxIndex).doubleValue(), scoresOfCluster.get(i).doubleValue());
+			if(flag2)
+				maxIndex=i;
+		}
+		return maxIndex;
+	}
 	
 	
+	
+	private void inputTestingArguments(HashMap<String,String> testingArgs){
+		// initialize 
+		kmeansClusterSizeMin= Integer.parseInt(testingArgs.get("-kmeansClusterSizeMin"));
+		kmeansClusterSizeMax= Integer.parseInt(testingArgs.get("-kmeansClusterSizeMax"));
+		kmeansIterations = Integer.parseInt(testingArgs.get("-kmeansIterations"));
+		clusteringRepeatNumber = Integer.parseInt(testingArgs.get("-kmeansRepetitions"));
+		kmeansDM=findDM(testingArgs.get("-kmeansDM"));
+		kmeansCE=findCE(testingArgs.get("-kmeansCE"));
+	}
+	
+	private DistanceMeasure findDM(String dmName){
+		switch(dmName){
+
+		case "AngularDistance":
+			return new AngularDistance();
+		case "ChebychevDistance":
+			return new ChebychevDistance();
+		case "CosineDistance":
+			return new CosineDistance();
+		case "CosineSimilarity":
+			return new CosineSimilarity();
+		case "DTWSimilarity":
+			return new DTWSimilarity();
+		case "EuclideanDistance":
+			return new EuclideanDistance();
+		case "JaccardIndexDistance":
+			return new JaccardIndexDistance();
+		case "JaccardIndexSimilarity":
+			return new JaccardIndexSimilarity();
+		case "LinearKernel":
+			return new LinearKernel();
+		case "MahalanobisDistance":
+			return new MahalanobisDistance();
+		case "ManhattanDistance":
+			return new ManhattanDistance();
+		case "MaxProductSimilarity":
+			return new MaxProductSimilarity();
+		case "MinkowskiDistance":
+			return new MinkowskiDistance();
+		case "NormDistance":
+			return new NormDistance();
+		case "PearsonCorrelationCoefficient":
+			return new PearsonCorrelationCoefficient();
+		case "RBFKernel":
+			return new RBFKernel();
+		case "RBFKernelDistance":
+			return new RBFKernelDistance();
+		case "SpearmanFootruleDistance": 
+			return new SpearmanFootruleDistance();
+		case "SpearmanRankCorrelation":
+			return new SpearmanRankCorrelation();
+		}
+		return null;
+		
+	}
+	private ClusterEvaluation findCE(String ceName){
+		switch(ceName){
+
+		case "AICScore":
+			return new AICScore();
+		case "BICScore":
+			return new BICScore();
+
+		case "HybridCentroidSimilarity":
+			return new HybridCentroidSimilarity();
+		case "HybridPairwiseSimilarities":
+			return new HybridPairwiseSimilarities();
+
+
+		case "SumOfAveragePairwiseSimilarities":
+			return new SumOfAveragePairwiseSimilarities();
+		case "SumOfCentroidSimilarities":
+			return new SumOfCentroidSimilarities();
+		case "SumOfSquaredErrors":
+			return new SumOfSquaredErrors();
+
+		case "TraceScatterMatrix":
+			return new TraceScatterMatrix();
+
+		}
+		return null;
+		
+	}
+	
+
+	
+	public XYSeries getXYPlotClustEvalDoubleXAxis(String lineName){
+		
+		final XYSeries tempSeries = new XYSeries( lineName );
+	    
+		for( int i = 0 ; i < clusterOfData.size() ; i++ ){
+			tempSeries.add( clusterOfData.get(i).length  , scoresOfCluster.get(i));
+		}
+		
+		return tempSeries;
+	}
 	
 	
 }

@@ -7,12 +7,10 @@ import at.unisalzburg.dbresearch.apted.node.Node;
 import at.unisalzburg.dbresearch.apted.node.StringNodeData;
 import at.unisalzburg.dbresearch.apted.parser.BracketStringInputParser;
 import dataProcess.DotFileProcessTree;
+import utilities.Utilities;
 
 public class Main6 {
 
-	public Main6() {
-		// TODO Auto-generated constructor stub
-	}
 
 	public static void main(String[] args) {
 		
@@ -44,6 +42,7 @@ public class Main6 {
 		}
 		
 		Utilities.print2dArray(resultsDistance, treeTestingBracketForm.size(), treeTrainingBracketForm.size());
+		Utilities.print2dArray(resultsDistance,11,11);
 		
 		
 	}

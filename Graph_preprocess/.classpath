@@ -12,7 +12,9 @@
 	<classpathentry kind="lib" path="C:/SPB_Data/git/GraMiF/Graph_preprocess/textManager-0.0.1-SNAPSHOT-jar-with-dependencies.jar"/>
 	<classpathentry kind="src" path="/stringManager"/>
 	<classpathentry kind="lib" path="C:/SPB_Data/git/GraMiF/Graph_preprocess/spmf.jar"/>
-	<classpathentry kind="lib" path="C:/SPB_Data/git/GraMiF/Graph_preprocess/parsemis-2008-12-01.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/apted"/>
+	<classpathentry kind="lib" path="C:/SPB_Data/git/GraMiF/Graph_preprocess/jfreechart-1.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/SPB_Data/git/GraMiF/Graph_preprocess/jcommon-1.0.0.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/parsemis-master"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

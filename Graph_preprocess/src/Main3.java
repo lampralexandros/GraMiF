@@ -2,6 +2,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import clusteringRefinement.OutlierProcess;
 import dataProcess.DotFileProcessTree;
 import dataProcess.TreeProcess;
 import nodes.Node;

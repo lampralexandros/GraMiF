@@ -166,7 +166,33 @@ public class Node<T> implements Serializable {
 		}
 	}
 	
+	public int getMaxBreadth(int max){
+		int tempMax;
+		for( Node<T> child : children){
+			tempMax=child.getMaxBreadth(max);
+			max = (tempMax >= max) ? tempMax : max ;
+		}
+		max = (children.size() >= max) ? children.size() : max ;
+		return max;
+	}
 	
+	public int getMaxDepth(int level, int max){
+		
+		for( Node<T> child : children){
+			max = child.getMaxDepth(level+1, max);
+		}
+		if(children.isEmpty())
+			max= (level >= max) ? level : max ;
+		return max;
+	}
+	
+	public int getTotalNodes(int counter){
+		
+		for( Node<T> child : children){
+			counter = child.getTotalNodes(counter);
+		}
+		return counter+1;
+	}
 	
 	
 }

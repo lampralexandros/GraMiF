@@ -8,6 +8,7 @@ import net.sf.javaml.clustering.evaluation.AICScore;
 import net.sf.javaml.clustering.evaluation.ClusterEvaluation;
 import net.sf.javaml.distance.CosineSimilarity;
 import net.sf.javaml.distance.DistanceMeasure;
+import utilities.Utilities;
 import net.sf.javaml.core.DenseInstance;
 import net.sf.javaml.core.Instance;
 
@@ -15,10 +16,13 @@ public class MatchBetweenTwoClusterSets {
 
 	private HashMap<Integer,Vector<String>> hashMap1;
 	private HashMap<Integer,Vector<String>> hashMap2;
+	HashMap<Integer,Double[]> hashMapDouble1;
+	HashMap<Integer,Double[]> hashMapDouble2;
 	private HashMap<String,Integer> hashMapLabelCluster1;
 	private HashMap<String,Integer> hashMapLabelCluster2;
 	private String[] spaceTerm; 
 	
+	public MatchBetweenTwoClusterSets(){};
 	
 	public MatchBetweenTwoClusterSets(HashMap<Integer,Vector<String>> inputhashMap1,HashMap<Integer,Vector<String>> inputhashMap2) {
 		hashMap1=inputhashMap1;
@@ -31,6 +35,18 @@ public class MatchBetweenTwoClusterSets {
 		hashMapLabelCluster1=inputHashMapLabelCluster1;
 		hashMapLabelCluster2=inputHashMapLabelCluster2;
 	}
+	
+	// TODO Not proper way of init 
+	public void MatchBetweenTwoClusterSets2(HashMap<Integer,Double[]> inputhashMap1,
+											HashMap<String,Integer> inputHashMapLabelCluster1,
+											HashMap<Integer,Double[]> inputhashMap2,
+											HashMap<String,Integer> inputHashMapLabelCluster2) {
+		hashMapDouble1=inputhashMap1;
+		hashMapDouble2=inputhashMap2;
+		hashMapLabelCluster1=inputHashMapLabelCluster1;
+		hashMapLabelCluster2=inputHashMapLabelCluster2;
+	}
+	
 	
 	public void createTheSpaceTermVector(){
 		Iterator<Vector<String>> iter =hashMap1.values().iterator();
@@ -53,7 +69,6 @@ public class MatchBetweenTwoClusterSets {
 	
 	public void transformMapClustersToLabels(){
 		
-		
 		HashMap<Integer,double[]> hashMapVector1=transformClusterStringToDoubleArray(hashMap1);
 		HashMap<Integer,double[]> hashMapVector2=transformClusterStringToDoubleArray(hashMap2);
 		// Choose the big array as first
@@ -70,12 +85,32 @@ public class MatchBetweenTwoClusterSets {
 			HashMap<Integer,Integer> matchArray=wrapperMaxMatcher(arraySim, hashMapVector2.size(), hashMapVector1.size());
 			transformAnMapLabelToCluster(matchArray, hashMapLabelCluster2);
 		}
-		
-		
-		
 				
 	}
-	
+
+	/**
+	 * The flag indicates which array is bigger so it can pass it outside of the method 
+	 * @param flag
+	 * @return
+	 */
+public HashMap<Integer,Integer> transformMapClustersToLabels2(boolean flag){
+		
+
+		// Choose the big array as first
+		HashMap<Integer,Integer> matchArray;
+		if(hashMapDouble1.size()>=hashMapDouble2.size()){
+			double[][] arraySim = calculateSimilarityArray2(hashMapDouble1,hashMapDouble2);
+			flag=true;
+			matchArray=wrapperMaxMatcher(arraySim, hashMapDouble1.size(), hashMapDouble2.size());
+		}
+		else{
+			double[][] arraySim = calculateSimilarityArray2(hashMapDouble2,hashMapDouble1);
+			matchArray=wrapperMaxMatcher(arraySim, hashMapDouble2.size(), hashMapDouble1.size());
+			flag=false;
+		}
+		return matchArray;
+				
+	}
 	
 	private HashMap<Integer,double[]> transformClusterStringToDoubleArray(HashMap<Integer,Vector<String>> hashMapClusterVector){
 		HashMap<Integer,double[]> hashMapVector=new HashMap<Integer,double[]>();
@@ -116,6 +151,43 @@ public class MatchBetweenTwoClusterSets {
 		
 
 		return array;
+	}
+	
+	private double[][] calculateSimilarityArray2(HashMap<Integer,Double[]> BiggerHashMap, HashMap<Integer,Double[]> SmallerHashMap){
+		if(BiggerHashMap.size() < SmallerHashMap.size())
+			throw new IllegalArgumentException("Bigger Array has smaller Size than Smaller array");
+		
+		double array[][]=new double[BiggerHashMap.size()][SmallerHashMap.size()];
+		DistanceMeasure dm=new CosineSimilarity();
+		
+	
+		
+		
+		double[] tempArray1 = new double[BiggerHashMap.values().iterator().next().length];
+		double[] tempArray2 = new double[SmallerHashMap.values().iterator().next().length];
+		
+		Integer[] indexBig=BiggerHashMap.keySet().toArray(new Integer[1]);
+		Integer[] indexSmall=BiggerHashMap.keySet().toArray(new Integer[1]);
+		
+		for(int i=0 ; i < indexBig.length ; i++){
+			unwrapDouble( BiggerHashMap.get(indexBig[i]) , tempArray1 );
+			Instance tempInstanceLine=new DenseInstance( tempArray1 );
+			for(int j=0 ; j < indexSmall.length ; j++ ){
+				unwrapDouble( SmallerHashMap.get(indexSmall[j]) , tempArray2 );
+				Instance tempInstanceRow=new DenseInstance( tempArray2 );
+				array[i][j]=dm.measure( tempInstanceLine , tempInstanceRow );
+			}
+		}
+		
+//		Utilities.print2dArray(array, BiggerHashMap.keySet().size(), SmallerHashMap.keySet().size());
+		
+
+		return array;
+	}
+	
+	private void unwrapDouble(Double[] arrayToUnwrap, double[] arrayToSet){
+		for( int i=0 ; i < arrayToUnwrap.length ; i ++ )
+			arrayToSet[i]= arrayToUnwrap[i];
 	}
 	
 	private HashMap<Integer,Integer> wrapperMaxMatcher(double[][] array, int bigSize , int smallSize){
