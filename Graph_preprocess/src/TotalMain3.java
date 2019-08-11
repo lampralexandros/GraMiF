@@ -12,18 +12,24 @@ import java.util.List;
 import org.jfree.data.xy.XYSeries;
 
 import at.unisalzburg.dbresearch.apted.parser.BracketStringInputParser;
-
+import be.abeel.util.Pair;
+import be.abeel.util.Triplet;
 import at.unisalzburg.dbresearch.apted.costmodel.StringUnitCostModel;
 import at.unisalzburg.dbresearch.apted.distance.APTED;
 import at.unisalzburg.dbresearch.apted.node.StringNodeData;
 import clusteringRefinement.AnalysisTFIDF;
 import dataProcess.DotFileProcessTree;
 import dataProcess.TreeProcess;
+import matcherBetweenSets.MatchingProcess;
+import metrics.AreaUnderCurver;
+import metrics.Precision;
+import metrics.Recall;
+import metrics.TreeEditDistanceMetrics;
 import nodes.Node;
 import plots.PlotLineChart;
 import utilities.Utilities;
 
-public class totalMain2 {
+public class TotalMain3 {
 
 
 
@@ -279,19 +285,22 @@ public class totalMain2 {
 			ArrayList< XYSeries > listOfLines = new ArrayList< XYSeries >(); 
 			final XYSeries lineOfTestingClassClusterEval = new XYSeries( " testing Class " );
 			final XYSeries lineOfTrainingClassClusterEval = new XYSeries( " training Class " );
-//			final XYSeries lineOfValidationClassClusterEval = new XYSeries( " validation Class " );
 			final XYSeries lineOfTestingMethodClusterEval = new XYSeries( " testing Method " );
 			final XYSeries lineOfTrainingMethodClusterEval = new XYSeries( " training Method " );
-//			final XYSeries lineOfValidationMethodClusterEval = new XYSeries( " validation Method " );
-			final XYSeries lineOfAUC = new XYSeries( " AUC " );
 			final XYSeries lineOfMaxSimilarityMatchesMethod = new XYSeries ( " methods match " );
 			final XYSeries lineOfMaxSimilarityMatchesClasses = new XYSeries ( " classes match " );
 			final XYSeries lineOfAverageMaxSimilarityMatches = new XYSeries ( " classes and method similarity " );
-			double tempAUC,tempSimilarity;
-			double maxAUC = 0;
-			int maxClusterNumber = 0 ;
-			ClusteringProcess maxMethodClusterer , maxClassClusterer;
-			AnalysisTFIDF maxMethodAnalyser = null , maxClassAnalyser = null ;
+			final XYSeries lineOfPrecisionRecall = new XYSeries ( " Precision Recall ");
+			double tempSimilarity;
+			TreeEditDistanceMetrics analyserTreeEditDist = new TreeEditDistanceMetrics();
+			MatchingProcess treeMatcher = new MatchingProcess() ;
+			Precision analyserPrecision = new Precision();
+			Recall analyserRecall = new Recall();
+			ArrayList<XYSeries> tempList = new ArrayList<XYSeries>();
+			ArrayList< Pair< Double , Double > > tempListRecall;
+			ArrayList< Pair< Double , Double > > tempListPrecision;
+			ArrayList<Pair<Integer, Double>> tempAUCList = new ArrayList<Pair<Integer, Double>>();
+			
 			
 		for( int clusterCenters = Integer.valueOf( testCaseArgs.get(TestingParam.KMEANSCLUSTERSIZEMIN.getArgCode()) ) ;
 					   clusterCenters <= (int) Integer.valueOf( testCaseArgs.get(TestingParam.KMEANSCLUSTERSIZEMAX.getArgCode()) ) ;
@@ -466,226 +475,40 @@ public class totalMain2 {
 				
 			ArrayList<String> treeTestingBracketForm=Utilities.exportLabelTreesToBracketForm(testingResults.getTreeList());
 			ArrayList<String> treeTrainingBracketForm=Utilities.exportLabelTreesToBracketForm(trainingResults.getTreeList());
-			float resultsDistance[][]= new float[treeTestingBracketForm.size()][treeTrainingBracketForm.size()];
 			
-			BracketStringInputParser parser = new BracketStringInputParser();
-			APTED<StringUnitCostModel, StringNodeData> apted = new APTED<>(new StringUnitCostModel());
+			analyserTreeEditDist.setActualTrees(treeTestingBracketForm, treeTrainingBracketForm) ;
+			analyserTreeEditDist.createDistanceArrayPercentage() ;
 			
-
-			//TODO change the sequence of the loop
-			for(int i = 0 ; i < treeTestingBracketForm.size() ; i++){
-				at.unisalzburg.dbresearch.apted.node.Node<StringNodeData> testingTreeAPTED = parser.fromString(treeTestingBracketForm.get(i));
-				
-				for(int j =0 ; j < treeTrainingBracketForm.size() ; j++){
-					at.unisalzburg.dbresearch.apted.node.Node<StringNodeData> trainingTreeAPTED = parser.fromString(treeTrainingBracketForm.get(j));
-					resultsDistance[i][j]=apted.computeEditDistance(testingTreeAPTED, trainingTreeAPTED) / ( ( trainingTreeAPTED.getNodeCount() >= testingTreeAPTED.getNodeCount() ) ? trainingTreeAPTED.getNodeCount() : testingTreeAPTED.getNodeCount() );
-				
-				}
-			}
+			double[] similarityMeasure = { 0.0 , 0.1 , 0.2 , 0.3 , 0.4 , 0.5 , 0.6 , 0.7 , 0.8 , 0.9 , 1.0 };
 			
-			double[] minDistance = new double[treeTrainingBracketForm.size()];
-			double[] TPR = new double[treeTrainingBracketForm.size()];
-			double[] FPR = new double[treeTrainingBracketForm.size()];
-		
+			tempListPrecision = analyserPrecision.calculatePrecision( analyserTreeEditDist.getResultsDistance() , similarityMeasure );
+			tempListRecall = analyserRecall.calculateRecall( analyserTreeEditDist.getResultsDistance() , similarityMeasure) ;
 			
-			for(int j =0 ; j < treeTrainingBracketForm.size() ; j++){
-				minDistance[j]=1;
-				for(int i = 0 ; i < treeTestingBracketForm.size() ; i++)
-					minDistance[j]= ( resultsDistance[i][j] < minDistance[j] ) ? resultsDistance[i][j] : minDistance[j];
-				TPR[j]=1-minDistance[j]; // maximum similarity = 100%
-				FPR[j]=minDistance[j]; 
-				
-			}
+			for( int i = 0 ; i < similarityMeasure.length ; i++ ){
+				lineOfPrecisionRecall.add( tempListRecall.get(i).x() , tempListPrecision.get(i).x() );
+			}	
 			
-			// Creating TPR FPR plots to check AUC
-			listOfLines.add( PlotLineChart.countFrequency(TPR, " TPR "));
-			listOfLines.add( PlotLineChart.countFrequency(FPR, " FPR "));
-			Utilities.plot2dLineGraph(testCaseArgs.get(TestingParam.RESULTSPATH.getArgCode()) + "TPR_FPR" + clusterCenters + ".jpeg",
-					" TPF - FPR for" + clusterCenters + " number of clusters " , listOfLines );
-			listOfLines.clear();
 			
-			// Calculating AUC
-			tempAUC =  Utilities.createAUC( TPR , FPR , true );
-			System.out.println(" Number of kmeans :" + clusterCenters + " AUC : " + tempAUC );
-			lineOfAUC.add( clusterCenters , tempAUC );
+			tempAUCList.add(new Pair<Integer, Double>(Integer.valueOf(clusterCenters), Double.valueOf(AreaUnderCurver.calculateAUC(tempListRecall, tempListPrecision))) );
 			
-			if( maxAUC < tempAUC ){
-				maxAUC = tempAUC ;
-				maxClusterNumber = clusterCenters ;
-				maxMethodAnalyser = analizerTrainingMethod ;
-				maxClassAnalyser = analizerTrainingClass ;
-			}
-			 
+			tempList.clear();
+			tempList.add(lineOfPrecisionRecall);
+			Utilities.plot2dLineGraph(testCaseArgs.get(TestingParam.RESULTSPATH.getArgCode())+"PrecisionRecal" + clusterCenters + ".jpeg",
+					" Precision Recal Curve ",
+					tempList);
+			lineOfPrecisionRecall.clear(); 
 		}
 		
-		System.out.println("validation Cluster methods with Cluster number = " + maxClusterNumber );
-		validationMethodClusterer.doClusteringWithInputArgsExceptKmeansCenters( testCaseArgs , maxClusterNumber );
-				
-		System.out.println("validation Cluster classes with Cluster number = " + maxClusterNumber);
-		validationClassClusterer.doClusteringWithInputArgsExceptKmeansCenters( testCaseArgs , maxClusterNumber );
-		
-		AnalysisTFIDF analizerValidationMethod=new AnalysisTFIDF(validationMethodClusterer.getClusterFeatures(),tempClusterer.getWordModel());
-		analizerValidationMethod.perfomTFIDF();
-		AnalysisTFIDF analizerValidationClass=new AnalysisTFIDF(validationClassClusterer.getClusterFeatures(),tempClusterer.getWordModel());
-		analizerValidationClass.perfomTFIDF();
-		
-		// Creating files for gspan
-		
-		// validation concat
-		wholeLabelClusterTesting=Utilities.mergeHashMapsIntoOne(validationMethodClusterer.getLabelClusterMap(), validationClassClusterer.getLabelClusterMap());
-					
-		TreeProcess testingProcess3=new TreeProcess(Utilities.inputToMemory4(testCaseArgs.get(TestingParam.RESULTSPATH.getArgCode())+ "validationProcessArrayListOfTrees"));
-		testingProcess3.extractMethodLabel();
-		testingProcess3.extractClassLabel();
-		Utilities.printDotFileAsInputToGspan2(testCaseArgs.get(TestingParam.RESULTSPATH.getArgCode())+"validationConcat.dot",testingProcess3.getTreeList(),wholeLabelClusterTesting);
-
-		
-		String gspanValidationResultsName = "validationResults"+ maxClusterNumber +".dot";		
-		
-		gspanArgs[0] = "--graphFile=C:\\SPB_Data\\git\\GraMiF\\Graph_preprocess\\" + testCaseArgs.get(TestingParam.RESULTSPATH.getArgCode()).replace("/", "") + "\\validationConcat.dot" ;
-		gspanArgs[1] = "--outputFile=C:\\SPB_Data\\git\\GraMiF\\Graph_preprocess\\" + testCaseArgs.get(TestingParam.RESULTSPATH.getArgCode()).replace("/", "") + "\\GSPAN\\"+gspanValidationResultsName;
-		gspanArgs[2] = "--minimumFrequency=" + testCaseArgs.get( "-gspanSupport" ) + "%" ;
-		System.out.println("Running Parsemis on testing");
-		de.parsemis.Miner.run(gspanArgs);		
-		
-		// Loading the validation results
-		DotFileProcessTree validationResults=new DotFileProcessTree( testCaseArgs.get( TestingParam.GSPANRESULTFOLDER.getArgCode()).concat( gspanValidationResultsName ) );
-		validationResults.printTheDotFiles();
-		validationResults.dotProcessCreateTreesFromGspan();
-		
-		//Loading the max training results
-		String gspanMaxTrainingResultsName = "trainingResults"+ maxClusterNumber +".dot";
-		
-		DotFileProcessTree trainingResults=new DotFileProcessTree( testCaseArgs.get( TestingParam.GSPANRESULTFOLDER.getArgCode()).concat( gspanMaxTrainingResultsName ) );
-		trainingResults.printTheDotFiles();
-		trainingResults.dotProcessCreateTreesFromGspan();
-		
-		matcher.MatchBetweenTwoClusterSets2(analizerValidationMethod.getMapClustersTFIDFTerms(),
-											validationMethodClusterer.getLabelClusterMap(),
-											maxMethodAnalyser.getMapClustersTFIDFTerms(),
-											trainingMethodClusterer.getLabelClusterMap());
-		HashMap<Integer,Integer> methodMatcher = matcher.transformMapClustersToLabels3(flag);
-
-		transformMap = Utilities.tranformHashMap(methodMatcher);
-		
-		if(flag){
-			//changing happens in testing
-			for(Node<String> root : validationResults.getTreeList()){
-				root.nodeDataStringTransformHashMap1(transformMap);
-				
-			}
-		}else{
-			// changing happens in training
-			for(Node<String> root : trainingResults.getTreeList()){
-				root.nodeDataStringTransformHashMap1(transformMap);
-				
-			}
-		}		
-		
-		// upscaling hashMaps
-		h1 = Utilities.upscaleHashMaps(maxMethodAnalyser.getMapClustersTFIDFTerms(),maxClassAnalyser.getMapClustersTFIDFTerms());
-		h2 = Utilities.upscaleHashMaps(analizerValidationMethod.getMapClustersTFIDFTerms(),analizerValidationClass.getMapClustersTFIDFTerms());
-		
-		
-		matcher.MatchBetweenTwoClusterSets2(h2,
-				testingMethodClusterer.getLabelClusterMap(),
-				h1,
-				trainingMethodClusterer.getLabelClusterMap());
-		HashMap<Integer,Integer> classMatcher = matcher.transformMapClustersToLabels3(flag);
-		transformMap = Utilities.tranformHashMap(classMatcher);
-		
-		if(flag){
-			//changing happens in testing
-			for(Node<String> root : validationResults.getTreeList()){
-				root.nodeDataStringTransformHashMap1(transformMap);
-				
-			}
-		}else{
-			// changing happens in training
-			for(Node<String> root : trainingResults.getTreeList()){
-				root.nodeDataStringTransformHashMap1(transformMap);
-
-			}
+		XYSeries AUCLine = new XYSeries("AUC");
+		for (Pair<Integer, Double> tempPair : tempAUCList){
+			AUCLine.add(tempPair.x(), tempPair.y());
 		}
-		
-		//removing leaves from the trees
-		// TODO Get the iterator outside of the for loop
-		Iterator<Node<String>> iter1 = validationResults.getTreeList().iterator();
-		while(iter1.hasNext()){
-			if(iter1.next().isLeaf() )
-				iter1.remove();
-		}
-	
-		// TODO Get the iterator outside of the for loop
-		Iterator<Node<String>> iter2 = trainingResults.getTreeList().iterator();
-		while(iter2.hasNext()){
-			if(iter2.next().isLeaf() )
-				iter2.remove();
-		}
-			
-		ArrayList<String> treeValidationBracketForm=Utilities.exportLabelTreesToBracketForm(validationResults.getTreeList());
-		ArrayList<String> treeTrainingBracketForm=Utilities.exportLabelTreesToBracketForm(trainingResults.getTreeList());
-		float resultsDistance[][]= new float[treeValidationBracketForm.size()][treeTrainingBracketForm.size()];
-		
-		BracketStringInputParser parser = new BracketStringInputParser();
-		APTED<StringUnitCostModel, StringNodeData> apted = new APTED<>(new StringUnitCostModel());
-				
-		//TODO change the sequence of the loop
-		for(int i = 0 ; i < treeValidationBracketForm.size() ; i++){
-			at.unisalzburg.dbresearch.apted.node.Node<StringNodeData> validationTreeAPTED = parser.fromString(treeValidationBracketForm.get(i));
-			
-			for(int j =0 ; j < treeTrainingBracketForm.size() ; j++){
-				at.unisalzburg.dbresearch.apted.node.Node<StringNodeData> trainingTreeAPTED = parser.fromString(treeTrainingBracketForm.get(j));
-				resultsDistance[i][j]=apted.computeEditDistance(validationTreeAPTED, trainingTreeAPTED) / ( ( trainingTreeAPTED.getNodeCount() >= validationTreeAPTED.getNodeCount() ) ? trainingTreeAPTED.getNodeCount() : validationTreeAPTED.getNodeCount() );
-			
-			}
-		}
-		
-		double[] minDistance = new double[treeTrainingBracketForm.size()];
-		double[] TPR = new double[treeTrainingBracketForm.size()];
-		double[] FPR = new double[treeTrainingBracketForm.size()];
-	
-		
-		for(int j =0 ; j < treeTrainingBracketForm.size() ; j++){
-			minDistance[j]=1;
-			for(int i = 0 ; i < treeValidationBracketForm.size() ; i++)
-				minDistance[j]= ( resultsDistance[i][j] < minDistance[j] ) ? resultsDistance[i][j] : minDistance[j];
-			TPR[j]=1-minDistance[j]; // maximum similarity = 100%
-			FPR[j]=minDistance[j]; 
-			
-		}
-		tempAUC =  Utilities.createAUC( TPR , FPR , true );
-		System.out.println(" Maximizing number of kmeans centers :" + maxClusterNumber + " Validation - Training - AUC : " + tempAUC );
-	
-		
-		// creating the plots
-		ArrayList<XYSeries> tempList = new ArrayList<XYSeries>();
-		tempList.add(lineOfTrainingMethodClusterEval);
-		tempList.add(lineOfTestingMethodClusterEval);
-		tempList.add(lineOfTrainingClassClusterEval);
-		tempList.add(lineOfTestingClassClusterEval);
-		
-		Utilities.plot2dLineGraph(testCaseArgs.get(TestingParam.RESULTSPATH.getArgCode())+"clusterEval.jpeg",
-				"Cluster evaluation with CE: " + testCaseArgs.get( TestingParam.KMEANSCE.getArgCode() ) + 
-				" DM: " + testCaseArgs.get( TestingParam.KMEANSDM.getArgCode() ) 
-				,tempList);
 		
 		tempList.clear();
-		tempList.add(lineOfAUC);
-		Utilities.plot2dLineGraph(testCaseArgs.get(TestingParam.RESULTSPATH.getArgCode())+"AUCEval.jpeg",
-				"Area under the Curve"
-				,tempList);
-		
-		tempList.clear();
-		tempList.add(lineOfAverageMaxSimilarityMatches);
-		tempList.add(lineOfAUC);
-		Utilities.plot2dLineGraph(testCaseArgs.get(TestingParam.RESULTSPATH.getArgCode())+"MaxSimilarityMatchesVsAucLine.jpeg",
-				"Average Maximum similarity vs AUC line"
-				,tempList);
-		
-		
-	    // Printing inside the results folder the test case args
-	    Utilities.printTheTestCaseArgs(testCaseArgs,TestingParam.RESULTSPATH.argCode);
+		tempList.add(AUCLine);
+		Utilities.plot2dLineGraph(testCaseArgs.get(TestingParam.RESULTSPATH.getArgCode())+" AUC of Recal and Precision"+".jpeg"
+				, "AUC", tempList);
+	
 		}
 
 	}

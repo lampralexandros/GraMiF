@@ -380,8 +380,8 @@ public class ClusteringProcess {
 	public void doClusteringWithInputArgsExceptKmeansCenters(HashMap<String,String> testCaseArgs, int numClusters){
 		
 		// initialize ArrayList of clusters
-		clusterOfData =new ArrayList<Dataset[]>();
-		scoresOfCluster = new ArrayList<Double>();
+		clusterFeatures.clear();
+		labelClusterMap.clear();
 		// input the TestCase parameters
 		// TODO change the input method 
 		inputTestingArguments(testCaseArgs);

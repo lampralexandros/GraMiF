@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -16,11 +18,13 @@ public class MatchBetweenTwoClusterSets {
 
 	private HashMap<Integer,Vector<String>> hashMap1;
 	private HashMap<Integer,Vector<String>> hashMap2;
-	HashMap<Integer,Double[]> hashMapDouble1;
-	HashMap<Integer,Double[]> hashMapDouble2;
+	private HashMap<Integer,Double[]> hashMapDouble1;
+	private HashMap<Integer,Double[]> hashMapDouble2;
 	private HashMap<String,Integer> hashMapLabelCluster1;
 	private HashMap<String,Integer> hashMapLabelCluster2;
 	private String[] spaceTerm; 
+	private double sumMax;
+	int sizeBigHashMap;
 	
 	public MatchBetweenTwoClusterSets(){};
 	
@@ -47,6 +51,10 @@ public class MatchBetweenTwoClusterSets {
 		hashMapLabelCluster2=inputHashMapLabelCluster2;
 	}
 	
+	// Get / Set
+	public double getSumMaxAverage() {
+		return sumMax / ( (double) sizeBigHashMap );
+	}
 	
 	public void createTheSpaceTermVector(){
 		Iterator<Vector<String>> iter =hashMap1.values().iterator();
@@ -93,7 +101,7 @@ public class MatchBetweenTwoClusterSets {
 	 * @param flag
 	 * @return
 	 */
-public HashMap<Integer,Integer> transformMapClustersToLabels2(boolean flag){
+	public HashMap<Integer,Integer> transformMapClustersToLabels2(boolean flag){
 		
 
 		// Choose the big array as first
@@ -111,6 +119,142 @@ public HashMap<Integer,Integer> transformMapClustersToLabels2(boolean flag){
 		return matchArray;
 				
 	}
+
+
+/**
+ * The flag indicates which array is bigger so it can pass it outside of the method 
+ * @param flag
+ * @return
+ * @throws Exception 
+ */
+	public HashMap<Integer,Integer> transformMapClustersToLabels3(boolean flag) throws Exception{
+
+		HashMap< Integer , Integer > matchArray= new HashMap<Integer,Integer>();
+		ArrayList< Integer > bigKeyList;
+		ArrayList< Integer > smallKeyList;
+		HashMap< Integer , Double[] > bigHashMap;
+		HashMap< Integer , Double[] > smallHashMap;
+		
+		int counter = 0;
+		
+		sumMax = 0 ;
+		
+		if( hashMapDouble1.size() >= hashMapDouble2.size() ){
+			bigKeyList = new ArrayList<Integer>( hashMapDouble1.keySet() );
+			bigHashMap = hashMapDouble1;
+			sizeBigHashMap = hashMapDouble1.size();
+			smallKeyList = new ArrayList<Integer>( hashMapDouble2.keySet() );
+			smallHashMap = hashMapDouble2;
+		}
+		else{
+			bigKeyList = new ArrayList<Integer>( hashMapDouble2.keySet() );
+			bigHashMap = hashMapDouble2;
+			sizeBigHashMap = hashMapDouble2.size();
+			smallKeyList = new ArrayList<Integer>( hashMapDouble1.keySet() );
+			smallHashMap = hashMapDouble1;
+		}
+		
+		
+		DistanceMeasure dm=new CosineSimilarity();
+		
+		double[][] similarityArray = new double[ smallKeyList.size() ][ bigKeyList.size() ];
+		Instance tempLine , tempCol ;
+		double[] tempArray1 = new double[ bigHashMap.get(bigKeyList.get(0)).length ];
+		double[] tempArray2 = new double[ smallHashMap.get(smallKeyList.get(0)).length ];
+		
+		
+		for( int i = 0 ; i < smallKeyList.size() ; i ++){
+
+			unwrapDouble( smallHashMap.get( smallKeyList.get(i) ) , tempArray1 );
+			tempLine = new DenseInstance( tempArray1 ) ;
+			
+			for( int j = 0 ; j < bigKeyList.size() ; j ++){
+			
+				unwrapDouble( bigHashMap.get( bigKeyList.get(j) ) , tempArray2 );
+				tempCol = new DenseInstance( tempArray2 ) ;
+
+				similarityArray[i][j] = dm.measure( tempLine, tempCol );
+
+			}
+		}
+		
+		// create the match array
+		double max ;
+		int indexKey = 0 ;
+		Integer key = null ;
+		double[][] tempArray ;
+		tempArray = copyDoubleArray( similarityArray , smallKeyList.size() , bigKeyList.size() ) ;
+		
+		
+
+		for( int i = 0 ; i < smallKeyList.size() ; i ++){
+			
+			max=0 ;
+			key = null ;
+			
+			for( int j = 0 ; j < bigKeyList.size() ; j ++){
+					
+				if( max < tempArray[i][j] ){
+					max = tempArray[i][j] ;
+					key = bigKeyList.get( j );
+					indexKey = j ;
+				}
+			}
+			
+			if( key != null ){
+				matchArray.put( key , smallKeyList.get( i ) );
+				nulifyColumnOfArray( tempArray , smallKeyList.size() , indexKey );
+				sumMax += max ;
+				counter += 1;
+			}
+				//throw new Exception(" A line in the matcher consists by zeros only") ;
+			
+		}
+		
+		System.out.println(" Printing the array after the first Loop ");
+		Utilities.print2dArray(tempArray, smallKeyList.size() , bigKeyList.size() );
+		
+		while( matchArray.size() < bigKeyList.size() ){
+			
+			for( int j = 0 ; j < bigKeyList.size() ; j ++ ){
+				
+				max=0 ;
+				key = null ;
+				
+				for( int i =0 ; i < smallKeyList.size() ; i++ ){
+					
+					if( max < tempArray[i][j] ){
+						max = tempArray[i][j];
+						key = smallKeyList.get(i) ;
+					}
+					
+					if( key != null){
+						matchArray.put( bigKeyList.get(j), key );
+						sumMax += max ;
+						counter += 1;
+					}
+					
+				}
+				
+			}
+			
+			tempArray = copyDoubleArray( similarityArray , smallKeyList.size() , bigKeyList.size() );
+			
+			for(int j = 0 ; j < bigKeyList.size() ; j ++){
+				if( matchArray.containsKey( bigKeyList.get(j)) )
+					nulifyColumnOfArray(tempArray , smallKeyList.size() , j );
+			}
+			
+			
+		}
+		
+		System.out.println(" Max similarity = " + sumMax + " counter = " + counter + " divisor = " + sizeBigHashMap );
+		
+		return matchArray;
+			
+	}
+
+
 	
 	private HashMap<Integer,double[]> transformClusterStringToDoubleArray(HashMap<Integer,Vector<String>> hashMapClusterVector){
 		HashMap<Integer,double[]> hashMapVector=new HashMap<Integer,double[]>();
@@ -185,6 +329,9 @@ public HashMap<Integer,Integer> transformMapClustersToLabels2(boolean flag){
 		return array;
 	}
 	
+
+	
+	
 	private void unwrapDouble(Double[] arrayToUnwrap, double[] arrayToSet){
 		for( int i=0 ; i < arrayToUnwrap.length ; i ++ )
 			arrayToSet[i]= arrayToUnwrap[i];
@@ -211,6 +358,30 @@ public HashMap<Integer,Integer> transformMapClustersToLabels2(boolean flag){
 		
 		return matchMap;
 	}
+	
+	
+	private HashMap<Integer,Integer> wrapperMaxMatcher2(double[][] array, int bigSize , int smallSize){
+		
+		HashMap<Integer,Integer> matchMap= new HashMap<Integer,Integer>();
+		double[][] tempArray=copyDoubleArray(array,bigSize,smallSize);
+		matchMap=SimpleMaxMatcher(tempArray,bigSize ,smallSize);
+		while(matchMap.size()<bigSize){
+			tempArray=copyDoubleArray(array,bigSize,smallSize);
+			for(int i : matchMap.keySet()){
+				tempArray=nulifylineOfArray(tempArray,i-1,smallSize);
+			}
+			
+			HashMap<Integer,Integer> tempMap= SimpleMaxMatcher(tempArray,bigSize ,smallSize);
+			for(int i :tempMap.keySet()){
+				matchMap.put(i, tempMap.get(i));
+			}
+			
+		}
+		
+		
+		return matchMap;
+	}
+	
 	
 	private HashMap<Integer,Integer> SimpleMaxMatcher(double[][] array, int bigSize , int smallSize){
 		HashMap<Integer,Integer> matchMap= new HashMap<Integer,Integer>();
@@ -296,19 +467,27 @@ public HashMap<Integer,Integer> transformMapClustersToLabels2(boolean flag){
 		
 	}
 	
-	private double[][] copyDoubleArray(double[][] array,int line,int row){
-		double[][] temp=new double[line][row];
+	private double[][] copyDoubleArray(double[][] array,int line,int column){
+		double[][] temp=new double[line][column];
 		
 		for(int i=0 ; i < line ; i++){
-			for( int j=0 ; j < row ; j++){
+			for( int j=0 ; j < column ; j++){
 				temp[i][j]=array[i][j];
 			}
 		}
 		return temp;
 	}
-	private double[][] nulifylineOfArray(double[][] array,int line,int row){
-		for( int j=0 ; j < row ; j++){
+	
+	private double[][] nulifylineOfArray(double[][] array,int line,int col){
+		for( int j=0 ; j < col ; j++){
 			array[line][j]=0;
+		}
+		return array;
+	}
+	
+	private double[][] nulifyColumnOfArray(double[][] array,int line,int col){
+		for( int i = 0 ; i < line ; i++){
+			array[i][col]=0;
 		}
 		return array;
 	}
